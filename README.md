@@ -4,3 +4,4 @@ In this repository I maintain additional materials I create for Lectures and Tut
 
 `lecture_code` contains scripts and Notebooks developed during lectures
 `faqs` contains Notebooks addressing common questions
+`additional_materials` contains extra materials - code, notebooks etc. developed to complement lectures and tutorials
