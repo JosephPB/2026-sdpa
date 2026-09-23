@@ -3,4 +3,4 @@
 In this repository I maintain additional materials I create for Lectures and Tutorials as part of the MSc SDPA Unit at the University of Bristol.
 
 `lecture_code` contains scripts and Notebooks developed during lectures
-`faqs` contains Notebooks addressing common questions asked during Tutorials
+`faqs` contains Notebooks addressing common questions
