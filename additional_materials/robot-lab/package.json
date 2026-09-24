@@ -1,0 +1,34 @@
+{
+  "name": "sdpa-robot-lab",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "postinstall": "node scripts/vendor-python.mjs",
+    "dev": "vite --host 0.0.0.0",
+    "build": "node scripts/vendor-python.mjs && vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "test": "node --test tests/runtime.test.mjs",
+    "test:browser": "node tests/browser.test.mjs",
+    "package:pages": "npm run build && node scripts/package-pages.mjs",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "@codemirror/lang-python": "^6.2.1",
+    "@codemirror/state": "^6.5.2",
+    "@codemirror/view": "^6.38.1",
+    "codemirror": "^6.0.2",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "skulpt": "1.2.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.0.0",
+    "playwright": "^1.63.0",
+    "prettier": "^3.9.9",
+    "vite": "^7.1.0"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
+}
