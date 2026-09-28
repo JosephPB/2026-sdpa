@@ -64,3 +64,9 @@ site/
 ._*
 Thumbs.db
 Desktop.ini
+
+# Compiled Quarto slides need the bundled Reveal.js dist files on GitHub Pages.
+!/lecture_code/week2/week2_files/libs/revealjs/dist/
+!/lecture_code/week2/week2_files/libs/revealjs/dist/**
+!/lecture_code/week2_presenter/week2_files/libs/revealjs/dist/
+!/lecture_code/week2_presenter/week2_files/libs/revealjs/dist/**
