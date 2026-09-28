@@ -2,7 +2,7 @@ export const examples = {
   branching: {
     label: '1 · One decision',
     code: `# Read the detector
-message = raw.strip().upper()
+message = raw.strip()
 distance_cm = int(message[2:])
 
 if distance_cm <= 20:
@@ -16,14 +16,14 @@ else:
   while: {
     label: '2 · While loop',
     code: `# Read the detector
-message = raw.strip().upper()
+message = raw.strip()
 distance_cm = int(message[2:])
 
 while distance_cm > 20:
     print("FORWARD")
 
     # Read the NEW measurement after moving
-    message = raw.strip().upper()
+    message = raw.strip()
     distance_cm = int(message[2:])
 
 print("STOP")
@@ -32,7 +32,7 @@ print("STOP")
   for: {
     label: '3 · For loop',
     code: `# Read the detector
-message = raw.strip().upper()
+message = raw.strip()
 distance_cm = int(message[2:])
 
 route = "FFPFSFF"
@@ -46,7 +46,7 @@ for instruction in route:
         continue
 
     print("FORWARD")
-    message = raw.strip().upper()
+    message = raw.strip()
     distance_cm = int(message[2:])
 `,
   },

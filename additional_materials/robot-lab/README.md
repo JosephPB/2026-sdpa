@@ -43,7 +43,7 @@ Python can read `raw` without calling `input()`. It supplies a string of the for
 The exact string appears beneath the waveform. Leading and trailing spaces and the lowercase `d` provide a reason to practise string methods:
 
 ```python
-message = raw.strip().upper()
+message = raw.strip()
 distance_cm = int(message[2:])
 ```
 
