@@ -1,0 +1,10 @@
+project:
+  type: default
+  render: [week2.qmd]
+  resources: ["assets/**", "activities/**", config.js, deck.js]
+execute:
+  eval: false
+format:
+  revealjs:
+    chalkboard:
+      buttons: true

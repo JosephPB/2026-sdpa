@@ -1,0 +1,9 @@
+{
+  "inputs": {
+    "input-loop": ["right", "RIGHT", "alpaca", "left"]
+  },
+  "expectedErrors": {
+    "immutable": ["TypeError"],
+    "stale-reading": ["Run stopped after excessive output"]
+  }
+}
