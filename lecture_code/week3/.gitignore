@@ -1,0 +1,8 @@
+.quarto/
+__pycache__/
+*.pyc
+.DS_Store
+*.md
+
+/.quarto/
+**/*.quarto_ipynb
