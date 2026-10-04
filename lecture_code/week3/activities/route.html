@@ -1,0 +1,5 @@
+<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Duck delivery</title><link rel="stylesheet" href="board.css"><script defer src="board-common.js"></script><script defer src="route.js"></script></head><body><main>
+<header><h1>Duck delivery</h1><button id="crossed">Crossed tour</button><button id="perimeter">Perimeter tour</button><button id="clear">Build a tour</button><button id="fullscreen">Full screen</button></header>
+<div class="split"><svg id="map" class="route-map" viewBox="0 0 500 325" role="img" aria-label="Four delivery locations on a rectangle"></svg><section><p>Start at A. Visit each other stop once.</p><div class="controls" id="stops"></div><pre id="route"></pre><div class="controls"><button id="undo">Undo stop</button><button id="reveal" class="primary">Reveal tour</button><button id="walk">Step courier</button></div><p class="muted">The final leg returns to A. Distances are in model units.</p></section></div>
+<p id="status" class="output" aria-live="polite"></p>
+</main></body></html>
