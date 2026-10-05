@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tuple and list slicing</title>
+<link rel="stylesheet" href="slicing.css">
+<script src="slicing-core.js" defer></script>
+<script src="slicing.js" defer></script>
+</head>
+<body>
+<main>
+  <header>
+    <label for="source">Sequence <select id="source"><option value="tuple">Tuple</option><option value="list">List</option></select></label>
+    <span id="source-preview"></span>
+    <button type="button" id="fullscreen" title="Show the activity full screen">Full screen</button>
+  </header>
+  <div id="characters" class="characters" aria-label="Characters with positive and negative indices"></div>
+  <section class="builder" aria-label="Build an index or slice">
+    <div class="expression-row">
+      <span class="bracket">s[</span>
+      <div id="slots" class="slots" aria-label="Slice expression tiles"></div>
+      <span class="bracket">]</span>
+      <button type="button" id="slice" class="primary">Slice</button>
+      <button type="button" id="clear">Clear</button>
+    </div>
+    <div class="palette" id="palette" aria-label="Number and colon tiles"></div>
+    <div class="input-row">
+      <label for="expression">Or type inside [ ] <input id="expression" value="" placeholder="e.g. :5:2" spellcheck="false" autocomplete="off"></label>
+      <span>Drag tiles into a gap. Or tap a gap, then a tile. Tap a placed tile to remove it.</span>
+    </div>
+  </section>
+  <section class="answer" aria-live="polite" aria-atomic="true">
+    <output id="answer"></output>
+    <p id="explanation"></p>
+  </section>
+</main>
+</body>
+</html>

@@ -1,0 +1,8 @@
+(() => {
+ const $=id=>document.getElementById(id),answers={difference:['B','D'],intersection:['A','C'],union:['A','B','C','D','E'],symmetric:['B','D','E']};
+ const meaning={difference:'Required stops that have not been visited.',intersection:'Stops that are both required and visited.',union:'Stops that are required, visited, or both.',symmetric:'Stops in exactly one of the two sets.'};
+ const symbols={difference:'-',intersection:'&',union:'|',symmetric:'^'};let selected=new Set();
+ function reset(){selected.clear();document.querySelectorAll('[data-stop]').forEach(b=>{b.setAttribute('aria-pressed','false');b.classList.remove('correct');});const op=$('operation').value;$('code').textContent='required = {"A", "B", "C", "D"}\nvisited = {"A", "C", "E"}\nrequired '+symbols[op]+' visited';$('meaning').textContent=meaning[op];$('status').textContent='Select your prediction, then reveal.';}
+ document.querySelectorAll('[data-stop]').forEach(b=>b.onclick=()=>{const s=b.dataset.stop;if(selected.has(s))selected.delete(s);else selected.add(s);b.setAttribute('aria-pressed',String(selected.has(s)));document.querySelectorAll('.correct').forEach(x=>x.classList.remove('correct'));$('status').textContent=selected.size?'Prediction: '+[...selected].sort().join(', '):'Prediction: empty set';});
+ $('operation').onchange=reset;$('reset').onclick=reset;$('reveal').onclick=()=>{const correct=answers[$('operation').value];document.querySelectorAll('[data-stop]').forEach(b=>b.classList.toggle('correct',correct.includes(b.dataset.stop)));const matches=correct.length===selected.size&&correct.every(s=>selected.has(s));$('status').textContent=(matches?'Your prediction matches. ':'Result: ')+correct.join(', ')+'. Set display order is not significant.';};reset();
+})();
