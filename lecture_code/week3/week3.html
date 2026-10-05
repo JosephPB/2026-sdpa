@@ -654,7 +654,7 @@ Guttag<br>§§5.1, 5.2 and 5.5
 </table>
 <p>Our exhaustive search checks <strong>(n − 1)!</strong> orders. Reversed tours count separately.</p>
 <p>The optimisation problem is <strong>NP-hard</strong>. A polynomial-time algorithm for every input is not known. The factorial count describes <strong>our method</strong>, rather than proving NP-hardness.</p>
-<p><a href="live/07_route_lists.py" target="route-script">Complete lists script</a> · <a href="#/reference-np-hard">Why NP-hard?</a></p>
+<p><a href="https://github.com/JosephPB/2026-sdpa/blob/main/lecture_code/week3/live/07_route_lists.py" target="route-script">Complete lists script</a> · <a href="#/reference-np-hard">Why NP-hard?</a></p>
 <aside class="notes">
 <p>Three minutes. The fixed-start count still includes reversed tours, matching both scripts. Symmetric distances allow reversal pairs to be identified, but this does not remove factorial growth. Explain NP-hard as at least as hard as every problem in NP under polynomial-time reductions. The decision form with integer weights is NP-complete. An efficient general TSP optimiser would solve that decision form. Formal reason: Hamiltonian cycle reduces to TSP; see the reference slide. Factorial enumeration is not a lower-bound proof for all algorithms. The four-stop example is small and solvable exactly. Source: https://www.cs.princeton.edu/~wayne/kleinberg-tardos/pearson/08PolynomialTimeReductions.pdf (slide 18). Dictionaries later improve representation, not this growth rate.</p>
 <style type="text/css">
@@ -779,7 +779,7 @@ Guttag<br>§§5.1, 5.2 and 5.5
 <ul>
 <li>Can you then sort the routes by length to find the shortest one?</li>
 </ul>
-<p><a href="live/08_route_dictionary.py" target="route-script">Answer: complete dictionary script</a>.</p>
+<p><a href="https://github.com/JosephPB/2026-sdpa/blob/main/lecture_code/week3/live/08_route_dictionary.py" target="route-script">Answer: complete dictionary script</a>.</p>
 </section>
 <section id="nested-dictionaries" class="slide level2 ide-demo">
 <h2>Nested dictionaries</h2>

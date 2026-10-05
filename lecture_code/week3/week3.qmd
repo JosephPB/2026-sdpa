@@ -513,7 +513,7 @@ Our exhaustive search checks **(n − 1)!** orders. Reversed tours count separat
 
 The optimisation problem is **NP-hard**. A polynomial-time algorithm for every input is not known. The factorial count describes **our method**, rather than proving NP-hardness.
 
-[Complete lists script](live/07_route_lists.py){target="route-script"} · [Why NP-hard?](#reference-np-hard)
+[Complete lists script](https://github.com/JosephPB/2026-sdpa/blob/main/lecture_code/week3/live/07_route_lists.py){target="route-script"} · [Why NP-hard?](#reference-np-hard)
 
 ::: {.notes}
 Three minutes. The fixed-start count still includes reversed tours, matching both scripts. Symmetric distances allow reversal pairs to be identified, but this does not remove factorial growth. Explain NP-hard as at least as hard as every problem in NP under polynomial-time reductions. The decision form with integer weights is NP-complete. An efficient general TSP optimiser would solve that decision form. Formal reason: Hamiltonian cycle reduces to TSP; see the reference slide. Factorial enumeration is not a lower-bound proof for all algorithms. The four-stop example is small and solvable exactly. Source: https://www.cs.princeton.edu/~wayne/kleinberg-tardos/pearson/08PolynomialTimeReductions.pdf (slide 18). Dictionaries later improve representation, not this growth rate.
@@ -626,7 +626,7 @@ Four minutes. keys/values/items provide views, not tuples. A tuple of numbers is
 
 - Can you then sort the routes by length to find the shortest one?
 
-[Answer: complete dictionary script](live/08_route_dictionary.py){target="route-script"}.
+[Answer: complete dictionary script](https://github.com/JosephPB/2026-sdpa/blob/main/lecture_code/week3/live/08_route_dictionary.py){target="route-script"}.
 
 ## Nested dictionaries {#nested-dictionaries .ide-demo}
 
