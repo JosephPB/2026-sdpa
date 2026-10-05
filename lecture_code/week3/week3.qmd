@@ -175,7 +175,7 @@ An item assignment:
 
 ```python
 A = (0, 0)
-A[0] = 2
+#A[0] = 2 - cannot do this
 ```
 
 **Expected:** `TypeError`.
@@ -352,7 +352,7 @@ for x in range(1, 6):
 print(squares)
 
 long_legs = []
-d in [5, 3, 5, 3]:
+for d in [5, 3, 5, 3]:
     if d > 3:
         long_legs.append(d)
 print(long_legs)
@@ -361,10 +361,6 @@ print(long_legs)
 ::::
 
 The expression builds each element. The `for` chooses inputs. An optional `if` filters them.
-
-::: {.notes}
-Three minutes. Build the loop first, then translate it. Avoid nested comprehensions here. Source: ML 2.
-:::
 
 ## The trial route changes the original {#alias .activity-slide}
 

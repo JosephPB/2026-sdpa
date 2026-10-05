@@ -342,7 +342,7 @@ Guttag<br>§§5.1, 5.2 and 5.5
 <div class="column" style="width:48%;">
 <p>An item assignment:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> (<span class="dv">0</span>, <span class="dv">0</span>)</span>
-<span id="cb5-2"><a href="" aria-hidden="true" tabindex="-1"></a>A[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">2</span></span></code></pre></div>
+<span id="cb5-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co">#A[0] = 2 - cannot do this</span></span></code></pre></div>
 <p><strong>Expected:</strong> <code>TypeError</code>.</p>
 </div><div class="column" style="width:50%;">
 <p>Binding the name to another tuple:</p>
@@ -469,25 +469,12 @@ Guttag<br>§§5.1, 5.2 and 5.5
 <span id="cb15-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(squares)</span>
 <span id="cb15-5"><a href="" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-6"><a href="" aria-hidden="true" tabindex="-1"></a>long_legs <span class="op">=</span> []</span>
-<span id="cb15-7"><a href="" aria-hidden="true" tabindex="-1"></a>d <span class="kw">in</span> [<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">3</span>]:</span>
+<span id="cb15-7"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> d <span class="kw">in</span> [<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">3</span>]:</span>
 <span id="cb15-8"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> d <span class="op">&gt;</span> <span class="dv">3</span>:</span>
 <span id="cb15-9"><a href="" aria-hidden="true" tabindex="-1"></a>        long_legs.append(d)</span>
 <span id="cb15-10"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(long_legs)</span></code></pre></div>
 </div></div>
 <p>The expression builds each element. The <code>for</code> chooses inputs. An optional <code>if</code> filters them.</p>
-<aside class="notes">
-<p>Three minutes. Build the loop first, then translate it. Avoid nested comprehensions here. Source: ML 2.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 </section>
 <section id="alias" class="slide level2 activity-slide">
 <h2>The trial route changes the original</h2>
