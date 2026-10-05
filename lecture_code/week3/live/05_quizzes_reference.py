@@ -1,45 +1,58 @@
 # SDPA week 3. Each # %% section is an independent IDE cell.
 
-# %% Slide 36: Explain it to the duck: the backup
+# %% Slide 48: Explain it to the duck: the backup
 route = ["A", "B", "C"]
 backup = route
 route.pop()
 print(backup)
 
-# %% Slide 37: Explain it to the duck: the return value
+# %% Slide 49: Explain it to the duck: the return value
 stops = ["A", "B"]
 result = stops.append("C")
 print(stops)
 print(result)
 
-# %% Slide 38: Explain it to the duck: missing deliveries
+# %% Slide 50: Explain it to the duck: missing deliveries
 required = {"A", "B", "C", "D"}
 visited = {"A", "C", "E"}
 missing = required - visited
 print(missing)
 
-# %% Slide 41: Reference: copying and mutation
+# %% Slide 53: Reference: copying and mutation
 route = ["A", "B", "C", "D"]
 for stop in route.copy():
     if stop in ["A", "B"]:
         route.remove(stop)
 print(route)
 
-# %% Slide 41: Reference: copying and mutation
+# %% Slide 53: Reference: copying and mutation
 route = ["A", "B", "C", "D"]
 route = [stop for stop in route
          if stop not in ["A", "B"]]
 print(route)
 
-# %% Slide 42: Reference: dictionaries
-a = {"A": 2, "B": 1}
-b = dict(A=2, B=1)
-c = dict([("A", 2), ("B", 1)])
-print(a == b == c)
+# %% Slide 54: Reference: dictionaries
+by_key = {42: "A", 2.5: "B",
+          True: "C"}
+print(by_key[42], by_key[2.5],
+      by_key[True])
 by_position = {(0, 0): "A"}
 print(by_position[(0, 0)])
 
-# %% Slide 44: Reference: distance from coordinates
+# %% Slide 55: Reference: nesting collections
+records = [{"stop": "A", "ducks": 2},
+           {"stop": "B", "ducks": 1}]
+print(records[1]["ducks"])
+
+# %% Slide 55: Reference: nesting collections
+delivery = {
+    "stops": ["A", "C", "B"],
+    "courier": {"name": "Duck"}
+}
+print(delivery["stops"][-1])
+print(delivery["courier"]["name"])
+
+# %% Slide 57: Reference: distance from coordinates
 A, B, C, D = (0, 0), (4, 0), (4, 3), (0, 3)
 route = [A, C, B, D]
 closed = route + [route[0]]

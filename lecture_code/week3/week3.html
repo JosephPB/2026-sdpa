@@ -9,7 +9,7 @@
   <meta name="generator" content="quarto-1.10.18">
 
   <meta name="author" content="Software Development: Programming and Algorithms (SDPA)">
-  <title>Week 3: Objects and collections — student draft</title>
+  <title>Week 3: Objects and collections</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -202,45 +202,20 @@
 <section id="title" class="slide level2">
 <h2>Objects and collections</h2>
 <p>Software Development: Programming and Algorithms</p>
-<p>Dr Joseph Aylett-Bullock</p>
+<p>Delivered by: Dr Joseph Aylett-Bullock</p>
 <p>Week 3</p>
-<aside class="notes">
-<p>Student-facing draft. This session follows the original Tuples and Lists, More Lists, and Dictionaries and Sets decks. Use the same live-coding rhythm as week 2. Reserve the final ten minutes for explanations and duck prizes.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 </section>
 <section id="recall" class="slide level2 keep-code">
-<h2>Questions from week two</h2>
+<h2>Questions from week 2</h2>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">"PYTHON"</span></span>
 <span id="cb1-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(s[<span class="dv">1</span>:<span class="dv">5</span>:<span class="dv">2</span>])</span>
 <span id="cb1-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> letter <span class="kw">in</span> s[:<span class="dv">2</span>]:</span>
 <span id="cb1-4"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(letter)</span></code></pre></div>
-<p>What does the slice select? How many times does the loop body run?</p>
+<p>What does the slice select?</p>
+<p>How many letters are printed out from the for loop?</p>
 <div class="answer">
 <p>The first line prints <code>YH</code>. The loop prints <code>P</code>, then <code>Y</code>: two iterations.</p>
 </div>
-<aside class="notes">
-<p>Two-minute retrieval and any outstanding questions. Ask for a prediction before running. Source: week 2 string slicing and for loops.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 </section>
 <section id="overview" class="slide level2">
 <h2>Overview and reading</h2>
@@ -253,8 +228,6 @@
 <li>Dictionaries and sets</li>
 <li>Unpacking and looping</li>
 </ul>
-<p>Our example: <strong>a duck-delivery route</strong>.</p>
-<p>Volunteer explanations earn duck prizes at the end.</p>
 </div><div class="column" style="width:53%;">
 <div class="book-row">
 <figure>
@@ -295,73 +268,57 @@ Guttag<br>§§5.1, 5.2 and 5.5
 <h2>Objects: identity, type and value</h2>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="" aria-hidden="true" tabindex="-1"></a>number <span class="op">=</span> <span class="dv">4</span></span>
 <span id="cb2-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(number)</span>
-<span id="cb2-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(number))</span>
-<span id="cb2-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">id</span>(number))</span>
-<span id="cb2-5"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">isinstance</span>(number, <span class="bu">object</span>))</span></code></pre></div>
-<p><strong>Value:</strong> what the object represents. <strong>Type:</strong> what operations it supports.</p>
-<p><strong>Identity:</strong> which particular object it is. <code>id()</code> stays constant during that object’s lifetime.</p>
-<aside class="notes">
-<p>Use Terminal. Everything manipulated here is already an object; no class definitions are required. The numeric id will differ between sessions. Do not describe id as a universal memory address. Source: TL 4–7. Python reference: https://docs.python.org/3/reference/datamodel.html</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<span id="cb2-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">isinstance</span>(number, <span class="bu">object</span>))</span>
+<span id="cb2-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(number))</span>
+<span id="cb2-5"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">id</span>(number))</span></code></pre></div>
+<p><strong>Value:</strong> what the object represents</p>
+<p><strong>Type:</strong> what can be done with the object (operations)</p>
+<p><strong>Identity:</strong> is the memory address assigned to it. <code>id()</code> stays constant during its lifetime.</p>
 </section>
 <section id="references" class="slide level2 activity-slide">
-<h2>Names refer to objects</h2>
+<h2>Objects: variables</h2>
 <p>Predict which label moves when <code>x</code> receives a new value.</p>
 <iframe class="slice-frame" src="activities/objects.html?scene=rebind" title="Names and objects: assignment and rebinding" allow="fullscreen" allowfullscreen="">
 </iframe>
 <p><a href="activities/objects.html?scene=rebind" target="objects-board">Open the object board</a>.</p>
-<aside class="notes">
-<p>Three minutes. Tap Step through x = 4, y = x, x = 7. Invite a student to point to the destination before the step. Assignment binds a name; it does not alter the integer 4. Source: TL 8–9.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 </section>
 <section id="identity" class="slide level2 keep-code">
 <h2>Equality and identity</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>]</span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">1</span></span>
 <span id="cb3-2"><a href="" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> a</span>
-<span id="cb3-3"><a href="" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>]</span>
+<span id="cb3-3"><a href="" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> <span class="fl">1.0</span></span>
 <span id="cb3-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a <span class="op">==</span> c)</span>
 <span id="cb3-5"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a <span class="kw">is</span> c)</span>
 <span id="cb3-6"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a <span class="kw">is</span> b)</span></code></pre></div>
 <p><strong>A</strong> True, True, True  <strong>B</strong> True, False, True  <strong>C</strong> False, False, True</p>
 <div class="answer">
-<p><strong>B.</strong> <code>==</code> compares values. <code>is</code> compares identity. <code>a</code> and <code>b</code> refer to one list; <code>c</code> is a separate list with equal contents.</p>
+<p><strong>B.</strong> <code>==</code> compares values. <code>is</code> compares identity. <code>a</code> and <code>b</code> refer to one integer; <code>c</code> is a separate float with the same numeric value as <code>a</code>.</p>
 </div>
-<aside class="notes">
-<p>Lists are a visual preview here and are taught shortly. Avoid string/integer identity examples that depend on caching. Source: TL 10–11.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+</section>
+<section id="structures" class="slide level2">
+<h2>Structured data types</h2>
+<ul>
+<li><p>We have so far met: <code>int</code>, <code>float</code>, <code>bool</code> and <code>str</code>.</p></li>
+<li><p>Numeric/Boolean types are scalar which have no accessible internal structure</p></li>
+<li><p><code>str</code> can be thought of as a structured, or non-scalar, type</p>
+<ul>
+<li>Indexing and slicing</li>
+</ul></li>
+<li><p><code>tuples</code>, <code>list</code> and <code>dict</code>ionaries are <em>structured</em> / <em>compound</em> data types in Python.</p></li>
+</ul>
+</section>
+<section id="tuple-introduction" class="slide level2">
+<h2>Tuples</h2>
+<ul>
+<li><p>Like string, tuples are ordered sequence of elements</p></li>
+<li><p>Difference is that elements in tuples do not have to be characters</p></li>
+<li><p>Each element can be of any type</p></li>
+<li><p>Represented with parentheses</p></li>
+<li><p>Normally used to return more than one value from a function</p></li>
+</ul>
 </section>
 <section id="tuples" class="slide level2 ide-demo">
-<h2>Tuples as coordinates</h2>
+<h2>Tuples: coordinates example</h2>
 <div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> (<span class="dv">0</span>, <span class="dv">0</span>)</span>
 <span id="cb4-2"><a href="" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> (<span class="dv">4</span>, <span class="dv">0</span>)</span>
 <span id="cb4-3"><a href="" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> (<span class="dv">4</span>, <span class="dv">3</span>)</span>
@@ -371,39 +328,13 @@ Guttag<br>§§5.1, 5.2 and 5.5
 <span id="cb4-7"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>((<span class="dv">4</span>,)), <span class="bu">type</span>((<span class="dv">4</span>)))</span></code></pre></div>
 <p>A tuple is an ordered sequence. Its elements can have different types: <code>("A", 2, 1.5)</code>.</p>
 <p>The comma creates a one-element tuple: <code>(4,)</code>.</p>
-<aside class="notes">
-<p>Introduce the four fixed stations. Coordinates are model units, not measured positions in the room. Source: TL 12–14.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 </section>
 <section id="slicing" class="slide level2 activity-slide">
-<h2>Tuple and list slicing</h2>
+<h2>Tuple slicing</h2>
 <p>Build a slice that selects <strong>B and D</strong>. Predict before pressing <strong>Slice</strong>.</p>
 <iframe class="slice-frame" src="activities/slicing.html" title="Tap-to-build tuple and list slicing board" allow="fullscreen" allowfullscreen="">
 </iframe>
 <p><a href="activities/slicing.html" target="sequence-board">Open the sequence board</a>. Try <code>1:5:2</code>, <code>-3:</code> and <code>::-1</code>.</p>
-<aside class="notes">
-<p>Reuse the week 2 tile interaction. Start with a tuple, then switch to a list: indices are the same, but the result has the same sequence type as its source. Stop is excluded. Source: TL 15.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 </section>
 <section id="tuple-mutation" class="slide level2 ide-demo">
 <h2>Tuple mutation and reassignment</h2>
@@ -420,26 +351,14 @@ Guttag<br>§§5.1, 5.2 and 5.5
 <span id="cb6-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A)</span></code></pre></div>
 <p><strong>Result:</strong> <code>(2, 0)</code>.</p>
 </div></div>
-<p>A tuple’s item references cannot be replaced. The name <code>A</code> can refer to a different tuple.</p>
-<aside class="notes">
-<p>Run the two examples separately. Preserve the intentional error. Mutable objects contained in tuples are a reference nuance, not needed in this coordinate example. Source: TL 15.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<p>A tuple is <strong>immutable</strong>.</p>
+<p>The name <code>A</code> can refer to a different tuple.</p>
 </section>
 <section id="unpacking-tuples" class="slide level2 ide-demo">
 <h2>Packing and unpacking tuples</h2>
 <div class="columns">
 <div class="column" style="width:48%;">
-<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> <span class="dv">4</span>, <span class="dv">0</span></span>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> (<span class="dv">4</span>, <span class="dv">0</span>)  <span class="co"># Also written B = 4, 0</span></span>
 <span id="cb7-2"><a href="" aria-hidden="true" tabindex="-1"></a>x, y <span class="op">=</span> B</span>
 <span id="cb7-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x, y)</span>
 <span id="cb7-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> coordinate <span class="kw">in</span> B:</span>
@@ -453,22 +372,10 @@ Guttag<br>§§5.1, 5.2 and 5.5
 <p>Nesting: <code>((1, 2), (3, 4))</code>.</p>
 </div></div>
 <p>Unpacking assigns each element to a name. The number of names must match here.</p>
-<aside class="notes">
-<p>Use x/y as a familiar mathematical connection. Concatenation and nesting are different operations. Sources: TL 16–17.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<p>Tuples can be concatenated.</p>
 </section>
 <section id="lists" class="slide level2 ide-demo">
-<h2>Lists hold a visiting order</h2>
+<h2>Lists</h2>
 <div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="" aria-hidden="true" tabindex="-1"></a>A, B, C, D <span class="op">=</span> (<span class="dv">0</span>, <span class="dv">0</span>), (<span class="dv">4</span>, <span class="dv">0</span>), (<span class="dv">4</span>, <span class="dv">3</span>), (<span class="dv">0</span>, <span class="dv">3</span>)</span>
 <span id="cb9-2"><a href="" aria-hidden="true" tabindex="-1"></a>route <span class="op">=</span> [A, C, B, D]</span>
 <span id="cb9-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(route[<span class="dv">1</span>])</span>
@@ -476,41 +383,15 @@ Guttag<br>§§5.1, 5.2 and 5.5
 <span id="cb9-5"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(route[<span class="dv">1</span>:<span class="dv">3</span>])</span>
 <span id="cb9-6"><a href="" aria-hidden="true" tabindex="-1"></a>route[<span class="dv">1</span>], route[<span class="dv">2</span>] <span class="op">=</span> route[<span class="dv">2</span>], route[<span class="dv">1</span>]</span>
 <span id="cb9-7"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(route)</span></code></pre></div>
-<p>Lists are ordered and mutable. Here each element is a coordinate tuple.</p>
-<p>The final assignment swaps two stops using unpacking.</p>
-<aside class="notes">
-<p>All examples define their own starting data so student Run cells work independently. Source: TL 19–20. The tuple coordinates stay fixed while the list’s order changes.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<p>Lists are ordered and mutable, and can mix element types. Here each element is a coordinate tuple.</p>
+<p>The final assignment swaps the references stored at positions 1 and 2. The coordinate tuples stay unchanged.</p>
 </section>
 <section id="duck-delivery" class="slide level2 activity-slide duck-demo">
-<h2>Duck delivery: a shorter tour</h2>
-<p>Visit every station once and return to <strong>A</strong>. Can you improve on <strong>A, C, B, D, A</strong>?</p>
+<h2>The travelling duck problem</h2>
+<p>Visit every station once and return to <strong>A</strong> only at the end. Can you improve on <strong>A, C, B, D, A</strong>?</p>
 <iframe class="slice-frame" src="activities/route.html" title="Duck delivery: choose and compare routes" allow="fullscreen" allowfullscreen="">
 </iframe>
-<p><a href="activities/route.html" target="duck-map">Open the delivery map</a>. Four station volunteers and one courier; everyone checks the route.</p>
-<aside class="notes">
-<p>Six minutes. Prepare four coordinate cards and one demonstration duck. Walk the crossed tour first, then the perimeter proposal. Model lengths are 16 and 14, including the final return to A. The room is only schematic. A seated alternative moves the duck between desk cards. Ask for a shorter complete tour rather than an optimisation algorithm. Return to the map to verify.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<p><a href="activities/route.html" target="duck-map">Open the delivery map</a>.</p>
 </section>
 <section id="iteration" class="slide level2 ide-demo">
 <h2>Iterating through a route</h2>
@@ -529,40 +410,23 @@ Guttag<br>§§5.1, 5.2 and 5.5
 <span id="cb11-5"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(total)</span></code></pre></div>
 <p>The crossed tour totals <strong>16 model units</strong>, including the return leg.</p>
 </div></div>
-<p>Here stop names label the journey. Use direct iteration when you only need the elements.</p>
-<aside class="notes">
-<p>Four minutes. This reprises the original numeric-list summation. Coordinates are not needed for this loop demonstration; the diagram supplies the leg lengths. Full distance code is in the final reference slide. Source: TL 21.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+</section>
+<section id="dot" class="slide level2">
+<h2>What is the dot?</h2>
+<ul>
+<li><p>Lists are Python objects, everything in Python is an object</p></li>
+<li><p>objects have data</p></li>
+<li><p>objects can expose attributes and methods</p></li>
+<li><p>Use <code>object_name.attribute</code> to read an attribute, or <code>object_name.method()</code> to call a method</p></li>
+<li><p>Will learn more about these later</p></li>
+</ul>
 </section>
 <section id="adding" class="slide level2 activity-slide">
-<h2>Adding list elements</h2>
+<h2>Adding and extending list elements</h2>
 <p>Compare <strong>append</strong>, <strong>extend</strong> and <strong>+</strong> from the same starting list. What does the dot mean?</p>
 <iframe class="slice-frame" src="activities/lists.html?scene=add" title="List methods: append, extend and concatenation" allow="fullscreen" allowfullscreen="">
 </iframe>
-<p><a href="activities/lists.html?scene=add" target="list-board">Open the list board</a>. A method such as <code>route.append(...)</code> acts on the object before the dot.</p>
-<aside class="notes">
-<p>Three minutes. Append adds the supplied list as one element; extend adds each of its elements. Concatenation returns a new list. Show both the state and the returned value. Source: TL 22–23. https://docs.python.org/3/tutorial/datastructures.html</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<p><a href="activities/lists.html?scene=add" target="list-board">Open the list board</a>. A <strong>method</strong> such as <code>route.append(...)</code> acts on the object before the dot.</p>
 </section>
 <section id="removing" class="slide level2 activity-slide">
 <h2>Inserting and removing stops</h2>
@@ -570,22 +434,9 @@ Guttag<br>§§5.1, 5.2 and 5.5
 <iframe class="slice-frame" src="activities/lists.html?scene=remove" title="List insertion, pop, remove and del" allow="fullscreen" allowfullscreen="">
 </iframe>
 <p><a href="activities/lists.html?scene=remove" target="list-board">Open the list board</a>. Predict which element disappears and what the operation returns.</p>
-<aside class="notes">
-<p>Three minutes. Start with a repeated B so remove(‘B’) differs from pop(2). del is a statement and has no expression result. pop returns the removed value; remove returns None. Sources: TL 24–26.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 </section>
 <section id="ordering" class="slide level2 ide-demo">
-<h2>Ordering and method results</h2>
+<h2>Ordering and method outputs</h2>
 <div class="columns">
 <div class="column" style="width:48%;">
 <div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="" aria-hidden="true" tabindex="-1"></a>legs <span class="op">=</span> [<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">3</span>]</span>
@@ -595,30 +446,16 @@ Guttag<br>§§5.1, 5.2 and 5.5
 <span id="cb12-5"><a href="" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> legs.sort()</span>
 <span id="cb12-6"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(legs, result)</span></code></pre></div>
 </div><div class="column" style="width:50%;">
-<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="" aria-hidden="true" tabindex="-1"></a>stops <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"A"</span>]</span>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="" aria-hidden="true" tabindex="-1"></a>stops <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"A"</span>]</span>
 <span id="cb13-2"><a href="" aria-hidden="true" tabindex="-1"></a>stops.reverse()</span>
-<span id="cb13-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(stops.count(<span class="st">"A"</span>))</span>
-<span id="cb13-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([<span class="st">"duck"</span>] <span class="op">*</span> <span class="dv">3</span>)</span></code></pre></div>
+<span id="cb13-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(stops.count(<span class="st">"A"</span>))</span></code></pre></div>
 <p><code>sorted()</code> returns a new list.</p>
 <p><code>.sort()</code> changes the list and returns <code>None</code>.</p>
 </div></div>
-<p>Sorting journey lengths does not calculate a shortest route.</p>
-<aside class="notes">
-<p>Ask for result before printing it. Reverse also returns None. Repetition of nested lists can share references; retain that nuance for reference discussion. Sources: TL 24, 27.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<p>Sorting the individual leg lengths leaves the total unchanged. To optimise, we will sort <strong>complete tours by their total distance</strong>.</p>
 </section>
 <section id="comprehensions" class="slide level2 ide-demo">
-<h2>List comprehensions</h2>
+<h2>List building</h2>
 <div class="columns">
 <div class="column" style="width:48%;">
 <div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="" aria-hidden="true" tabindex="-1"></a>squares <span class="op">=</span> []</span>
@@ -626,11 +463,16 @@ Guttag<br>§§5.1, 5.2 and 5.5
 <span id="cb14-3"><a href="" aria-hidden="true" tabindex="-1"></a>    squares.append(x <span class="op">**</span> <span class="dv">2</span>)</span>
 <span id="cb14-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(squares)</span></code></pre></div>
 </div><div class="column" style="width:50%;">
-<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="" aria-hidden="true" tabindex="-1"></a>squares <span class="op">=</span> [x <span class="op">**</span> <span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">6</span>)]</span>
-<span id="cb15-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(squares)</span>
-<span id="cb15-3"><a href="" aria-hidden="true" tabindex="-1"></a>long_legs <span class="op">=</span> [d <span class="cf">for</span> d <span class="kw">in</span> [<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">3</span>]</span>
-<span id="cb15-4"><a href="" aria-hidden="true" tabindex="-1"></a>             <span class="cf">if</span> d <span class="op">&gt;</span> <span class="dv">3</span>]</span>
-<span id="cb15-5"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(long_legs)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="" aria-hidden="true" tabindex="-1"></a>squares <span class="op">=</span> []</span>
+<span id="cb15-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">6</span>):</span>
+<span id="cb15-3"><a href="" aria-hidden="true" tabindex="-1"></a>    squares.append(x<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb15-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(squares)</span>
+<span id="cb15-5"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="" aria-hidden="true" tabindex="-1"></a>long_legs <span class="op">=</span> []</span>
+<span id="cb15-7"><a href="" aria-hidden="true" tabindex="-1"></a>d <span class="kw">in</span> [<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">3</span>]:</span>
+<span id="cb15-8"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> d <span class="op">&gt;</span> <span class="dv">3</span>:</span>
+<span id="cb15-9"><a href="" aria-hidden="true" tabindex="-1"></a>        long_legs.append(d)</span>
+<span id="cb15-10"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(long_legs)</span></code></pre></div>
 </div></div>
 <p>The expression builds each element. The <code>for</code> chooses inputs. An optional <code>if</code> filters them.</p>
 <aside class="notes">
@@ -649,23 +491,10 @@ Guttag<br>§§5.1, 5.2 and 5.5
 </section>
 <section id="alias" class="slide level2 activity-slide">
 <h2>The trial route changes the original</h2>
-<p>We want to try a new route while keeping the original. Does <code>trial = route</code> achieve that?</p>
+<p>We want to try a new trial route while keeping the original. Does <code>trial = route</code> achieve that?</p>
 <iframe class="slice-frame" src="activities/objects.html?scene=alias" title="Two variable names sharing one route list" allow="fullscreen" allowfullscreen="">
 </iframe>
 <p><a href="activities/objects.html?scene=alias" target="objects-board">Open the object board</a>. Use two name labels and one physical route sheet.</p>
-<aside class="notes">
-<p>Four minutes. Ask a volunteer to represent assignment with a second label on the same sheet. Another swaps the middle stops. Everyone predicts route. This is the second appearance of the physical duck activity. Sources: ML 3–5.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 </section>
 <section id="copy" class="slide level2 ide-demo">
 <h2>Copying a route</h2>
@@ -697,19 +526,7 @@ Guttag<br>§§5.1, 5.2 and 5.5
 <iframe class="slice-frame" src="activities/objects.html?scene=nested" title="Shallow copying a nested list" allow="fullscreen" allowfullscreen="">
 </iframe>
 <p><a href="activities/objects.html?scene=nested" target="objects-board">Open the object board</a>. Predict <code>groups</code> after <code>trial[0].append("D")</code>.</p>
-<aside class="notes">
-<p>Three minutes. Name the precise thing copied: the outer list. Show one append only. Source: ML 7. Do not claim that slicing duplicates every contained object. https://docs.python.org/3/library/copy.html</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<p><strong>Later:</strong> <code>copy.deepcopy()</code> also copies nested mutable objects. We will meet library imports in a later session.</p>
 </section>
 <section id="mutation-loop" class="slide level2 activity-slide">
 <h2>Removing items during iteration</h2>
@@ -717,22 +534,10 @@ Guttag<br>§§5.1, 5.2 and 5.5
 <iframe class="slice-frame" src="activities/lists.html?scene=iterate" title="Step through removing list elements while iterating" allow="fullscreen" allowfullscreen="">
 </iframe>
 <p><a href="activities/lists.html?scene=iterate" target="list-board">Open the iteration board</a>. Compare iterating over the original with iterating over a copy.</p>
-<aside class="notes">
-<p>Three minutes. After A is removed, B moves to index 0 while the iterator next reads index 1. B survives. Switch to iteration over a copy and reset. A comprehension rebuilding the list is another repair. Source: ML 8.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<p>What about if we used <code>.append()</code> inside the <code>for</code> loop?</p>
 </section>
 <section id="copy-quiz" class="slide level2 keep-code">
-<h2>Copying checkpoint</h2>
+<h2>Copying quiz</h2>
 <div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"B"</span>]</span>
 <span id="cb17-2"><a href="" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> a.copy()</span>
 <span id="cb17-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a <span class="op">==</span> b)</span>
@@ -741,8 +546,24 @@ Guttag<br>§§5.1, 5.2 and 5.5
 <div class="answer">
 <p><strong>B.</strong> Equal contents, separate list objects. Replacing an element of <code>b</code> leaves <code>a</code> unchanged.</p>
 </div>
+</section>
+<section id="route-candidates" class="slide level2 ide-demo">
+<h2>Every visiting order</h2>
+<p>Fix A as the start. Extend each partial route with every <strong>unvisited</strong> stop.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="" aria-hidden="true" tabindex="-1"></a>A, B, C, D <span class="op">=</span> (<span class="dv">0</span>, <span class="dv">0</span>), (<span class="dv">4</span>, <span class="dv">0</span>), (<span class="dv">4</span>, <span class="dv">3</span>), (<span class="dv">0</span>, <span class="dv">3</span>)</span>
+<span id="cb18-2"><a href="" aria-hidden="true" tabindex="-1"></a>stops <span class="op">=</span> [B, C, D]</span>
+<span id="cb18-3"><a href="" aria-hidden="true" tabindex="-1"></a>routes <span class="op">=</span> [[A]]</span>
+<span id="cb18-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> step <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(stops)):</span>
+<span id="cb18-5"><a href="" aria-hidden="true" tabindex="-1"></a>    longer_routes <span class="op">=</span> []</span>
+<span id="cb18-6"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> route <span class="kw">in</span> routes:</span>
+<span id="cb18-7"><a href="" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> stop <span class="kw">in</span> stops:</span>
+<span id="cb18-8"><a href="" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> stop <span class="kw">not</span> <span class="kw">in</span> route:</span>
+<span id="cb18-9"><a href="" aria-hidden="true" tabindex="-1"></a>                longer_routes.append(route <span class="op">+</span> [stop])</span>
+<span id="cb18-10"><a href="" aria-hidden="true" tabindex="-1"></a>    routes <span class="op">=</span> longer_routes</span>
+<span id="cb18-11"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(routes))</span></code></pre></div>
+<p>There are <strong>6 permutations</strong> of B, C and D. Order matters. <code>+</code> creates a new route each time.</p>
 <aside class="notes">
-<p>Two minutes. Ask for an explanation using two sheets and their labels. Source: ML 9.</p>
+<p>Build live/07_route_lists.py, step 1. Ask the class for the counts after each pass: 3, 6, 6. Trace A-B: its next choices are C and D. The outer list holds possible routes; each inner list is one route. We read routes and build a separate longer_routes list. This simple coordinate version assumes distinct positions; named dictionary keys later distinguish stops even if they share coordinates. No stop repeats inside a candidate. Add the final return to A only when scoring.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -755,12 +576,100 @@ Guttag<br>§§5.1, 5.2 and 5.5
           display:block!important;
       }</style></aside>
 </section>
-<section id="break" class="slide level2">
-<h2>Break</h2>
-<p>Ten minutes</p>
-<p>Next: dictionaries, sets and useful ways to loop.</p>
+<section id="route-distance" class="slide level2 ide-demo">
+<h2>The distance of one complete tour</h2>
+<p>Each leg uses Pythagoras: <code>((x2 - x1)**2 + (y2 - y1)**2)**0.5</code>.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="" aria-hidden="true" tabindex="-1"></a>A, B, C, D <span class="op">=</span> (<span class="dv">0</span>, <span class="dv">0</span>), (<span class="dv">4</span>, <span class="dv">0</span>), (<span class="dv">4</span>, <span class="dv">3</span>), (<span class="dv">0</span>, <span class="dv">3</span>)</span>
+<span id="cb19-2"><a href="" aria-hidden="true" tabindex="-1"></a>route <span class="op">=</span> [A, C, B, D]</span>
+<span id="cb19-3"><a href="" aria-hidden="true" tabindex="-1"></a>closed <span class="op">=</span> route <span class="op">+</span> [route[<span class="dv">0</span>]]</span>
+<span id="cb19-4"><a href="" aria-hidden="true" tabindex="-1"></a>total <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb19-5"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(closed) <span class="op">-</span> <span class="dv">1</span>):</span>
+<span id="cb19-6"><a href="" aria-hidden="true" tabindex="-1"></a>    x1, y1 <span class="op">=</span> closed[i]</span>
+<span id="cb19-7"><a href="" aria-hidden="true" tabindex="-1"></a>    x2, y2 <span class="op">=</span> closed[i <span class="op">+</span> <span class="dv">1</span>]</span>
+<span id="cb19-8"><a href="" aria-hidden="true" tabindex="-1"></a>    total <span class="op">+=</span> ((x2 <span class="op">-</span> x1)<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> (y2 <span class="op">-</span> y1)<span class="op">**</span><span class="dv">2</span>)<span class="op">**</span><span class="fl">0.5</span></span>
+<span id="cb19-9"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(total)</span></code></pre></div>
+<p>The crossed tour is <strong>16 model units</strong>. Changing the order to <code>[A, B, C, D]</code> gives <strong>14</strong>.</p>
 <aside class="notes">
-<p>Announce the return time. The second half needs roughly 40 minutes before the closing quiz. Keep examples concise if questions have used the buffer.</p>
+<p>Build step 2 in the same script. Each adjacent pair contributes one distance. Closing the list adds the last-to-first leg, rather than letting A appear during candidate generation. All four positions here are distinct. Reuse the physical map to check the calculation.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="route-ranking" class="slide level2 ide-demo">
+<h2>The shortest tour from the list</h2>
+<p>Continue in the same IDE script, using the six <code>routes</code> from step 1.</p>
+<div class="no-run">
+<div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="" aria-hidden="true" tabindex="-1"></a>scores <span class="op">=</span> []</span>
+<span id="cb20-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> route <span class="kw">in</span> routes:</span>
+<span id="cb20-3"><a href="" aria-hidden="true" tabindex="-1"></a>    closed <span class="op">=</span> route <span class="op">+</span> [route[<span class="dv">0</span>]]</span>
+<span id="cb20-4"><a href="" aria-hidden="true" tabindex="-1"></a>    total <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb20-5"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(closed) <span class="op">-</span> <span class="dv">1</span>):</span>
+<span id="cb20-6"><a href="" aria-hidden="true" tabindex="-1"></a>        x1, y1 <span class="op">=</span> closed[i]</span>
+<span id="cb20-7"><a href="" aria-hidden="true" tabindex="-1"></a>        x2, y2 <span class="op">=</span> closed[i <span class="op">+</span> <span class="dv">1</span>]</span>
+<span id="cb20-8"><a href="" aria-hidden="true" tabindex="-1"></a>        total <span class="op">+=</span> ((x2 <span class="op">-</span> x1)<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> (y2 <span class="op">-</span> y1)<span class="op">**</span><span class="dv">2</span>)<span class="op">**</span><span class="fl">0.5</span></span>
+<span id="cb20-9"><a href="" aria-hidden="true" tabindex="-1"></a>    scores.append((total, route))</span>
+<span id="cb20-10"><a href="" aria-hidden="true" tabindex="-1"></a>ranked <span class="op">=</span> <span class="bu">sorted</span>(scores)</span>
+<span id="cb20-11"><a href="" aria-hidden="true" tabindex="-1"></a>best_distance, best_route <span class="op">=</span> ranked[<span class="dv">0</span>]</span>
+<span id="cb20-12"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(best_distance)</span>
+<span id="cb20-13"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(best_route <span class="op">+</span> [best_route[<span class="dv">0</span>]])</span></code></pre></div>
+</div>
+<p>Sort <code>(distance, route)</code> pairs by distance first. The best distance is <strong>14</strong>; both perimeter directions tie.</p>
+<aside class="notes">
+<p>Build step 3. Open live/07_route_lists.py for the complete runnable sequence. Do not run this continuation alone. sorted compares tuples left to right; tied distances use the coordinate-list ordering, which is valid for these numeric tuples. In this version A-D-C-B wins that tie. We keep all six candidates, including the reverse of each tour. Ask why sorting only the individual legs would not solve the problem.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="travelling-salesman" class="slide level2">
+<h2>The travelling salesman problem</h2>
+<p>Find the shortest complete tour that visits every stop once and returns to its start.</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Total stops, including A</th>
+<th style="text-align: right;">Visiting orders with A fixed</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>4</td>
+<td style="text-align: right;">3! = 6</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td style="text-align: right;">7! = 5,040</td>
+</tr>
+<tr class="odd">
+<td>12</td>
+<td style="text-align: right;">11! = 39,916,800</td>
+</tr>
+<tr class="even">
+<td>16</td>
+<td style="text-align: right;">15! = 1,307,674,368,000</td>
+</tr>
+</tbody>
+</table>
+<p>Our exhaustive search checks <strong>(n − 1)!</strong> orders. Reversed tours count separately.</p>
+<p>The optimisation problem is <strong>NP-hard</strong>. A polynomial-time algorithm for every input is not known. The factorial count describes <strong>our method</strong>, rather than proving NP-hardness.</p>
+<p><a href="live/07_route_lists.py" target="route-script">Complete lists script</a> · <a href="#/reference-np-hard">Why NP-hard?</a></p>
+<aside class="notes">
+<p>Three minutes. The fixed-start count still includes reversed tours, matching both scripts. Symmetric distances allow reversal pairs to be identified, but this does not remove factorial growth. Explain NP-hard as at least as hard as every problem in NP under polynomial-time reductions. The decision form with integer weights is NP-complete. An efficient general TSP optimiser would solve that decision form. Formal reason: Hamiltonian cycle reduces to TSP; see the reference slide. Factorial enumeration is not a lower-bound proof for all algorithms. The four-stop example is small and solvable exactly. Source: https://www.cs.princeton.edu/~wayne/kleinberg-tardos/pearson/08PolynomialTimeReductions.pdf (slide 18). Dictionaries later improve representation, not this growth rate.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -774,23 +683,38 @@ Guttag<br>§§5.1, 5.2 and 5.5
       }</style></aside>
 </section>
 <section id="why-dictionaries" class="slide level2">
-<h2>Looking up a stop by name</h2>
+<h2>Dictionaries: looking up a stop by name</h2>
 <div class="columns">
 <div class="column" style="width:48%;">
 <p>Two lists must stay aligned:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="" aria-hidden="true" tabindex="-1"></a>names <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>]</span>
-<span id="cb18-2"><a href="" aria-hidden="true" tabindex="-1"></a>positions <span class="op">=</span> [(<span class="dv">0</span>, <span class="dv">0</span>), (<span class="dv">4</span>, <span class="dv">0</span>), (<span class="dv">4</span>, <span class="dv">3</span>)]</span>
-<span id="cb18-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(positions[names.index(<span class="st">"B"</span>)])</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="" aria-hidden="true" tabindex="-1"></a>names <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>]</span>
+<span id="cb21-2"><a href="" aria-hidden="true" tabindex="-1"></a>positions <span class="op">=</span> [(<span class="dv">0</span>, <span class="dv">0</span>), (<span class="dv">4</span>, <span class="dv">0</span>), (<span class="dv">4</span>, <span class="dv">3</span>)]</span>
+<span id="cb21-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(positions[names.index(<span class="st">"B"</span>)])</span></code></pre></div>
 </div><div class="column" style="width:50%;">
 <p>A dictionary associates a key with a value:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="" aria-hidden="true" tabindex="-1"></a>locations <span class="op">=</span> {<span class="st">"A"</span>: (<span class="dv">0</span>, <span class="dv">0</span>),</span>
-<span id="cb19-2"><a href="" aria-hidden="true" tabindex="-1"></a>             <span class="st">"B"</span>: (<span class="dv">4</span>, <span class="dv">0</span>),</span>
-<span id="cb19-3"><a href="" aria-hidden="true" tabindex="-1"></a>             <span class="st">"C"</span>: (<span class="dv">4</span>, <span class="dv">3</span>)}</span>
-<span id="cb19-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(locations[<span class="st">"B"</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="" aria-hidden="true" tabindex="-1"></a>locations <span class="op">=</span> {<span class="st">"A"</span>: (<span class="dv">0</span>, <span class="dv">0</span>),</span>
+<span id="cb22-2"><a href="" aria-hidden="true" tabindex="-1"></a>             <span class="st">"B"</span>: (<span class="dv">4</span>, <span class="dv">0</span>),</span>
+<span id="cb22-3"><a href="" aria-hidden="true" tabindex="-1"></a>             <span class="st">"C"</span>: (<span class="dv">4</span>, <span class="dv">3</span>)}</span>
+<span id="cb22-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(locations[<span class="st">"B"</span>])</span>
+<span id="cb22-5"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(locations))</span></code></pre></div>
 </div></div>
 <p>The route can now store stop names and use a dictionary to look up their coordinates.</p>
+</section>
+<section id="dictionary-constructors" class="slide level2 ide-demo">
+<h2>Three ways to create a dictionary</h2>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="" aria-hidden="true" tabindex="-1"></a>literal <span class="op">=</span> {<span class="st">"A"</span>: (<span class="dv">0</span>, <span class="dv">0</span>), <span class="st">"B"</span>: (<span class="dv">4</span>, <span class="dv">0</span>)}</span>
+<span id="cb23-2"><a href="" aria-hidden="true" tabindex="-1"></a>keywords <span class="op">=</span> <span class="bu">dict</span>(A<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">0</span>), B<span class="op">=</span>(<span class="dv">4</span>, <span class="dv">0</span>))</span>
+<span id="cb23-3"><a href="" aria-hidden="true" tabindex="-1"></a>pairs <span class="op">=</span> <span class="bu">dict</span>([(<span class="st">"A"</span>, (<span class="dv">0</span>, <span class="dv">0</span>)), (<span class="st">"B"</span>, (<span class="dv">4</span>, <span class="dv">0</span>))])</span>
+<span id="cb23-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(literal <span class="op">==</span> keywords <span class="op">==</span> pairs)</span></code></pre></div>
+<ul>
+<li><strong>Literal:</strong> put <code>key: value</code> pairs inside braces.</li>
+<li><strong>Keywords:</strong> names such as <code>A</code> become string keys. They must be valid keyword argument names.</li>
+<li><strong>Pairs:</strong> each item supplies a key and its value.</li>
+</ul>
+<p><code>{}</code> and <code>dict()</code> both create an empty dictionary. All three examples above contain the same entries.</p>
 <aside class="notes">
-<p>Two minutes. Make the representation change explicit. This follows the original parallel-list motivation. Sources: DS 4–8.</p>
+<p>Explicitly teach all three forms from original Dictionaries and Sets slide 9. Keywords cannot directly express a key such as “stop A” or a numeric/tuple key; use a literal or pairs. Position tuples as dictionary values preserve the duck example. Reference: https://docs.python.org/3/library/stdtypes.html#dict</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -805,17 +729,17 @@ Guttag<br>§§5.1, 5.2 and 5.5
 </section>
 <section id="dictionary-basics" class="slide level2 ide-demo">
 <h2>Creating and changing dictionaries</h2>
-<div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="" aria-hidden="true" tabindex="-1"></a>stock <span class="op">=</span> {<span class="st">"A"</span>: <span class="dv">2</span>, <span class="st">"B"</span>: <span class="dv">1</span>}</span>
-<span id="cb20-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(stock[<span class="st">"A"</span>])</span>
-<span id="cb20-3"><a href="" aria-hidden="true" tabindex="-1"></a>stock[<span class="st">"B"</span>] <span class="op">=</span> <span class="dv">3</span></span>
-<span id="cb20-4"><a href="" aria-hidden="true" tabindex="-1"></a>stock[<span class="st">"C"</span>] <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb20-5"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(stock)</span>
-<span id="cb20-6"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(stock.get(<span class="st">"D"</span>, <span class="dv">0</span>))</span>
-<span id="cb20-7"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"D"</span> <span class="kw">in</span> stock)</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="" aria-hidden="true" tabindex="-1"></a>stock <span class="op">=</span> {<span class="st">"A"</span>: <span class="dv">2</span>, <span class="st">"B"</span>: <span class="dv">1</span>}</span>
+<span id="cb24-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(stock[<span class="st">"A"</span>])</span>
+<span id="cb24-3"><a href="" aria-hidden="true" tabindex="-1"></a>stock[<span class="st">"B"</span>] <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb24-4"><a href="" aria-hidden="true" tabindex="-1"></a>stock[<span class="st">"C"</span>] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb24-5"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(stock)</span>
+<span id="cb24-6"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(stock.get(<span class="st">"D"</span>, <span class="dv">0</span>))</span>
+<span id="cb24-7"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"D"</span> <span class="kw">in</span> stock)</span></code></pre></div>
 <p>Assignment updates an existing key or adds a new one. <code>.get("D", 0)</code> supplies a default without inserting D.</p>
 <p>Directly reading <code>stock["D"]</code> would raise <code>KeyError</code>.</p>
 <aside class="notes">
-<p>Four minutes. Predict whether get changes the dictionary. Current Python dictionaries preserve insertion order. Alternative constructors are in references. Sources: DS 9–10.</p>
+<p>Four minutes. Predict whether get changes the dictionary. Dictionaries preserve insertion order. Compare with the three constructors on the preceding slide. Sources: DS 9–10.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -832,18 +756,18 @@ Guttag<br>§§5.1, 5.2 and 5.5
 <h2>Keys, values and membership</h2>
 <div class="columns">
 <div class="column" style="width:48%;">
-<div class="sourceCode" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="" aria-hidden="true" tabindex="-1"></a>stock <span class="op">=</span> {<span class="st">"A"</span>: <span class="dv">2</span>, <span class="st">"B"</span>: <span class="dv">0</span>}</span>
-<span id="cb21-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"B"</span> <span class="kw">in</span> stock)</span>
-<span id="cb21-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">2</span> <span class="kw">in</span> stock)</span>
-<span id="cb21-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">2</span> <span class="kw">in</span> stock.values())</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a href="" aria-hidden="true" tabindex="-1"></a>stock <span class="op">=</span> {<span class="st">"A"</span>: <span class="dv">2</span>, <span class="st">"B"</span>: <span class="dv">0</span>}</span>
+<span id="cb25-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"B"</span> <span class="kw">in</span> stock)</span>
+<span id="cb25-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">2</span> <span class="kw">in</span> stock)</span>
+<span id="cb25-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">2</span> <span class="kw">in</span> stock.values())</span></code></pre></div>
 <p><strong>A</strong> True, True, True<br><strong>B</strong> True, False, True<br><strong>C</strong> False, False, True</p>
 </div><div class="column" style="width:50%;">
-<div class="sourceCode" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="" aria-hidden="true" tabindex="-1"></a>stock <span class="op">=</span> {<span class="st">"A"</span>: <span class="dv">2</span>, <span class="st">"B"</span>: <span class="dv">0</span>}</span>
-<span id="cb22-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">list</span>(stock.keys()))</span>
-<span id="cb22-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">list</span>(stock.items()))</span>
-<span id="cb22-4"><a href="" aria-hidden="true" tabindex="-1"></a>removed <span class="op">=</span> stock.pop(<span class="st">"B"</span>)</span>
-<span id="cb22-5"><a href="" aria-hidden="true" tabindex="-1"></a><span class="kw">del</span> stock[<span class="st">"A"</span>]</span>
-<span id="cb22-6"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(removed, stock)</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="" aria-hidden="true" tabindex="-1"></a>stock <span class="op">=</span> {<span class="st">"A"</span>: <span class="dv">2</span>, <span class="st">"B"</span>: <span class="dv">0</span>}</span>
+<span id="cb26-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">list</span>(stock.keys()))</span>
+<span id="cb26-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">list</span>(stock.items()))</span>
+<span id="cb26-4"><a href="" aria-hidden="true" tabindex="-1"></a>removed <span class="op">=</span> stock.pop(<span class="st">"B"</span>)</span>
+<span id="cb26-5"><a href="" aria-hidden="true" tabindex="-1"></a><span class="kw">del</span> stock[<span class="st">"A"</span>]</span>
+<span id="cb26-6"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(removed, stock)</span></code></pre></div>
 </div></div>
 <div class="answer">
 <p><strong>B.</strong> Membership tests keys. Keys are unique and hashable. Values may repeat or be mutable.</p>
@@ -862,15 +786,23 @@ Guttag<br>§§5.1, 5.2 and 5.5
           display:block!important;
       }</style></aside>
 </section>
+<section id="route-dictionary" class="slide level2 ide-demo">
+<h2>Named routes with a dictionary</h2>
+<p><strong>Exercise:</strong> - Can you construct the same search over all possible routes, with a dictionary linking each unique stop name to its coordinates?</p>
+<ul>
+<li>Can you then sort the routes by length to find the shortest one?</li>
+</ul>
+<p><a href="live/08_route_dictionary.py" target="route-script">Answer: complete dictionary script</a>.</p>
+</section>
 <section id="nested-dictionaries" class="slide level2 ide-demo">
-<h2>Nested delivery records</h2>
-<div class="sourceCode" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="" aria-hidden="true" tabindex="-1"></a>deliveries <span class="op">=</span> {</span>
-<span id="cb23-2"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="st">"A"</span>: {<span class="st">"position"</span>: (<span class="dv">0</span>, <span class="dv">0</span>), <span class="st">"ducks"</span>: <span class="dv">2</span>},</span>
-<span id="cb23-3"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="st">"B"</span>: {<span class="st">"position"</span>: (<span class="dv">4</span>, <span class="dv">0</span>), <span class="st">"ducks"</span>: <span class="dv">1</span>}</span>
-<span id="cb23-4"><a href="" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb23-5"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(deliveries[<span class="st">"B"</span>][<span class="st">"position"</span>])</span>
-<span id="cb23-6"><a href="" aria-hidden="true" tabindex="-1"></a>deliveries[<span class="st">"B"</span>][<span class="st">"ducks"</span>] <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb23-7"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(deliveries[<span class="st">"B"</span>])</span></code></pre></div>
+<h2>Nested dictionaries</h2>
+<div class="sourceCode" id="cb27"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="" aria-hidden="true" tabindex="-1"></a>deliveries <span class="op">=</span> {</span>
+<span id="cb27-2"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="st">"A"</span>: {<span class="st">"position"</span>: (<span class="dv">0</span>, <span class="dv">0</span>), <span class="st">"ducks"</span>: <span class="dv">2</span>},</span>
+<span id="cb27-3"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="st">"B"</span>: {<span class="st">"position"</span>: (<span class="dv">4</span>, <span class="dv">0</span>), <span class="st">"ducks"</span>: <span class="dv">1</span>}</span>
+<span id="cb27-4"><a href="" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb27-5"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(deliveries[<span class="st">"B"</span>][<span class="st">"position"</span>])</span>
+<span id="cb27-6"><a href="" aria-hidden="true" tabindex="-1"></a>deliveries[<span class="st">"B"</span>][<span class="st">"ducks"</span>] <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb27-7"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(deliveries[<span class="st">"B"</span>])</span></code></pre></div>
 <p>Each stop has a record. Each record contains values with their own types.</p>
 <p>A list could also hold records: <code>[deliveries["A"], deliveries["B"]]</code>.</p>
 <aside class="notes">
@@ -888,17 +820,18 @@ Guttag<br>§§5.1, 5.2 and 5.5
       }</style></aside>
 </section>
 <section id="unpacking-iterables" class="slide level2 ide-demo">
-<h2>Unpacking iterables</h2>
-<div class="sourceCode" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="" aria-hidden="true" tabindex="-1"></a>x, y <span class="op">=</span> (<span class="dv">4</span>, <span class="dv">3</span>)</span>
-<span id="cb24-2"><a href="" aria-hidden="true" tabindex="-1"></a>first, second <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"B"</span>]</span>
-<span id="cb24-3"><a href="" aria-hidden="true" tabindex="-1"></a>stock <span class="op">=</span> {<span class="st">"A"</span>: <span class="dv">2</span>, <span class="st">"B"</span>: <span class="dv">1</span>}</span>
-<span id="cb24-4"><a href="" aria-hidden="true" tabindex="-1"></a>a, b <span class="op">=</span> stock</span>
-<span id="cb24-5"><a href="" aria-hidden="true" tabindex="-1"></a>q1, q2 <span class="op">=</span> stock.values()</span>
-<span id="cb24-6"><a href="" aria-hidden="true" tabindex="-1"></a>item1, item2 <span class="op">=</span> stock.items()</span>
-<span id="cb24-7"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a, b)</span>
-<span id="cb24-8"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(q1, q2)</span>
-<span id="cb24-9"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(item1, item2)</span></code></pre></div>
-<p>Iterating over a dictionary gives its <strong>keys</strong>. Each item is a <code>(key, value)</code> pair.</p>
+<h2>Unpacking dictionaries</h2>
+<div class="sourceCode" id="cb28"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb28-1"><a href="" aria-hidden="true" tabindex="-1"></a>x, y <span class="op">=</span> (<span class="dv">4</span>, <span class="dv">3</span>)</span>
+<span id="cb28-2"><a href="" aria-hidden="true" tabindex="-1"></a>first, second <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"B"</span>]</span>
+<span id="cb28-3"><a href="" aria-hidden="true" tabindex="-1"></a>letter1, letter2 <span class="op">=</span> <span class="st">"AB"</span></span>
+<span id="cb28-4"><a href="" aria-hidden="true" tabindex="-1"></a>stock <span class="op">=</span> {<span class="st">"A"</span>: <span class="dv">2</span>, <span class="st">"B"</span>: <span class="dv">1</span>}</span>
+<span id="cb28-5"><a href="" aria-hidden="true" tabindex="-1"></a>a, b <span class="op">=</span> stock</span>
+<span id="cb28-6"><a href="" aria-hidden="true" tabindex="-1"></a>q1, q2 <span class="op">=</span> stock.values()</span>
+<span id="cb28-7"><a href="" aria-hidden="true" tabindex="-1"></a>item1, item2 <span class="op">=</span> stock.items()</span>
+<span id="cb28-8"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a, b)</span>
+<span id="cb28-9"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(q1, q2)</span>
+<span id="cb28-10"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(item1, item2)</span></code></pre></div>
+<p>Iterating over a dictionary gives its <strong>keys</strong>. Each item is a <code>(key, value)</code> pair. Strings unpack into characters.</p>
 <aside class="notes">
 <p>Two minutes. Ask what a and b contain before running. The example uses dictionary insertion order. Unpacking works with strings too, as in the original. Sources: DS 21–22.</p>
 <style type="text/css">
@@ -919,19 +852,20 @@ Guttag<br>§§5.1, 5.2 and 5.5
 <div class="column" style="width:48%;">
 <p>In your Python IDE:</p>
 <div class="no-run">
-<div class="sourceCode" id="cb25"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a href="" aria-hidden="true" tabindex="-1"></a>stock <span class="op">=</span> {<span class="st">"A"</span>: <span class="dv">2</span>, <span class="st">"B"</span>: <span class="dv">1</span>}</span>
-<span id="cb25-2"><a href="" aria-hidden="true" tabindex="-1"></a>changes <span class="op">=</span> {<span class="st">"B"</span>: <span class="dv">3</span>, <span class="st">"C"</span>: <span class="dv">1</span>}</span>
-<span id="cb25-3"><a href="" aria-hidden="true" tabindex="-1"></a>combined <span class="op">=</span> {<span class="op">**</span>stock, <span class="op">**</span>changes}</span>
-<span id="cb25-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(combined)</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb29-1"><a href="" aria-hidden="true" tabindex="-1"></a>stock <span class="op">=</span> {<span class="st">"A"</span>: <span class="dv">2</span>, <span class="st">"B"</span>: <span class="dv">1</span>}</span>
+<span id="cb29-2"><a href="" aria-hidden="true" tabindex="-1"></a>changes <span class="op">=</span> {<span class="st">"B"</span>: <span class="dv">3</span>, <span class="st">"C"</span>: <span class="dv">1</span>}</span>
+<span id="cb29-3"><a href="" aria-hidden="true" tabindex="-1"></a>combined <span class="op">=</span> {<span class="op">**</span>stock, <span class="op">**</span>changes}</span>
+<span id="cb29-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(combined)</span></code></pre></div>
 </div>
 </div><div class="column" style="width:50%;">
 <p>Equivalent copy and update:</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="" aria-hidden="true" tabindex="-1"></a>stock <span class="op">=</span> {<span class="st">"A"</span>: <span class="dv">2</span>, <span class="st">"B"</span>: <span class="dv">1</span>}</span>
-<span id="cb26-2"><a href="" aria-hidden="true" tabindex="-1"></a>changes <span class="op">=</span> {<span class="st">"B"</span>: <span class="dv">3</span>, <span class="st">"C"</span>: <span class="dv">1</span>}</span>
-<span id="cb26-3"><a href="" aria-hidden="true" tabindex="-1"></a>combined <span class="op">=</span> stock.copy()</span>
-<span id="cb26-4"><a href="" aria-hidden="true" tabindex="-1"></a>combined.update(changes)</span>
-<span id="cb26-5"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(combined)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb30-1"><a href="" aria-hidden="true" tabindex="-1"></a>stock <span class="op">=</span> {<span class="st">"A"</span>: <span class="dv">2</span>, <span class="st">"B"</span>: <span class="dv">1</span>}</span>
+<span id="cb30-2"><a href="" aria-hidden="true" tabindex="-1"></a>changes <span class="op">=</span> {<span class="st">"B"</span>: <span class="dv">3</span>, <span class="st">"C"</span>: <span class="dv">1</span>}</span>
+<span id="cb30-3"><a href="" aria-hidden="true" tabindex="-1"></a>combined <span class="op">=</span> stock.copy()</span>
+<span id="cb30-4"><a href="" aria-hidden="true" tabindex="-1"></a>combined.update(changes)</span>
+<span id="cb30-5"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(combined)</span></code></pre></div>
 </div></div>
+<p><code>**</code> is the unpacking operator</p>
 <p><strong>Prediction:</strong> what is <code>combined["B"]</code>? <strong>Answer:</strong> <code>3</code>. The later mapping wins; <code>stock</code> stays unchanged.</p>
 <aside class="notes">
 <p>Two minutes. The inherited browser Python runtime does not support dictionary ** unpacking; the exact original syntax stays visible for the IDE, with an equivalent runnable example beside it. Sources: DS 23–24. https://docs.python.org/3/tutorial/datastructures.html</p>
@@ -947,13 +881,24 @@ Guttag<br>§§5.1, 5.2 and 5.5
           display:block!important;
       }</style></aside>
 </section>
+<section id="set-introduction" class="slide level2">
+<h2>Sets</h2>
+<p>Unordered, finite collection of distinct, hashable elements</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb31-1"><a href="" aria-hidden="true" tabindex="-1"></a>fav_animals <span class="op">=</span> {<span class="st">'Alpaca'</span>, <span class="st">'Kangaroo'</span>, <span class="st">'Koala'</span>}</span></code></pre></div>
+<p>Why sets?</p>
+<ul>
+<li>Fast membership testing</li>
+<li>Eliminate duplicate entries</li>
+<li>Easy set operations (intersection, union, etc.)</li>
+</ul>
+</section>
 <section id="sets" class="slide level2 ide-demo">
 <h2>Sets record distinct locations</h2>
-<div class="sourceCode" id="cb27"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="" aria-hidden="true" tabindex="-1"></a>route <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"A"</span>, <span class="st">"C"</span>]</span>
-<span id="cb27-2"><a href="" aria-hidden="true" tabindex="-1"></a>visited <span class="op">=</span> <span class="bu">set</span>(route)</span>
-<span id="cb27-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(route), <span class="bu">len</span>(visited))</span>
-<span id="cb27-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"B"</span> <span class="kw">in</span> visited)</span>
-<span id="cb27-5"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="bu">set</span>()), <span class="bu">type</span>({}))</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb32-1"><a href="" aria-hidden="true" tabindex="-1"></a>route <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"A"</span>, <span class="st">"C"</span>]</span>
+<span id="cb32-2"><a href="" aria-hidden="true" tabindex="-1"></a>visited <span class="op">=</span> <span class="bu">set</span>(route)</span>
+<span id="cb32-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(route), <span class="bu">len</span>(visited))</span>
+<span id="cb32-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"B"</span> <span class="kw">in</span> visited)</span>
+<span id="cb32-5"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="bu">set</span>()), <span class="bu">type</span>({}))</span></code></pre></div>
 <p>The route contains four visits. The set contains three distinct stop names.</p>
 <p>Sets are unordered and contain hashable elements. Use <strong><code>set()</code></strong> for an empty set; <strong><code>{}</code></strong> creates a dictionary.</p>
 <aside class="notes">
@@ -971,11 +916,11 @@ Guttag<br>§§5.1, 5.2 and 5.5
       }</style></aside>
 </section>
 <section id="set-quiz" class="slide level2 keep-code">
-<h2>Set membership checkpoint</h2>
-<div class="sourceCode" id="cb28"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb28-1"><a href="" aria-hidden="true" tabindex="-1"></a>visited <span class="op">=</span> {<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"A"</span>}</span>
-<span id="cb28-2"><a href="" aria-hidden="true" tabindex="-1"></a>visited.add(<span class="st">"B"</span>)</span>
-<span id="cb28-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(visited))</span>
-<span id="cb28-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"C"</span> <span class="kw">in</span> visited)</span></code></pre></div>
+<h2>Set membership quiz</h2>
+<div class="sourceCode" id="cb33"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb33-1"><a href="" aria-hidden="true" tabindex="-1"></a>visited <span class="op">=</span> {<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"A"</span>}</span>
+<span id="cb33-2"><a href="" aria-hidden="true" tabindex="-1"></a>visited.add(<span class="st">"B"</span>)</span>
+<span id="cb33-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(visited))</span>
+<span id="cb33-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"C"</span> <span class="kw">in</span> visited)</span></code></pre></div>
 <p><strong>A</strong> 4, False  <strong>B</strong> 3, False  <strong>C</strong> 2, False  <strong>D</strong> 2, True</p>
 <div class="answer">
 <p><strong>C.</strong> Adding an element already present does not add another copy. C has not been visited.</p>
@@ -1016,13 +961,13 @@ Guttag<br>§§5.1, 5.2 and 5.5
 </section>
 <section id="dictionary-loops" class="slide level2 ide-demo">
 <h2>Looping through dictionary items</h2>
-<div class="sourceCode" id="cb29"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb29-1"><a href="" aria-hidden="true" tabindex="-1"></a>deliveries <span class="op">=</span> {</span>
-<span id="cb29-2"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="st">"A"</span>: {<span class="st">"position"</span>: (<span class="dv">0</span>, <span class="dv">0</span>), <span class="st">"ducks"</span>: <span class="dv">2</span>},</span>
-<span id="cb29-3"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="st">"B"</span>: {<span class="st">"position"</span>: (<span class="dv">4</span>, <span class="dv">0</span>), <span class="st">"ducks"</span>: <span class="dv">1</span>}</span>
-<span id="cb29-4"><a href="" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb29-5"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name, record <span class="kw">in</span> deliveries.items():</span>
-<span id="cb29-6"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(name, record[<span class="st">"ducks"</span>])</span></code></pre></div>
-<p>Each iteration unpacks one <code>(key, value)</code> pair.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb34-1"><a href="" aria-hidden="true" tabindex="-1"></a>deliveries <span class="op">=</span> {</span>
+<span id="cb34-2"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="st">"A"</span>: {<span class="st">"position"</span>: (<span class="dv">0</span>, <span class="dv">0</span>), <span class="st">"ducks"</span>: <span class="dv">2</span>},</span>
+<span id="cb34-3"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="st">"B"</span>: {<span class="st">"position"</span>: (<span class="dv">4</span>, <span class="dv">0</span>), <span class="st">"ducks"</span>: <span class="dv">1</span>}</span>
+<span id="cb34-4"><a href="" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb34-5"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name, record <span class="kw">in</span> deliveries.items():</span>
+<span id="cb34-6"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(name, record[<span class="st">"ducks"</span>])</span></code></pre></div>
+<p>Each iteration unpacks one <code>(key, value)</code> pair (as a <code>tuple</code>).</p>
 <p>Here the value is a dictionary, so <code>record["ducks"]</code> reads its quantity.</p>
 <aside class="notes">
 <p>Two minutes. Reuse the nested data rather than introduce a fresh story. Sources: DS 32–33.</p>
@@ -1038,12 +983,21 @@ Guttag<br>§§5.1, 5.2 and 5.5
           display:block!important;
       }</style></aside>
 </section>
+<section id="zip-introduction" class="slide level2">
+<h2>Zip</h2>
+<ul>
+<li><p><code>zip()</code> pairs corresponding elements from iterables, such as two sequences</p></li>
+<li><p>The name of the function refers to a zipper, which interleaves two rows of teeth</p></li>
+<li><p>The result is an iterator of tuples, one element from each input</p></li>
+<li><p>The most common use of zip is in a for loop</p></li>
+</ul>
+</section>
 <section id="zip" class="slide level2 ide-demo">
 <h2>Pairing sequences with zip</h2>
-<div class="sourceCode" id="cb30"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb30-1"><a href="" aria-hidden="true" tabindex="-1"></a>stops <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>]</span>
-<span id="cb30-2"><a href="" aria-hidden="true" tabindex="-1"></a>quantities <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">1</span>]</span>
-<span id="cb30-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> stop, quantity <span class="kw">in</span> <span class="bu">zip</span>(stops, quantities):</span>
-<span id="cb30-4"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(stop, quantity)</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb35-1"><a href="" aria-hidden="true" tabindex="-1"></a>stops <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>]</span>
+<span id="cb35-2"><a href="" aria-hidden="true" tabindex="-1"></a>quantities <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">1</span>]</span>
+<span id="cb35-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> stop, quantity <span class="kw">in</span> <span class="bu">zip</span>(stops, quantities):</span>
+<span id="cb35-4"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(stop, quantity)</span></code></pre></div>
 <p><strong>Prediction:</strong> is there an output line for C?</p>
 <div class="answer">
 <p>No.&nbsp;Ordinary <code>zip()</code> ends when the shortest input ends. It yields pairs through an iterator.</p>
@@ -1064,98 +1018,46 @@ Guttag<br>§§5.1, 5.2 and 5.5
 </section>
 <section id="enumerate" class="slide level2 ide-demo">
 <h2>Numbering stops with enumerate</h2>
-<div class="sourceCode" id="cb31"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb31-1"><a href="" aria-hidden="true" tabindex="-1"></a>route <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"C"</span>, <span class="st">"B"</span>, <span class="st">"D"</span>]</span>
-<span id="cb31-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> index, stop <span class="kw">in</span> <span class="bu">enumerate</span>(route):</span>
-<span id="cb31-3"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(index, stop)</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb36-1"><a href="" aria-hidden="true" tabindex="-1"></a>route <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"C"</span>, <span class="st">"B"</span>, <span class="st">"D"</span>]</span>
+<span id="cb36-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> index, stop <span class="kw">in</span> <span class="bu">enumerate</span>(route):</span>
+<span id="cb36-3"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(index, stop)</span></code></pre></div>
 <p><code>enumerate()</code> yields an index and an element together.</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb32-1"><a href="" aria-hidden="true" tabindex="-1"></a>route <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"C"</span>, <span class="st">"B"</span>, <span class="st">"D"</span>]</span>
-<span id="cb32-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> visit, stop <span class="kw">in</span> <span class="bu">enumerate</span>(route, start<span class="op">=</span><span class="dv">1</span>):</span>
-<span id="cb32-3"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(visit, stop)</span></code></pre></div>
-<aside class="notes">
-<p>Two minutes. Contrast a position starting at zero with human-facing visit numbers starting at one. Source: DS 36.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<div class="sourceCode" id="cb37"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb37-1"><a href="" aria-hidden="true" tabindex="-1"></a>route <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"C"</span>, <span class="st">"B"</span>, <span class="st">"D"</span>]</span>
+<span id="cb37-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> visit, stop <span class="kw">in</span> <span class="bu">enumerate</span>(route, start<span class="op">=</span><span class="dv">1</span>):</span>
+<span id="cb37-3"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(visit, stop)</span></code></pre></div>
 </section>
 <section id="clinic-alias" class="slide level2 keep-code">
 <h2>Explain it to the duck: the backup</h2>
-<div class="sourceCode" id="cb33"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb33-1"><a href="" aria-hidden="true" tabindex="-1"></a>route <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>]</span>
-<span id="cb33-2"><a href="" aria-hidden="true" tabindex="-1"></a>backup <span class="op">=</span> route</span>
-<span id="cb33-3"><a href="" aria-hidden="true" tabindex="-1"></a>route.pop()</span>
-<span id="cb33-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(backup)</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb38-1"><a href="" aria-hidden="true" tabindex="-1"></a>route <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>]</span>
+<span id="cb38-2"><a href="" aria-hidden="true" tabindex="-1"></a>backup <span class="op">=</span> route</span>
+<span id="cb38-3"><a href="" aria-hidden="true" tabindex="-1"></a>route.pop()</span>
+<span id="cb38-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(backup)</span></code></pre></div>
 <p><strong>A</strong> <code>['A', 'B', 'C']</code>  <strong>B</strong> <code>['A', 'B']</code>  <strong>C</strong> <code>None</code>  <strong>D</strong> Error</p>
 <div class="answer">
 <p><strong>B.</strong> Both names refer to the same list. To keep the original contents, use <code>backup = route.copy()</code> before the removal.</p>
 </div>
-<aside class="notes">
-<p>First of three closing questions, eight minutes in total. Everyone predicts, pairs compare, then a volunteer explains to the duck. Invite the volunteer to indicate references on the board. Award participation at the end.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 </section>
 <section id="clinic-return" class="slide level2 keep-code">
 <h2>Explain it to the duck: the return value</h2>
-<div class="sourceCode" id="cb34"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb34-1"><a href="" aria-hidden="true" tabindex="-1"></a>stops <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"B"</span>]</span>
-<span id="cb34-2"><a href="" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> stops.append(<span class="st">"C"</span>)</span>
-<span id="cb34-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(stops)</span>
-<span id="cb34-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result)</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb39-1"><a href="" aria-hidden="true" tabindex="-1"></a>stops <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"B"</span>]</span>
+<span id="cb39-2"><a href="" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> stops.append(<span class="st">"C"</span>)</span>
+<span id="cb39-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(stops)</span>
+<span id="cb39-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result)</span></code></pre></div>
 <p>What are the <strong>two</strong> printed results? Explain each line before running it.</p>
 <div class="answer">
 <p><code>['A', 'B', 'C']</code>, then <code>None</code>. <code>append</code> changes the list and returns <code>None</code>.</p>
 </div>
-<aside class="notes">
-<p>Second closing volunteer. Ask the audience how they would obtain the new length instead. The earlier dictionary checkpoint supplies the dictionary quiz, so this closing question revisits a common list-method error.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 </section>
 <section id="clinic-sets" class="slide level2 keep-code">
 <h2>Explain it to the duck: missing deliveries</h2>
-<div class="sourceCode" id="cb35"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb35-1"><a href="" aria-hidden="true" tabindex="-1"></a>required <span class="op">=</span> {<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>}</span>
-<span id="cb35-2"><a href="" aria-hidden="true" tabindex="-1"></a>visited <span class="op">=</span> {<span class="st">"A"</span>, <span class="st">"C"</span>, <span class="st">"E"</span>}</span>
-<span id="cb35-3"><a href="" aria-hidden="true" tabindex="-1"></a>missing <span class="op">=</span> required <span class="op">-</span> visited</span>
-<span id="cb35-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(missing)</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb40-1"><a href="" aria-hidden="true" tabindex="-1"></a>required <span class="op">=</span> {<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>}</span>
+<span id="cb40-2"><a href="" aria-hidden="true" tabindex="-1"></a>visited <span class="op">=</span> {<span class="st">"A"</span>, <span class="st">"C"</span>, <span class="st">"E"</span>}</span>
+<span id="cb40-3"><a href="" aria-hidden="true" tabindex="-1"></a>missing <span class="op">=</span> required <span class="op">-</span> visited</span>
+<span id="cb40-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(missing)</span></code></pre></div>
 <p><strong>A</strong> A and C  <strong>B</strong> B and D  <strong>C</strong> B, D and E  <strong>D</strong> All five</p>
 <div class="answer">
 <p><strong>B.</strong> B and D are required but have not been visited. Either printed order is valid.</p>
 </div>
-<aside class="notes">
-<p>Third closing volunteer. Ask why E is excluded. If time allows, change the operator to symmetric difference and ask for the changed meaning.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 </section>
 <section id="takeaways" class="slide level2">
 <h2>Choosing a collection</h2>
@@ -1185,21 +1087,7 @@ Guttag<br>§§5.1, 5.2 and 5.5
 </tr>
 </tbody>
 </table>
-<p><strong>Exit question:</strong> how would you keep a route unchanged while trying a new order?</p>
-<p>Thank you to our volunteers. <strong>Duck prizes!</strong></p>
-<aside class="notes">
-<p>Three minutes. These are modelling choices, not rules that restrict a type to one use. Award ducks to the volunteers, including those who revised an answer. Sources: TL/ML/DS takeaways. The following slides are reference material.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<p>How would you keep a route unchanged while trying a new order?</p>
 </section>
 <section id="reference-sequences" class="slide level2 reference-slide">
 <h2>Reference: tuples and lists</h2>
@@ -1260,62 +1148,36 @@ Guttag<br>§§5.1, 5.2 and 5.5
 </tbody>
 </table>
 <p>Methods such as <code>append</code>, <code>extend</code>, <code>sort</code> and <code>reverse</code> mutate a list and return <code>None</code>.</p>
-<aside class="notes">
-<p>Reference only. Empty slices are valid, slice bounds clip, and step zero raises ValueError. Source: TL 14–27. https://docs.python.org/3/tutorial/datastructures.html</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 </section>
 <section id="reference-copying" class="slide level2 reference-slide">
 <h2>Reference: copying and mutation</h2>
 <div class="columns">
 <div class="column" style="width:48%;">
-<div class="sourceCode" id="cb36"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb36-1"><a href="" aria-hidden="true" tabindex="-1"></a>route <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>]</span>
-<span id="cb36-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> stop <span class="kw">in</span> route.copy():</span>
-<span id="cb36-3"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> stop <span class="kw">in</span> [<span class="st">"A"</span>, <span class="st">"B"</span>]:</span>
-<span id="cb36-4"><a href="" aria-hidden="true" tabindex="-1"></a>        route.remove(stop)</span>
-<span id="cb36-5"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(route)</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb41-1"><a href="" aria-hidden="true" tabindex="-1"></a>route <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>]</span>
+<span id="cb41-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> stop <span class="kw">in</span> route.copy():</span>
+<span id="cb41-3"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> stop <span class="kw">in</span> [<span class="st">"A"</span>, <span class="st">"B"</span>]:</span>
+<span id="cb41-4"><a href="" aria-hidden="true" tabindex="-1"></a>        route.remove(stop)</span>
+<span id="cb41-5"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(route)</span></code></pre></div>
 <p>Iterate over a copy while changing the original.</p>
 </div><div class="column" style="width:50%;">
-<div class="sourceCode" id="cb37"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb37-1"><a href="" aria-hidden="true" tabindex="-1"></a>route <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>]</span>
-<span id="cb37-2"><a href="" aria-hidden="true" tabindex="-1"></a>route <span class="op">=</span> [stop <span class="cf">for</span> stop <span class="kw">in</span> route</span>
-<span id="cb37-3"><a href="" aria-hidden="true" tabindex="-1"></a>         <span class="cf">if</span> stop <span class="kw">not</span> <span class="kw">in</span> [<span class="st">"A"</span>, <span class="st">"B"</span>]]</span>
-<span id="cb37-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(route)</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb42-1"><a href="" aria-hidden="true" tabindex="-1"></a>route <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>]</span>
+<span id="cb42-2"><a href="" aria-hidden="true" tabindex="-1"></a>route <span class="op">=</span> [stop <span class="cf">for</span> stop <span class="kw">in</span> route</span>
+<span id="cb42-3"><a href="" aria-hidden="true" tabindex="-1"></a>         <span class="cf">if</span> stop <span class="kw">not</span> <span class="kw">in</span> [<span class="st">"A"</span>, <span class="st">"B"</span>]]</span>
+<span id="cb42-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(route)</span></code></pre></div>
 <p>Or build a new filtered list and rebind the name.</p>
 </div></div>
 <p>Shallow copies share contained objects. A tuple can contain a mutable list, and that list can still change.</p>
-<aside class="notes">
-<p>Reference only. Mention copy.deepcopy only if a student asks; it is not required for reordering coordinate tuples. Sources: ML 3–8. https://docs.python.org/3/library/copy.html</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 </section>
 <section id="reference-dictionaries" class="slide level2 reference-slide">
 <h2>Reference: dictionaries</h2>
 <div class="columns">
 <div class="column" style="width:48%;">
-<div class="sourceCode" id="cb38"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb38-1"><a href="" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> {<span class="st">"A"</span>: <span class="dv">2</span>, <span class="st">"B"</span>: <span class="dv">1</span>}</span>
-<span id="cb38-2"><a href="" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="bu">dict</span>(A<span class="op">=</span><span class="dv">2</span>, B<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb38-3"><a href="" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> <span class="bu">dict</span>([(<span class="st">"A"</span>, <span class="dv">2</span>), (<span class="st">"B"</span>, <span class="dv">1</span>)])</span>
-<span id="cb38-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a <span class="op">==</span> b <span class="op">==</span> c)</span>
-<span id="cb38-5"><a href="" aria-hidden="true" tabindex="-1"></a>by_position <span class="op">=</span> {(<span class="dv">0</span>, <span class="dv">0</span>): <span class="st">"A"</span>}</span>
-<span id="cb38-6"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(by_position[(<span class="dv">0</span>, <span class="dv">0</span>)])</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb43-1"><a href="" aria-hidden="true" tabindex="-1"></a>by_key <span class="op">=</span> {<span class="dv">42</span>: <span class="st">"A"</span>, <span class="fl">2.5</span>: <span class="st">"B"</span>,</span>
+<span id="cb43-2"><a href="" aria-hidden="true" tabindex="-1"></a>          <span class="va">True</span>: <span class="st">"C"</span>}</span>
+<span id="cb43-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(by_key[<span class="dv">42</span>], by_key[<span class="fl">2.5</span>],</span>
+<span id="cb43-4"><a href="" aria-hidden="true" tabindex="-1"></a>      by_key[<span class="va">True</span>])</span>
+<span id="cb43-5"><a href="" aria-hidden="true" tabindex="-1"></a>by_position <span class="op">=</span> {(<span class="dv">0</span>, <span class="dv">0</span>): <span class="st">"A"</span>}</span>
+<span id="cb43-6"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(by_position[(<span class="dv">0</span>, <span class="dv">0</span>)])</span></code></pre></div>
 </div><div class="column" style="width:50%;">
 <ul>
 <li>Keys are unique and hashable.</li>
@@ -1327,8 +1189,27 @@ Guttag<br>§§5.1, 5.2 and 5.5
 </ul>
 </div></div>
 <p><code>d[key]</code> raises <code>KeyError</code> if absent. <code>d.get(key, default)</code> supplies a default without adding the key.</p>
+</section>
+<section id="reference-nesting" class="slide level2 reference-slide">
+<h2>Reference: nesting collections</h2>
+<div class="columns">
+<div class="column" style="width:48%;">
+<p>A list of dictionaries:</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb44-1"><a href="" aria-hidden="true" tabindex="-1"></a>records <span class="op">=</span> [{<span class="st">"stop"</span>: <span class="st">"A"</span>, <span class="st">"ducks"</span>: <span class="dv">2</span>},</span>
+<span id="cb44-2"><a href="" aria-hidden="true" tabindex="-1"></a>           {<span class="st">"stop"</span>: <span class="st">"B"</span>, <span class="st">"ducks"</span>: <span class="dv">1</span>}]</span>
+<span id="cb44-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(records[<span class="dv">1</span>][<span class="st">"ducks"</span>])</span></code></pre></div>
+</div><div class="column" style="width:50%;">
+<p>A list and a dictionary inside a dictionary:</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb45-1"><a href="" aria-hidden="true" tabindex="-1"></a>delivery <span class="op">=</span> {</span>
+<span id="cb45-2"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="st">"stops"</span>: [<span class="st">"A"</span>, <span class="st">"C"</span>, <span class="st">"B"</span>],</span>
+<span id="cb45-3"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="st">"courier"</span>: {<span class="st">"name"</span>: <span class="st">"Duck"</span>}</span>
+<span id="cb45-4"><a href="" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb45-5"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(delivery[<span class="st">"stops"</span>][<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb45-6"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(delivery[<span class="st">"courier"</span>][<span class="st">"name"</span>])</span></code></pre></div>
+</div></div>
+<p>A dictionary can map many names to similar records, or hold different fields of one record.</p>
 <aside class="notes">
-<p>Reference only. Corrects the older notes about unpredictable dictionary order. Sources: DS 9–24. https://docs.python.org/3/tutorial/datastructures.html</p>
+<p>Sources: original DS 13–20. Ask for the type reached by each lookup before the next lookup or index. Values may have different types and may repeat. Nesting is composition of the same collection operations.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1386,35 +1267,34 @@ Guttag<br>§§5.1, 5.2 and 5.5
 </tbody>
 </table>
 <p>Sets have no indexing or guaranteed iteration order. <code>zip</code> and <code>enumerate</code> yield iterators.</p>
-<aside class="notes">
-<p>Reference only. Sets do not preserve route ordering or visit counts. Sources: DS 25–37.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 </section>
 <section id="reference-distance" class="slide level2 reference-slide">
 <h2>Reference: distance from coordinates</h2>
-<div class="sourceCode" id="cb39"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb39-1"><a href="" aria-hidden="true" tabindex="-1"></a>A, B, C, D <span class="op">=</span> (<span class="dv">0</span>, <span class="dv">0</span>), (<span class="dv">4</span>, <span class="dv">0</span>), (<span class="dv">4</span>, <span class="dv">3</span>), (<span class="dv">0</span>, <span class="dv">3</span>)</span>
-<span id="cb39-2"><a href="" aria-hidden="true" tabindex="-1"></a>route <span class="op">=</span> [A, C, B, D]</span>
-<span id="cb39-3"><a href="" aria-hidden="true" tabindex="-1"></a>closed <span class="op">=</span> route <span class="op">+</span> [route[<span class="dv">0</span>]]</span>
-<span id="cb39-4"><a href="" aria-hidden="true" tabindex="-1"></a>total <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb39-5"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(closed) <span class="op">-</span> <span class="dv">1</span>):</span>
-<span id="cb39-6"><a href="" aria-hidden="true" tabindex="-1"></a>    x1, y1 <span class="op">=</span> closed[i]</span>
-<span id="cb39-7"><a href="" aria-hidden="true" tabindex="-1"></a>    x2, y2 <span class="op">=</span> closed[i <span class="op">+</span> <span class="dv">1</span>]</span>
-<span id="cb39-8"><a href="" aria-hidden="true" tabindex="-1"></a>    total <span class="op">+=</span> ((x2 <span class="op">-</span> x1)<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> (y2 <span class="op">-</span> y1)<span class="op">**</span><span class="dv">2</span>)<span class="op">**</span><span class="fl">0.5</span></span>
-<span id="cb39-9"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(total)</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb46-1"><a href="" aria-hidden="true" tabindex="-1"></a>A, B, C, D <span class="op">=</span> (<span class="dv">0</span>, <span class="dv">0</span>), (<span class="dv">4</span>, <span class="dv">0</span>), (<span class="dv">4</span>, <span class="dv">3</span>), (<span class="dv">0</span>, <span class="dv">3</span>)</span>
+<span id="cb46-2"><a href="" aria-hidden="true" tabindex="-1"></a>route <span class="op">=</span> [A, C, B, D]</span>
+<span id="cb46-3"><a href="" aria-hidden="true" tabindex="-1"></a>closed <span class="op">=</span> route <span class="op">+</span> [route[<span class="dv">0</span>]]</span>
+<span id="cb46-4"><a href="" aria-hidden="true" tabindex="-1"></a>total <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb46-5"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(closed) <span class="op">-</span> <span class="dv">1</span>):</span>
+<span id="cb46-6"><a href="" aria-hidden="true" tabindex="-1"></a>    x1, y1 <span class="op">=</span> closed[i]</span>
+<span id="cb46-7"><a href="" aria-hidden="true" tabindex="-1"></a>    x2, y2 <span class="op">=</span> closed[i <span class="op">+</span> <span class="dv">1</span>]</span>
+<span id="cb46-8"><a href="" aria-hidden="true" tabindex="-1"></a>    total <span class="op">+=</span> ((x2 <span class="op">-</span> x1)<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> (y2 <span class="op">-</span> y1)<span class="op">**</span><span class="dv">2</span>)<span class="op">**</span><span class="fl">0.5</span></span>
+<span id="cb46-9"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(total)</span></code></pre></div>
 <p>The final added A closes the tour. Compare with <code>route = [A, B, C, D]</code>.</p>
-<p><a href="https://docs.python.org/3/tutorial/datastructures.html">Python data structures</a> · <a href="https://docs.python.org/3/library/copy.html">Copying objects</a></p>
+<p><a href="https://docs.python.org/3/tutorial/datastructures.html">Python docs: data structures</a> · <a href="https://docs.python.org/3/library/copy.html">Python docs: copying objects</a></p>
+</section>
+<section id="reference-np-hard" class="slide level2 reference-slide">
+<h2>Reference: why TSP is NP-hard</h2>
+<p><strong>Proof idea for general weighted TSP:</strong> an efficient optimiser would also solve the NP-complete Hamiltonian cycle problem.</p>
+<ol type="1">
+<li>Start with a graph. The question is whether a cycle visits every vertex exactly once.</li>
+<li>Make every vertex a city. Give an existing graph edge cost <strong>1</strong>, and a missing edge cost <strong>2</strong>.</li>
+<li>A tour through n cities uses n edges. Its cost is at most <strong>n</strong> exactly when it uses only original graph edges.</li>
+</ol>
+<p>So finding the shortest TSP tour answers the original cycle question. Building the distance table takes polynomial time.</p>
+<p>This is a <strong>reduction</strong>. It proves hardness; counting our search’s permutations alone does not. NP-hard does not mean every small instance is difficult.</p>
+<p><a href="https://www.cs.princeton.edu/~wayne/kleinberg-tardos/pearson/08PolynomialTimeReductions.pdf">Princeton: polynomial-time reductions, slide 18</a></p>
 <aside class="notes">
-<p>Optional worked example for independent study. This uses Pythagoras and the same indexing, unpacking and loop constructs taught in the lecture. Results: crossed 16.0, perimeter 14.0. No functions or additional libraries are required.</p>
+<p>Optional mathematical extension. This construction is for general weighted TSP and is not a proof for Euclidean distances in the plane. The original graph is an undirected simple graph; its NP-complete Hamiltonian cycle question embeds into a complete weighted graph. The decision version asks whether a tour costs at most a given bound; an optimisation solution answers that immediately. Explain polynomial time informally as bounded by a fixed power of input size. Do not claim a proof that polynomial-time exact algorithms are impossible: that would settle P versus NP. The classroom coordinate example illustrates search and does not itself establish a complexity classification.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;

@@ -36,7 +36,7 @@ Delivered by: Dr Joseph Aylett-Bullock
 
 Week 3
 
-## Questions from week two {#recall .keep-code}
+## Questions from week 2 {#recall .keep-code}
 
 ```python
 s = "PYTHON"
@@ -83,16 +83,16 @@ Explain that prizes recognise volunteering and explaining a reasoned attempt, in
 ```python
 number = 4
 print(number)
+print(isinstance(number, object))
 print(type(number))
 print(id(number))
-print(isinstance(number, object))
 ```
 
-**Value:** what the object represents. 
+**Value:** what the object represents
 
-**Type:** what can be done with the object (operations).
+**Type:** what can be done with the object (operations)
 
-**Identity:** memory address of the object. `id()` stays constant during that object's lifetime.
+**Identity:** is the memory address assigned to it. `id()` stays constant during its lifetime.
 
 ## Objects: variables {#references .activity-slide}
 
@@ -116,12 +116,12 @@ print(a is b)
 **A** True, True, True  **B** True, False, True  **C** False, False, True
 
 ::: {.answer}
-**B.** `==` compares values. `is` compares identity. `a` and `b` refer to one integer; `c` is float with equal to the integer `a`.
+**B.** `==` compares values. `is` compares identity. `a` and `b` refer to one integer; `c` is a separate float with the same numeric value as `a`.
 :::
 
 ## Structured data types {#structures}
 
-- We have dealt with thus far these types of objects: int, float, bool and str.
+- We have so far met: `int`, `float`, `bool` and `str`.
 
 - Numeric/Boolean types are scalar which have no accessible internal structure
 
@@ -130,17 +130,17 @@ print(a is b)
 
 - `tuples`, `list` and `dict`ionaries are *structured* / *compound* data types in Python. 
 
-## Tuples
+## Tuples {#tuple-introduction}
 
-- Like string, tuples are ordered sequence of elements. 
+- Like string, tuples are ordered sequence of elements
 
-- Difference is that elements in tuples do not have to be characters.
+- Difference is that elements in tuples do not have to be characters
 
 - Each element can be of any type
 
 - Represented with parentheses
 
-- Normally used to return more than one value from a function. 
+- Normally used to return more than one value from a function
 
 
 ## Tuples: coordinates example {#tuples .ide-demo}
@@ -166,10 +166,6 @@ Build a slice that selects **B and D**. Predict before pressing **Slice**.
 <iframe class="slice-frame" src="activities/slicing.html" title="Tap-to-build tuple and list slicing board" allow="fullscreen" allowfullscreen></iframe>
 
 [Open the sequence board](activities/slicing.html){target="sequence-board"}. Try `1:5:2`, `-3:` and `::-1`.
-
-::: {.notes}
-Reuse the week 2 tile interaction. Start with a tuple, then switch to a list: indices are the same, but the result has the same sequence type as its source. Stop is excluded. Source: TL 15.
-:::
 
 ## Tuple mutation and reassignment {#tuple-mutation .ide-demo}
 
@@ -206,7 +202,7 @@ The name `A` can refer to a different tuple.
 :::: {.columns}
 ::: {.column width="48%"}
 ```python
-B = (4, 0) # or 4, 0 the brackets are implied but good practice
+B = (4, 0)  # Also written B = 4, 0
 x, y = B
 print(x, y)
 for coordinate in B:
@@ -229,7 +225,7 @@ Nesting: `((1, 2), (3, 4))`.
 
 Unpacking assigns each element to a name. The number of names must match here.
 
-Tuples can be concatendated.
+Tuples can be concatenated.
 
 ## Lists {#lists .ide-demo}
 
@@ -243,13 +239,13 @@ route[1], route[2] = route[2], route[1]
 print(route)
 ```
 
-Lists are ordered and mutable. Here each element is a coordinate tuple.
+Lists are ordered and mutable, and can mix element types. Here each element is a coordinate tuple.
 
-The final assignment swaps two stops using unpacking by switching where the variables point to.
+The final assignment swaps the references stored at positions 1 and 2. The coordinate tuples stay unchanged.
 
 ## The travelling duck problem {#duck-delivery .activity-slide .duck-demo}
 
-Visit every station once and return to **A**. Can you improve on **A, C, B, D, A**?
+Visit every station once and return to **A** only at the end. Can you improve on **A, C, B, D, A**?
 
 <iframe class="slice-frame" src="activities/route.html" title="Duck delivery: choose and compare routes" allow="fullscreen" allowfullscreen></iframe>
 
@@ -280,7 +276,17 @@ The crossed tour totals **16 model units**, including the return leg.
 :::
 ::::
 
-Here stop names label the journey.
+## What is the dot? {#dot}
+
+- Lists are Python objects, everything in Python is an object
+
+- objects have data
+
+- objects can expose attributes and methods
+
+- Use `object_name.attribute` to read an attribute, or `object_name.method()` to call a method
+
+- Will learn more about these later
 
 ## Adding and extending list elements {#adding .activity-slide}
 
@@ -298,20 +304,8 @@ An **index** selects a position. A **value** selects the first matching element.
 
 [Open the list board](activities/lists.html?scene=remove){target="list-board"}. Predict which element disappears and what the operation returns.
 
-## What is the dot? {#dot}
 
-- Lists are Python objects, everything in Python is an object
-
-- objects have data
-
-- objects have methods and functions
-
-- access this information by object_name.do_something()
-
-- will learn more about these later
-
-
-## Ordering and method results {#ordering .ide-demo}
+## Ordering and method outputs {#ordering .ide-demo}
 
 :::: {.columns}
 ::: {.column width="48%"}
@@ -337,9 +331,9 @@ print(stops.count("A"))
 :::
 ::::
 
-Sorting journey lengths does not calculate a shortest route.
+Sorting the individual leg lengths leaves the total unchanged. To optimise, we will sort **complete tours by their total distance**.
 
-## List comprehensions {#comprehensions .ide-demo}
+## List building {#comprehensions .ide-demo}
 
 :::: {.columns}
 ::: {.column width="48%"}
@@ -354,14 +348,13 @@ print(squares)
 ```python
 squares = []
 for x in range(1, 6):
-    squares.append(x ** 2)
+    squares.append(x**2)
 print(squares)
 
 long_legs = []
-for d in [5, 3, 5, 3]:
+d in [5, 3, 5, 3]:
     if d > 3:
         long_legs.append(d)
-
 print(long_legs)
 ```
 :::
@@ -375,7 +368,7 @@ Three minutes. Build the loop first, then translate it. Avoid nested comprehensi
 
 ## The trial route changes the original {#alias .activity-slide}
 
-We want to try a new route while keeping the original. Does `trial = route` achieve that?
+We want to try a new trial route while keeping the original. Does `trial = route` achieve that?
 
 <iframe class="slice-frame" src="activities/objects.html?scene=alias" title="Two variable names sharing one route list" allow="fullscreen" allowfullscreen></iframe>
 
@@ -408,7 +401,7 @@ Copying the outer list leaves its elements referring to the same inner objects.
 
 [Open the object board](activities/objects.html?scene=nested){target="objects-board"}. Predict `groups` after `trial[0].append("D")`.
 
-**Note:** There is a way to copy the lists in nested lists too which required understanding `import` libraries which we'll come onto later.
+**Later:** `copy.deepcopy()` also copies nested mutable objects. We will meet library imports in a later session.
 
 ## Removing items during iteration {#mutation-loop .activity-slide}
 
@@ -418,7 +411,9 @@ Remove A and B. Predict what happens as the list shifts beneath the loop's next 
 
 [Open the iteration board](activities/lists.html?scene=iterate){target="list-board"}. Compare iterating over the original with iterating over a copy.
 
-## Copying check {#copy-quiz .keep-code}
+What about if we used `.append()` inside the `for` loop?
+
+## Copying quiz {#copy-quiz .keep-code}
 
 ```python
 a = ["A", "B"]
@@ -433,7 +428,102 @@ print(a is b)
 **B.** Equal contents, separate list objects. Replacing an element of `b` leaves `a` unchanged.
 :::
 
-## Looking up a stop by name {#why-dictionaries}
+## Every visiting order {#route-candidates .ide-demo}
+
+Fix A as the start. Extend each partial route with every **unvisited** stop.
+
+```python
+A, B, C, D = (0, 0), (4, 0), (4, 3), (0, 3)
+stops = [B, C, D]
+routes = [[A]]
+for step in range(len(stops)):
+    longer_routes = []
+    for route in routes:
+        for stop in stops:
+            if stop not in route:
+                longer_routes.append(route + [stop])
+    routes = longer_routes
+print(len(routes))
+```
+
+There are **6 permutations** of B, C and D. Order matters. `+` creates a new route each time.
+
+::: {.notes}
+Build live/07_route_lists.py, step 1. Ask the class for the counts after each pass: 3, 6, 6. Trace A-B: its next choices are C and D. The outer list holds possible routes; each inner list is one route. We read routes and build a separate longer_routes list. This simple coordinate version assumes distinct positions; named dictionary keys later distinguish stops even if they share coordinates. No stop repeats inside a candidate. Add the final return to A only when scoring.
+:::
+
+## The distance of one complete tour {#route-distance .ide-demo}
+
+Each leg uses Pythagoras: `((x2 - x1)**2 + (y2 - y1)**2)**0.5`.
+
+```python
+A, B, C, D = (0, 0), (4, 0), (4, 3), (0, 3)
+route = [A, C, B, D]
+closed = route + [route[0]]
+total = 0
+for i in range(len(closed) - 1):
+    x1, y1 = closed[i]
+    x2, y2 = closed[i + 1]
+    total += ((x2 - x1)**2 + (y2 - y1)**2)**0.5
+print(total)
+```
+
+The crossed tour is **16 model units**. Changing the order to `[A, B, C, D]` gives **14**.
+
+::: {.notes}
+Build step 2 in the same script. Each adjacent pair contributes one distance. Closing the list adds the last-to-first leg, rather than letting A appear during candidate generation. All four positions here are distinct. Reuse the physical map to check the calculation.
+:::
+
+## The shortest tour from the list {#route-ranking .ide-demo}
+
+Continue in the same IDE script, using the six `routes` from step 1.
+
+::: {.no-run}
+```python
+scores = []
+for route in routes:
+    closed = route + [route[0]]
+    total = 0
+    for i in range(len(closed) - 1):
+        x1, y1 = closed[i]
+        x2, y2 = closed[i + 1]
+        total += ((x2 - x1)**2 + (y2 - y1)**2)**0.5
+    scores.append((total, route))
+ranked = sorted(scores)
+best_distance, best_route = ranked[0]
+print(best_distance)
+print(best_route + [best_route[0]])
+```
+:::
+
+Sort `(distance, route)` pairs by distance first. The best distance is **14**; both perimeter directions tie.
+
+::: {.notes}
+Build step 3. Open live/07_route_lists.py for the complete runnable sequence. Do not run this continuation alone. sorted compares tuples left to right; tied distances use the coordinate-list ordering, which is valid for these numeric tuples. In this version A-D-C-B wins that tie. We keep all six candidates, including the reverse of each tour. Ask why sorting only the individual legs would not solve the problem.
+:::
+
+## The travelling salesman problem {#travelling-salesman}
+
+Find the shortest complete tour that visits every stop once and returns to its start.
+
+| Total stops, including A | Visiting orders with A fixed |
+|---|---:|
+| 4 | 3! = 6 |
+| 8 | 7! = 5,040 |
+| 12 | 11! = 39,916,800 |
+| 16 | 15! = 1,307,674,368,000 |
+
+Our exhaustive search checks **(n − 1)!** orders. Reversed tours count separately.
+
+The optimisation problem is **NP-hard**. A polynomial-time algorithm for every input is not known. The factorial count describes **our method**, rather than proving NP-hardness.
+
+[Complete lists script](live/07_route_lists.py){target="route-script"} · [Why NP-hard?](#reference-np-hard)
+
+::: {.notes}
+Three minutes. The fixed-start count still includes reversed tours, matching both scripts. Symmetric distances allow reversal pairs to be identified, but this does not remove factorial growth. Explain NP-hard as at least as hard as every problem in NP under polynomial-time reductions. The decision form with integer weights is NP-complete. An efficient general TSP optimiser would solve that decision form. Formal reason: Hamiltonian cycle reduces to TSP; see the reference slide. Factorial enumeration is not a lower-bound proof for all algorithms. The four-stop example is small and solvable exactly. Source: https://www.cs.princeton.edu/~wayne/kleinberg-tardos/pearson/08PolynomialTimeReductions.pdf (slide 18). Dictionaries later improve representation, not this growth rate.
+:::
+
+## Dictionaries: looking up a stop by name {#why-dictionaries}
 
 :::: {.columns}
 ::: {.column width="48%"}
@@ -461,6 +551,25 @@ print(type(locations))
 
 The route can now store stop names and use a dictionary to look up their coordinates.
 
+## Three ways to create a dictionary {#dictionary-constructors .ide-demo}
+
+```python
+literal = {"A": (0, 0), "B": (4, 0)}
+keywords = dict(A=(0, 0), B=(4, 0))
+pairs = dict([("A", (0, 0)), ("B", (4, 0))])
+print(literal == keywords == pairs)
+```
+
+- **Literal:** put `key: value` pairs inside braces.
+- **Keywords:** names such as `A` become string keys. They must be valid keyword argument names.
+- **Pairs:** each item supplies a key and its value.
+
+`{}` and `dict()` both create an empty dictionary. All three examples above contain the same entries.
+
+::: {.notes}
+Explicitly teach all three forms from original Dictionaries and Sets slide 9. Keywords cannot directly express a key such as "stop A" or a numeric/tuple key; use a literal or pairs. Position tuples as dictionary values preserve the duck example. Reference: https://docs.python.org/3/library/stdtypes.html#dict
+:::
+
 ## Creating and changing dictionaries {#dictionary-basics .ide-demo}
 
 ```python
@@ -478,7 +587,7 @@ Assignment updates an existing key or adds a new one. `.get("D", 0)` supplies a 
 Directly reading `stock["D"]` would raise `KeyError`.
 
 ::: {.notes}
-Four minutes. Predict whether get changes the dictionary. Current Python dictionaries preserve insertion order. Alternative constructors are in references. Sources: DS 9–10.
+Four minutes. Predict whether get changes the dictionary. Dictionaries preserve insertion order. Compare with the three constructors on the preceding slide. Sources: DS 9–10.
 :::
 
 ## Keys, values and membership {#dictionary-membership .keep-code}
@@ -514,6 +623,15 @@ print(removed, stock)
 Four minutes. keys/values/items provide views, not tuples. A tuple of numbers is a possible key; a list is not. The reference includes a tuple-key example. Sources: DS 11–16.
 :::
 
+## Named routes with a dictionary {#route-dictionary .ide-demo}
+
+**Exercise:** 
+- Can you construct the same search over all possible routes, with a dictionary linking each unique stop name to its coordinates?
+
+- Can you then sort the routes by length to find the shortest one?
+
+[Answer: complete dictionary script](live/08_route_dictionary.py){target="route-script"}.
+
 ## Nested dictionaries {#nested-dictionaries .ide-demo}
 
 ```python
@@ -539,6 +657,7 @@ Three minutes. Trace the two lookups aloud. Reuse the same record structure at e
 ```python
 x, y = (4, 3)
 first, second = ["A", "B"]
+letter1, letter2 = "AB"
 stock = {"A": 2, "B": 1}
 a, b = stock
 q1, q2 = stock.values()
@@ -548,7 +667,7 @@ print(q1, q2)
 print(item1, item2)
 ```
 
-Iterating over a dictionary gives its **keys**. Each item is a `(key, value)` pair.
+Iterating over a dictionary gives its **keys**. Each item is a `(key, value)` pair. Strings unpack into characters.
 
 ::: {.notes}
 Two minutes. Ask what a and b contain before running. The example uses dictionary insertion order. Unpacking works with strings too, as in the original. Sources: DS 21–22.
@@ -590,7 +709,7 @@ print(combined)
 Two minutes. The inherited browser Python runtime does not support dictionary ** unpacking; the exact original syntax stays visible for the IDE, with an equivalent runnable example beside it. Sources: DS 23–24. https://docs.python.org/3/tutorial/datastructures.html
 :::
 
-## Sets
+## Sets {#set-introduction}
 
 Unordered, finite collection of distinct, hashable elements
 
@@ -599,6 +718,7 @@ fav_animals = {'Alpaca', 'Kangaroo', 'Koala'}
 ```
 
 Why sets?
+
 - Fast membership testing
 - Eliminate duplicate entries
 - Easy set operations (intersection, union, etc.)
@@ -621,7 +741,7 @@ Sets are unordered and contain hashable elements. Use **`set()`** for an empty s
 Two minutes. A set cannot preserve the order and repetitions of a delivery route. Do not ask students to predict set print order. Sources: DS 25–27.
 :::
 
-## Set membership check {#set-quiz .keep-code}
+## Set membership quiz {#set-quiz .keep-code}
 
 ```python
 visited = {"A", "B", "A"}
@@ -671,13 +791,13 @@ Here the value is a dictionary, so `record["ducks"]` reads its quantity.
 Two minutes. Reuse the nested data rather than introduce a fresh story. Sources: DS 32–33.
 :::
 
-## Zip
+## Zip {#zip-introduction}
 
-- `zip()` is a built-in function that takes two or more sequences and interleaves them. 
+- `zip()` pairs corresponding elements from iterables, such as two sequences
 
-- The name of the function refers to a zipper, which interleaves two rows of teeth.
+- The name of the function refers to a zipper, which interleaves two rows of teeth
 
-- The result is a zip object that knows how to iterate through the pairs.
+- The result is an iterator of tuples, one element from each input
 
 - The most common use of zip is in a for loop
 
@@ -716,10 +836,6 @@ route = ["A", "C", "B", "D"]
 for visit, stop in enumerate(route, start=1):
     print(visit, stop)
 ```
-
-::: {.notes}
-Two minutes. Contrast a position starting at zero with human-facing visit numbers starting at one. Source: DS 36.
-:::
 
 ## Explain it to the duck: the backup {#clinic-alias .keep-code}
 
@@ -827,10 +943,10 @@ Shallow copies share contained objects. A tuple can contain a mutable list, and 
 :::: {.columns}
 ::: {.column width="48%"}
 ```python
-a = {"A": 2, "B": 1}
-b = dict(A=2, B=1)
-c = dict([("A", 2), ("B", 1)])
-print(a == b == c)
+by_key = {42: "A", 2.5: "B",
+          True: "C"}
+print(by_key[42], by_key[2.5],
+      by_key[True])
 by_position = {(0, 0): "A"}
 print(by_position[(0, 0)])
 ```
@@ -846,6 +962,38 @@ print(by_position[(0, 0)])
 ::::
 
 `d[key]` raises `KeyError` if absent. `d.get(key, default)` supplies a default without adding the key.
+
+## Reference: nesting collections {#reference-nesting .reference-slide}
+
+:::: {.columns}
+::: {.column width="48%"}
+A list of dictionaries:
+
+```python
+records = [{"stop": "A", "ducks": 2},
+           {"stop": "B", "ducks": 1}]
+print(records[1]["ducks"])
+```
+:::
+::: {.column width="50%"}
+A list and a dictionary inside a dictionary:
+
+```python
+delivery = {
+    "stops": ["A", "C", "B"],
+    "courier": {"name": "Duck"}
+}
+print(delivery["stops"][-1])
+print(delivery["courier"]["name"])
+```
+:::
+::::
+
+A dictionary can map many names to similar records, or hold different fields of one record.
+
+::: {.notes}
+Sources: original DS 13–20. Ask for the type reached by each lookup before the next lookup or index. Values may have different types and may repeat. Nesting is composition of the same collection operations.
+:::
 
 ## Reference: sets and looping {#reference-sets .reference-slide}
 
@@ -878,3 +1026,21 @@ print(total)
 The final added A closes the tour. Compare with `route = [A, B, C, D]`.
 
 [Python docs: data structures](https://docs.python.org/3/tutorial/datastructures.html) · [Python docs: copying objects](https://docs.python.org/3/library/copy.html)
+
+## Reference: why TSP is NP-hard {#reference-np-hard .reference-slide}
+
+**Proof idea for general weighted TSP:** an efficient optimiser would also solve the NP-complete Hamiltonian cycle problem.
+
+1. Start with a graph. The question is whether a cycle visits every vertex exactly once.
+2. Make every vertex a city. Give an existing graph edge cost **1**, and a missing edge cost **2**.
+3. A tour through n cities uses n edges. Its cost is at most **n** exactly when it uses only original graph edges.
+
+So finding the shortest TSP tour answers the original cycle question. Building the distance table takes polynomial time.
+
+This is a **reduction**. It proves hardness; counting our search's permutations alone does not. NP-hard does not mean every small instance is difficult.
+
+[Princeton: polynomial-time reductions, slide 18](https://www.cs.princeton.edu/~wayne/kleinberg-tardos/pearson/08PolynomialTimeReductions.pdf)
+
+::: {.notes}
+Optional mathematical extension. This construction is for general weighted TSP and is not a proof for Euclidean distances in the plane. The original graph is an undirected simple graph; its NP-complete Hamiltonian cycle question embeds into a complete weighted graph. The decision version asks whether a tour costs at most a given bound; an optimisation solution answers that immediately. Explain polynomial time informally as bounded by a fixed power of input size. Do not claim a proof that polynomial-time exact algorithms are impossible: that would settle P versus NP. The classroom coordinate example illustrates search and does not itself establish a complexity classification.
+:::
