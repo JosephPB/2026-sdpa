@@ -1,0 +1,7 @@
+node_modules/
+.vite-cache/
+test-results/
+# Keep this small static export available beside the lecture deck.
+!dist/
+!dist/**
+*.md
