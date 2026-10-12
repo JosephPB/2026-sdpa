@@ -4,7 +4,21 @@ import { MENU, TOPPINGS, money } from "./menu.js";
 import { stages } from "./examples.js";
 import { upgradeDrafts } from "./drafts.js";
 import { pythonValue } from "./format-details.js";
-import { restoreKitchen, advanceKitchen, submit, collect } from "./kitchen.js";
+import {
+  freshKitchen,
+  restoreKitchen,
+  advanceKitchen,
+  submit,
+  collect,
+} from "./kitchen.js";
+
+import {
+  DEFAULT_ORDER,
+  effectiveChoices,
+  exampleCode,
+  syncInputs,
+  syncOrderNumber,
+} from "./inputs.js";
 
 const KEY = "sdpa-duckdash-v1";
 function load() {
@@ -25,20 +39,25 @@ const requested = () =>
         1,
     ),
   );
-const initialOrder = {
-  customer: "Guest",
-  pizza: "classic",
-  size: "regular",
-  toppings: [],
-  student: false,
-  coupon: "",
-  quantity: 1,
-};
+const initialOrder = { ...DEFAULT_ORDER, ...initial.order };
+const initialKitchen = restoreKitchen(initial.kitchen);
 export default function App() {
   const [stage, setStage] = useState(requested),
-    [drafts, setDrafts] = useState(() => upgradeDrafts(initial.drafts));
-  const [kitchen, setKitchen] = useState(() => restoreKitchen(initial.kitchen));
-  const [order, setOrder] = useState({ ...initialOrder, ...initial.order });
+    [drafts, setDrafts] = useState(() =>
+      upgradeDrafts(
+        initial.drafts,
+        initialOrder,
+        initialKitchen.nextNumber - 1,
+        initialKitchen.orders.map(({ number, customer, total, status }) => ({
+          number,
+          customer,
+          total,
+          status,
+        })),
+      ),
+    );
+  const [kitchen, setKitchen] = useState(initialKitchen);
+  const [order, setOrder] = useState(initialOrder);
   const [speed, setSpeed] = useState(initial.speed || 1),
     [running, setRunning] = useState(false),
     [output, setOutput] = useState(""),
@@ -49,7 +68,14 @@ export default function App() {
     [notice, setNotice] = useState(""),
     [showHelp, setShowHelp] = useState(false);
   const current = stages[stage - 1],
-    code = drafts[stage] ?? current.code;
+    code =
+      drafts[stage] ??
+      exampleCode(
+        stage,
+        stage === 1 ? "starter" : "code",
+        order,
+        kitchen.nextNumber - 1,
+      );
   const stateRef = useRef(kitchen),
     workerRef = useRef(null),
     watchRef = useRef(null),
@@ -71,6 +97,36 @@ export default function App() {
     setError(false);
     setReceived([]);
   };
+  // Counter controls edit the visible input block, not hidden Python globals.
+  useEffect(() => {
+    setDrafts((previous) => {
+      const original =
+        previous[stage] ??
+        exampleCode(
+          stage,
+          stage === 1 ? "starter" : "code",
+          order,
+          stateRef.current.nextNumber - 1,
+        );
+      const updated = syncInputs(
+        original,
+        stage,
+        order,
+        stateRef.current.nextNumber - 1,
+      );
+      return previous[stage] === updated
+        ? previous
+        : { ...previous, [stage]: updated };
+    });
+  }, [stage, order]);
+  // A completed order only updates the visible counter, preserving code edits.
+  useEffect(() => {
+    setDrafts((previous) => {
+      if (previous[4] === undefined) return previous;
+      const updated = syncOrderNumber(previous[4], kitchen.nextNumber - 1);
+      return updated === previous[4] ? previous : { ...previous, 4: updated };
+    });
+  }, [kitchen.nextNumber]);
   useEffect(() => {
     const listener = () => {
       const value = requested();
@@ -174,21 +230,6 @@ export default function App() {
         worker.postMessage({
           type: "run",
           code,
-          context: {
-            order: effectiveOrder,
-            menu_prices: Object.fromEntries(MENU.map((p) => [p.id, p.price])),
-            menu_names: Object.fromEntries(MENU.map((p) => [p.id, p.name])),
-            vegetarian: MENU.filter((p) => p.vegetarian).map((p) => p.id),
-            last_order_number: stateRef.current.nextNumber - 1,
-            orders: stateRef.current.orders.map(
-              ({ number, customer, total, status }) => ({
-                number,
-                customer,
-                total,
-                status,
-              }),
-            ),
-          },
         });
       if (data.type === "output")
         setOutput((text) => (text + data.text).slice(-50000));
@@ -215,11 +256,7 @@ export default function App() {
   };
   const visibleMenu = stage === 1 ? MENU.slice(0, 2) : MENU;
   const options = stage === 2 || stage === 3;
-  const effectiveOrder = {
-    ...order,
-    ...(!options ? { size: "regular", toppings: [] } : {}),
-    ...(stage !== 3 ? { student: false, coupon: "", quantity: 1 } : {}),
-  };
+  const effectiveOrder = effectiveChoices(stage, order);
   // Hide advanced choices without leaving them active in a simpler lesson.
   useEffect(() => {
     if (!options && (order.size !== "regular" || order.toppings.length))
@@ -387,11 +424,14 @@ export default function App() {
       {showHelp && (
         <aside className="help">
           <strong>You run the front desk.</strong> Choose the customer’s order,
-          edit the Python, then Run. All prices in the code are whole pence: 800
-          means £8.00. The kitchen accepts your calculated price, including
-          mistakes. Your <code>make_order</code> function returns a dictionary.
-          Pass it to <code>send_to_kitchen(details)</code>, which returns an
-          accepted order number. The kitchen shows the dictionary it receives.{" "}
+          inspect the visible input block, edit the Python, then Run. The first
+          starter uses a dictionary lookup; load the worked example after
+          introducing functions. The import supplies the kitchen connection. All
+          prices in the code are whole pence: 800 means £8.00. The kitchen
+          accepts your calculated price, including mistakes. Your{" "}
+          <code>make_order</code> function returns a dictionary. Pass it to{" "}
+          <code>send_to_kitchen(details)</code>, which returns an accepted order
+          number. The kitchen shows the dictionary it receives.{" "}
           <code>print</code> only writes to the console. Orders cook in the
           background and survive refreshes in this browser. Each browser has its
           own kitchen. Stop ends the code, not orders already sent.{" "}
@@ -415,7 +455,7 @@ export default function App() {
                 key={p.id}
                 className={`menu-item ${order.pizza === p.id ? "chosen" : ""}`}
                 aria-pressed={order.pizza === p.id}
-                disabled={stage >= 5}
+                disabled={running || stage >= 5}
                 onClick={() => {
                   setField("pizza", p.id);
                 }}
@@ -456,7 +496,7 @@ export default function App() {
             <label>
               Customer
               <input
-                disabled={stage === 6}
+                disabled={running || stage === 6}
                 value={order.customer}
                 maxLength={60}
                 onChange={(e) => setField("customer", e.target.value)}
@@ -466,7 +506,7 @@ export default function App() {
               Pizza
               <select
                 aria-label="Pizza"
-                disabled={stage >= 5}
+                disabled={running || stage >= 5}
                 value={order.pizza}
                 onChange={(e) => setField("pizza", e.target.value)}
               >
@@ -483,6 +523,7 @@ export default function App() {
                   Size
                   <select
                     aria-label="Size"
+                    disabled={running}
                     value={order.size}
                     onChange={(e) => setField("size", e.target.value)}
                   >
@@ -497,6 +538,7 @@ export default function App() {
                       <input
                         type="checkbox"
                         checked={order.toppings.includes(t)}
+                        disabled={running}
                         onChange={(e) =>
                           setField(
                             "toppings",
@@ -518,6 +560,7 @@ export default function App() {
                   Quantity
                   <select
                     aria-label="Quantity"
+                    disabled={running}
                     value={order.quantity}
                     onChange={(e) =>
                       setField("quantity", Number(e.target.value))
@@ -534,6 +577,7 @@ export default function App() {
                   <input
                     type="checkbox"
                     checked={order.student}
+                    disabled={running}
                     onChange={(e) => setField("student", e.target.checked)}
                   />
                   Student special
@@ -542,6 +586,7 @@ export default function App() {
                   Coupon
                   <input
                     value={order.coupon}
+                    disabled={running}
                     maxLength={20}
                     placeholder="DUCK10 or FLOCK5"
                     onChange={(e) =>
@@ -560,15 +605,39 @@ export default function App() {
           <div className="code-toolbar">
             <button
               disabled={running}
-              onClick={() => changeCode(current.starter)}
+              onClick={() =>
+                changeCode(
+                  exampleCode(
+                    stage,
+                    "starter",
+                    order,
+                    stateRef.current.nextNumber - 1,
+                  ),
+                )
+              }
             >
               Load starter
             </button>
-            <button disabled={running} onClick={() => changeCode(current.code)}>
+            <button
+              disabled={running}
+              onClick={() =>
+                changeCode(
+                  exampleCode(
+                    stage,
+                    "code",
+                    order,
+                    stateRef.current.nextNumber - 1,
+                  ),
+                )
+              }
+            >
               Worked example
             </button>
             <button onClick={download}>Save .py</button>
           </div>
+          <p className="stage-note input-note">
+            Counter changes update the input block. Run uses the code shown.
+          </p>
           <Editor
             code={code}
             setCode={changeCode}
@@ -615,22 +684,22 @@ export default function App() {
           <details className="api">
             <summary>Available in your code</summary>
             <p>
-              <code>order</code>: customer, pizza, size, toppings, student,
-              coupon, quantity.
-              <br />
-              <code>menu_prices</code>, <code>menu_names</code>,{" "}
-              <code>vegetarian</code>, <code>last_order_number</code>,{" "}
-              <code>orders</code> are snapshots at Run.
+              <code>menu_prices</code> and each exercise’s inputs are declared
+              in the editor. Edit them like ordinary Python values. Counter
+              changes rewrite only the block labelled Counter inputs. All other
+              declarations and functions stay as you wrote them.
             </p>
             <pre>
-              {"details = make_order(...)\nnumber = send_to_kitchen(details)"}
+              {
+                "from duckdash import send_to_kitchen\n\ndetails = make_order(...)\nnumber = send_to_kitchen(details)"
+              }
             </pre>
             <p>
-              Your function returns a dictionary with customer (text), items (a
-              list of pizza IDs or item dictionaries), and total (whole pence).
-              You can also return order_number. send_to_kitchen receives that
-              dictionary and returns the accepted ticket number. Each call sends
-              one order.
+              The import supplies the simulator connection. Your function
+              returns a dictionary with customer (text), items (a list of pizza
+              IDs or item dictionaries), and total (whole pence). You can also
+              return order_number. send_to_kitchen receives that dictionary and
+              returns the accepted ticket number. Each call sends one order.
             </p>
           </details>
           <details className="manual">
@@ -645,7 +714,7 @@ export default function App() {
                   onChange={(e) => setManualPrice(e.target.value)}
                 />
               </label>
-              <button className="run" onClick={manual}>
+              <button className="run" disabled={running} onClick={manual}>
                 Send to kitchen
               </button>
             </div>
@@ -731,6 +800,7 @@ export default function App() {
           </details>
           <button
             className="text-button clear-board"
+            disabled={running}
             onClick={() => {
               if (
                 confirm(
@@ -741,6 +811,25 @@ export default function App() {
             }}
           >
             Clear board
+          </button>
+          <button
+            className="outline reset-orders"
+            disabled={running}
+            onClick={() => {
+              if (
+                confirm(
+                  "Clear all orders and restart at 11? Your code and customer choices stay.",
+                )
+              ) {
+                updateKitchen(freshKitchen());
+                setReceived([]);
+                setOutput("");
+                setError(false);
+                setNotice("Orders reset. The next duck is #11.");
+              }
+            }}
+          >
+            Reset orders
           </button>
         </section>
       </main>

@@ -37,6 +37,7 @@ try {
     appLinks.every(
       (a) =>
         a.target === "duckdash" &&
+        a.href.startsWith("https://josephpb.github.io/2026-sdpa/additional_materials/duckdash/?stage=") &&
         new URL(a.href).searchParams.get("stage") === a.stage,
     ),
   );

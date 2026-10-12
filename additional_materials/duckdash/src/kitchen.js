@@ -1,5 +1,10 @@
 import { MENU, TOPPINGS } from "./menu.js";
-export const freshKitchen = () => ({ version: 1, nextNumber: 101, orders: [] });
+export const FIRST_ORDER_NUMBER = 11;
+export const freshKitchen = () => ({
+  version: 1,
+  nextNumber: FIRST_ORDER_NUMBER,
+  orders: [],
+});
 export function restoreKitchen(raw, now = Date.now()) {
   try {
     const saved = typeof raw === "string" ? JSON.parse(raw) : raw;
@@ -24,7 +29,7 @@ export function restoreKitchen(raw, now = Date.now()) {
         ...saved,
         orders: valid,
         nextNumber: Math.max(
-          101,
+          FIRST_ORDER_NUMBER,
           saved.nextNumber,
           ...valid.map((o) => o.number + 1),
         ),

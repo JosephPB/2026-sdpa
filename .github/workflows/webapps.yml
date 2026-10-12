@@ -6,7 +6,7 @@ on:
     paths:
       - 'additional_materials/robot-lab/**'
       - 'additional_materials/duckdash/**'
-      - '.github/workflows/robot-lab-pages.yml'
+      - '.github/workflows/webapps.yml'
   workflow_dispatch:
 
 permissions:

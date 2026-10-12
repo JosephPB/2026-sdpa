@@ -3,9 +3,9 @@ import assert from "node:assert/strict";
 import vm from "node:vm";
 import { readFileSync } from "node:fs";
 import { stages } from "../src/examples.js";
-import { MENU } from "../src/menu.js";
+import { exampleCode } from "../src/inputs.js";
 import { freshKitchen, submit } from "../src/kitchen.js";
-async function execute(code, order = {}) {
+async function execute(code) {
   const sandbox = vm.createContext({ console, setTimeout, clearTimeout });
   for (const path of [
     "public/vendor/skulpt.min.js",
@@ -19,23 +19,6 @@ async function execute(code, order = {}) {
   let state = freshKitchen(),
     output = "";
   await sandbox.DuckDashPython.run(code, {
-    context: {
-      order: {
-        customer: "Sam",
-        pizza: "classic",
-        size: "regular",
-        toppings: [],
-        student: false,
-        coupon: "",
-        quantity: 1,
-        ...order,
-      },
-      menu_prices: Object.fromEntries(MENU.map((p) => [p.id, p.price])),
-      menu_names: Object.fromEntries(MENU.map((p) => [p.id, p.name])),
-      vegetarian: MENU.filter((p) => p.vegetarian).map((p) => p.id),
-      last_order_number: 100,
-      orders: [],
-    },
     output: (text) => (output += text),
     submit: async (request) => {
       const result = submit(state, request, 0);
@@ -49,34 +32,38 @@ for (const stage of stages)
   test(`worked example ${stage.id}: ${stage.title}`, async () => {
     const result = await execute(stage.code);
     assert.equal(result.state.orders.length, stage.id === 6 ? 3 : 1);
-    assert.equal(result.state.orders[0].number, 101);
+    assert.equal(result.state.orders[0].number, 11);
     if (stage.id === 5) assert.equal(result.state.orders[0].total, 2700);
   });
 test("keyword/default arguments and discount do real Python computation", async () => {
-  const result = await execute(stages[2].code, {
-    pizza: "pepperoni",
-    size: "large",
-    toppings: ["olives"],
-    student: true,
-    coupon: "DUCK10",
-  });
+  const result = await execute(
+    exampleCode(3, "code", {
+      pizza: "pepperoni",
+      size: "large",
+      toppings: ["olives"],
+      student: true,
+      coupon: "DUCK10",
+    }),
+  );
   assert.equal(result.state.orders[0].total, 1040);
 });
 test("print cannot create an order; None is rejected as a price", async () => {
-  const result = await execute("print(101)");
+  const result = await execute("print(11)");
   assert.equal(result.state.orders.length, 0);
-  assert.equal(result.output, "101\n");
+  assert.equal(result.output, "11\n");
   await assert.rejects(
-    execute('def price():\n    print(800)\nsubmit_order("classic", price())'),
+    execute(
+      'from duckdash import submit_order\ndef price():\n    print(800)\nsubmit_order("classic", price())',
+    ),
     /whole number/,
   );
 });
 test("duplicate custom tickets are rejected", async () => {
   await assert.rejects(
     execute(
-      'submit_order("classic",800,order_number=101)\nsubmit_order("classic",800,order_number=101)',
+      'from duckdash import submit_order\nsubmit_order("classic",800,order_number=11)\nsubmit_order("classic",800,order_number=11)',
     ),
-    /at least 102/,
+    /at least 12/,
   );
 });
 test("Python syntax errors and scope errors are preserved", async () => {
@@ -96,7 +83,9 @@ test("args, kwargs, enumerating sets, map, filter and multiple iterables", async
 });
 
 test("the kitchen uses the returned dictionary, not input globals or printed output", async () => {
-  const result = await execute(`def price():
+  const result = await execute(`from duckdash import send_to_kitchen
+
+def price():
     return 725
 
 def make_order():
@@ -109,7 +98,7 @@ print(number)`);
   assert.equal(result.state.orders[0].customer, "Returned customer");
   assert.equal(result.state.orders[0].items[0].pizza, "garden");
   assert.equal(result.state.orders[0].total, 725);
-  assert.match(result.output, /101/);
+  assert.match(result.output, /11/);
 });
 test("building and printing an order does not send it", async () => {
   const result = await execute(
@@ -119,16 +108,20 @@ test("building and printing an order does not send it", async () => {
 });
 test("missing return and missing fields give useful contract errors", async () => {
   await assert.rejects(
-    execute("def make_order():\n    print(800)\nsend_to_kitchen(make_order())"),
+    execute(
+      "from duckdash import send_to_kitchen\ndef make_order():\n    print(800)\nsend_to_kitchen(make_order())",
+    ),
     /forget return/,
   );
   await assert.rejects(
-    execute('send_to_kitchen({"customer":"Sam","items":["classic"]})'),
+    execute(
+      'from duckdash import send_to_kitchen\nsend_to_kitchen({"customer":"Sam","items":["classic"]})',
+    ),
     /missing: total/,
   );
   await assert.rejects(
     execute(
-      'send_to_kitchen({"customer":"Sam","items":["classic"],"total":800,"price":800})',
+      'from duckdash import send_to_kitchen\nsend_to_kitchen({"customer":"Sam","items":["classic"],"total":800,"price":800})',
     ),
     /Unexpected order fields: price/,
   );
@@ -137,11 +130,47 @@ test("missing return and missing fields give useful contract errors", async () =
 test("kitchen validation points to the student call, not the hidden bridge", async () => {
   await assert.rejects(
     execute(
-      "def make_order():\n    print(800)\n\nsend_to_kitchen(make_order())",
+      "from duckdash import send_to_kitchen\ndef make_order():\n    print(800)\n\nsend_to_kitchen(make_order())",
     ),
     (error) => {
-      assert.equal(error.studentLine, 4);
+      assert.equal(error.studentLine, 5);
       return true;
     },
   );
+});
+
+for (const stage of stages)
+  test(`starter ${stage.id} has explicit inputs`, async () => {
+    if (stage.id === 4) {
+      await assert.rejects(execute(stage.starter), /at least 11/);
+      return;
+    }
+    const result = await execute(stage.starter);
+    assert.equal(
+      result.state.orders.length,
+      stage.id === 1 || stage.id === 6 ? 0 : 1,
+    );
+    if (stage.id === 1) assert.match(result.output, /Price in pence: 800/);
+  });
+test("runtime supplies no hidden menu or customer data", async () => {
+  for (const name of [
+    "menu_prices",
+    "order",
+    "last_order_number",
+    "vegetarian",
+    "orders",
+    "menu_names",
+    "send_to_kitchen",
+  ])
+    await assert.rejects(execute(`print(${name})`), /NameError/);
+});
+test("visible menu and input literals determine the order", async () => {
+  const code = exampleCode(1, "code", {
+    customer: "Alex",
+    pizza: "pepperoni",
+  }).replace('"pepperoni": 1000', '"pepperoni": 725');
+  const result = await execute(code);
+  assert.equal(result.state.orders[0].total, 725);
+  assert.equal(result.state.orders[0].customer, "Alex");
+  assert.equal(result.state.orders[0].items[0].pizza, "pepperoni");
 });

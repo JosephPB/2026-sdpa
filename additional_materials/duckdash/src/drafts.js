@@ -1,6 +1,7 @@
-import { stages } from "./examples.js";
 import { previousStages } from "./previous-examples.js";
-const withoutBlankLines = (code) =>
+import { returnStages } from "./previous-return-examples.js";
+import { exampleCode, declareLegacyInputs, DEFAULT_ORDER } from "./inputs.js";
+const normalized = (code) =>
   typeof code === "string"
     ? code
         .split("\n")
@@ -8,19 +9,34 @@ const withoutBlankLines = (code) =>
         .map((line) => line.trimEnd())
         .join("\n")
     : code;
-export function upgradeDrafts(saved = {}) {
+export function upgradeDrafts(
+  saved = {},
+  order = DEFAULT_ORDER,
+  previousNumber = 10,
+  tickets = [],
+) {
   const drafts = { ...saved };
-  for (const previous of previousStages) {
-    if (
-      withoutBlankLines(drafts[previous.id]) ===
-      withoutBlankLines(previous.code)
-    )
-      drafts[previous.id] = stages[previous.id - 1].code;
-    if (
-      withoutBlankLines(drafts[previous.id]) ===
-      withoutBlankLines(previous.starter)
-    )
-      drafts[previous.id] = stages[previous.id - 1].starter;
+  for (const [id, code] of Object.entries(drafts)) {
+    let matched = false;
+    for (const stage of [...previousStages, ...returnStages].filter(
+      (s) => s.id === Number(id),
+    )) {
+      for (const kind of ["code", "starter"])
+        if (normalized(code) === normalized(stage[kind])) {
+          drafts[id] = exampleCode(Number(id), kind, order, previousNumber);
+          matched = true;
+          break;
+        }
+      if (matched) break;
+    }
+    if (!matched)
+      drafts[id] = declareLegacyInputs(
+        code,
+        Number(id),
+        order,
+        previousNumber,
+        tickets,
+      );
   }
   return drafts;
 }

@@ -863,3 +863,6 @@ footer {
     display: block;
   }
 }
+
+.input-note { margin: 0; padding: 0.4rem 1rem; font-size: 0.78rem; }
+.reset-orders { margin: 0.6rem 0 0.3rem 0.7rem; }

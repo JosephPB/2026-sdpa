@@ -32,10 +32,17 @@ try {
     ),
     "rgb(250, 250, 247)",
   );
+  // Fresh stage 1 begins before user-defined functions.
+  assert.match(await page.locator(".cm-content").innerText(), /menu_prices =/);
+  assert.doesNotMatch(await page.locator(".cm-content").innerText(), /def pizza_price/);
+  await page.getByRole("button", { name: "Run Python", exact: true }).click();
+  await page.getByRole("log").filter({hasText: "Price in pence: 800"}).waitFor();
+  assert.equal(await page.locator("[data-order]").count(), 0);
+  await page.getByRole("button", { name: "Worked example", exact: true }).click();
   await page.getByLabel("Kitchen speed").selectOption("10");
   await page.getByLabel("Customer", { exact: true }).fill("Sam");
   await page.getByRole("button", { name: "Run Python", exact: true }).click();
-  await page.locator('[data-order="101"]').waitFor();
+  await page.locator('[data-order="11"]').waitFor();
   assert.match(
     await page.locator("[data-returned-order]").innerText(),
     /"customer": "Sam"/,
@@ -48,7 +55,7 @@ try {
     await page.locator(".cm-content").innerText(),
     /send_to_kitchen\(details\)/,
   );
-  await page.locator('[data-board="ready"] [data-order="101"]').waitFor();
+  await page.locator('[data-board="ready"] [data-order="11"]').waitFor();
   await page.screenshot({
     path: "/tmp/duckdash-qa/app-first.png",
     fullPage: true,
@@ -59,26 +66,26 @@ try {
   await page.getByLabel("Student special", { exact: true }).check();
   await page.getByLabel("Coupon", { exact: true }).fill("FLOCK5");
   await page.getByRole("button", { name: "Run Python", exact: true }).click();
-  await page.locator('[data-order="102"]').waitFor();
-  assert.match(await page.locator('[data-order="102"]').innerText(), /£15\.00/);
+  await page.locator('[data-order="12"]').waitFor();
+  assert.match(await page.locator('[data-order="12"]').innerText(), /£15\.00/);
   await page.screenshot({
     path: "/tmp/duckdash-qa/app-specials.png",
     fullPage: true,
   });
   await page.reload();
-  await page.locator('[data-order="102"]').waitFor();
-  assert.match(await page.locator(".next-number").innerText(), /103/);
+  await page.locator('[data-order="12"]').waitFor();
+  assert.match(await page.locator(".next-number").innerText(), /13/);
   await page.getByRole("button", { name: "A duck with a number" }).click();
   await page.getByRole("button", { name: "Run Python", exact: true }).click();
-  await page.locator('[data-order="103"]').waitFor();
-  assert.match(await page.locator(".console").innerText(), /103/);
+  await page.locator('[data-order="13"]').waitFor();
+  assert.match(await page.locator(".console").innerText(), /13/);
   await page.getByRole("button", { name: "The group order" }).click();
   await page.getByRole("button", { name: "Run Python", exact: true }).click();
-  await page.locator('[data-order="104"]').waitFor();
-  assert.match(await page.locator('[data-order="104"]').innerText(), /£27\.00/);
+  await page.locator('[data-order="14"]').waitFor();
+  assert.match(await page.locator('[data-order="14"]').innerText(), /£27\.00/);
   await page.getByRole("button", { name: "The lunch rush" }).click();
   await page.getByRole("button", { name: "Run Python", exact: true }).click();
-  await page.locator('[data-order="107"]').waitFor();
+  await page.locator('[data-order="17"]').waitFor();
   // A real infinite loop must not block the kitchen or the Stop control.
   const editor = page.locator(".cm-content");
   await editor.click();
@@ -95,8 +102,8 @@ try {
   await page
     .getByRole("button", { name: "Send to kitchen", exact: true })
     .click();
-  await page.locator('[data-order="108"]').waitFor();
-  assert.match(await page.locator('[data-order="108"]').innerText(), /£7\.50/);
+  await page.locator('[data-order="18"]').waitFor();
+  assert.match(await page.locator('[data-order="18"]').innerText(), /£7\.50/);
   await page.setViewportSize({ width: 390, height: 844 });
   await page.screenshot({
     path: "/tmp/duckdash-qa/app-mobile.png",
@@ -113,17 +120,36 @@ try {
   await editor.click();
   await page.keyboard.press("ControlOrMeta+A");
   await page.keyboard.insertText(
-    'def make_order():\n    print("Only printed")\n\nsend_to_kitchen(make_order())',
+    'from duckdash import send_to_kitchen\ndef make_order():\n    print("Only printed")\n\nsend_to_kitchen(make_order())',
   );
   await page.getByRole("button", { name: "Run Python", exact: true }).click();
   await page.getByText("Not accepted", { exact: true }).waitFor();
   assert.equal(await page.locator("[data-returned-order]").innerText(), "None");
   assert.match(await page.locator(".console").innerText(), /forget return/);
-  assert.match(await page.locator(".next-number").innerText(), /109/);
+  assert.match(await page.locator(".next-number").innerText(), /19/);
   await page.screenshot({
     path: "/tmp/duckdash-qa/app-return-error.png",
     fullPage: true,
   });
+  // Reset is explicit, clears all tickets and preserves the teaching program.
+  const keptCode = await editor.innerText();
+  page.once("dialog", dialog => dialog.dismiss());
+  await page.getByRole("button", {name:"Reset orders", exact:true}).click();
+  assert.match(await page.locator(".next-number").innerText(), /19/);
+  page.once("dialog", dialog => dialog.accept());
+  await page.getByRole("button", {name:"Reset orders", exact:true}).click();
+  assert.match(await page.locator(".next-number").innerText(), /11/);
+  assert.equal(await page.locator("[data-order]").count(), 0);
+  assert.equal(await editor.innerText(), keptCode);
+  await page.reload();
+  assert.match(await page.locator(".next-number").innerText(), /11/);
+  await page.getByRole("button", {name:"A duck with a number"}).click();
+  assert.match(await editor.innerText(), /last_order_number = 10/);
+  await page.getByRole("button", {name:"Run Python", exact:true}).click();
+  await page.locator('[data-order="11"]').waitFor();
+  assert.match(await editor.innerText(), /last_order_number = 11/);
+  await page.getByRole("button", {name:"Run Python", exact:true}).click();
+  await page.locator('[data-order="12"]').waitFor();
   // The lecture must render all slides with the reference section intact.
   await page.setViewportSize({ width: 1600, height: 1000 });
   await page.goto(base + "/lecture_code/week4/week4.html");

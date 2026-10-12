@@ -18,12 +18,12 @@ test("tickets stay unique across a burst and restoration", () => {
   for (let i = 0; i < 5; i++) state = submit(state, req(), 1000).state;
   assert.deepEqual(
     state.orders.map((o) => o.number),
-    [101, 102, 103, 104, 105],
+    [11, 12, 13, 14, 15],
   );
-  assert.equal(restoreKitchen(JSON.stringify(state), 1000).nextNumber, 106);
+  assert.equal(restoreKitchen(JSON.stringify(state), 1000).nextNumber, 16);
   assert.throws(
-    () => submit(state, { ...req(), order_number: 101 }),
-    /at least 106/,
+    () => submit(state, { ...req(), order_number: 11 }),
+    /at least 16/,
   );
 });
 test("different pizzas finish independently; refresh catches up", () => {
@@ -39,7 +39,7 @@ test("different pizzas finish independently; refresh catches up", () => {
     state.orders.map((o) => o.status),
     ["ready", "ready"],
   );
-  assert.equal(collect(state, 101).orders[0].status, "collected");
+  assert.equal(collect(state, 11).orders[0].status, "collected");
 });
 test("charged price is supplied by the learner, including incorrect zero", () => {
   const { order } = submit(freshKitchen(), req("pepperoni", 0), 0);
@@ -58,12 +58,12 @@ test("invalid input never takes a ticket", () => {
   for (const request of [
     { ...req(), items: ["unknown"] },
     { ...req(), items: [] },
-    { ...req(), order_number: 100 },
+    { ...req(), order_number: 10 },
     { ...req(), items: [{ pizza: "classic", toppings: ["unlisted"] }] },
     { ...req(), total: -1 },
   ])
     assert.throws(() => submit(state, request));
-  assert.equal(state.nextNumber, 101);
+  assert.equal(state.nextNumber, 11);
   assert.equal(state.orders.length, 0);
 });
 test("large and toppings alter prep time; speed applies at submission", () => {
@@ -93,4 +93,13 @@ test("discounts use best eligible deal, without stacking", () => {
     normalPrice({ pizza: "classic", size: "large", toppings: ["olives"] }),
     1100,
   );
+});
+
+test("fresh or reset kitchens start at 11; existing saved tickets keep their IDs", () => {
+  const old = submit(freshKitchen(), { ...req(), order_number: 101 }, 0).state;
+  assert.equal(restoreKitchen(old, 0).nextNumber, 102);
+  const reset = freshKitchen();
+  assert.deepEqual(reset.orders, []);
+  assert.equal(reset.nextNumber, 11);
+  assert.equal(submit(restoreKitchen(reset, 0), req(), 0).order.number, 11);
 });

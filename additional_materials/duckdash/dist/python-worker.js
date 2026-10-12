@@ -17,7 +17,6 @@ self.onmessage = async ({ data }) => {
   if (data.type !== "run") return;
   try {
     await DuckDashPython.run(data.code, {
-      context: data.context,
       output: (text) => postMessage({ type: "output", text }),
       submit: (request) =>
         new Promise((resolve, reject) => {
