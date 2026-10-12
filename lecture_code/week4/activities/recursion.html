@@ -1,0 +1,8 @@
+<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DuckDash · recursive basket total</title><link rel="stylesheet" href="board.css"></head><body><h1>Each call keeps its own basket</h1><div class="controls"><button id="previous">Back</button><button id="next" class="primary">Next</button><button id="reset">Reset</button><span id="steps"></span></div><div class="layout"><div><pre id="code">def basket_total(prices):
+    if prices == []:
+        return 0
+    rest = basket_total(prices[1:])
+    return prices[0] + rest
+
+basket = [800, 1000, 900]
+total = basket_total(basket)</pre><p id="status" aria-live="polite"></p></div><div><div class="stack" id="stack"></div><div class="caller" id="caller"></div></div></div><script src="recursion.js"></script></body></html>

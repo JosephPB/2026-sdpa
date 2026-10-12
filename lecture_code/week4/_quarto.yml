@@ -1,0 +1,13 @@
+project:
+  type: default
+  render: [week4.qmd]
+  resources:
+    - assets/**
+    - activities/**
+    - live/**
+    - runtime/**
+    - config.js
+    - deck.js
+    - code-cells.js
+execute:
+  eval: false

@@ -1,0 +1,44 @@
+{
+  "siteUrl": "https://josephpb.github.io/2026-sdpa/lecture_code/week4/",
+  "inputs": {},
+  "expectedErrors": {
+    "arguments-quiz:1": "SyntaxError",
+    "clinic:1": "TypeError"
+  },
+  "modules": {
+    "pricing": "modules:1"
+  },
+  "skip": {
+    "reference-api:1": "Run in DuckDash: the imported send_to_kitchen function connects to its simulated kitchen."
+  },
+  "activities": {
+    "scope": {
+      "actions": [
+        {
+          "action": "click",
+          "selector": "#next",
+          "repeat": 2
+        }
+      ],
+      "expect": {
+        "selector": "#status",
+        "text": "caller still refers to 800"
+      },
+      "caption": "The local price now refers to 700; the caller still refers to 800. Open the board to explore both examples."
+    },
+    "recursion-board": {
+      "actions": [
+        {
+          "action": "click",
+          "selector": "#next",
+          "repeat": 3
+        }
+      ],
+      "expect": {
+        "selector": "#status",
+        "text": "Base case"
+      },
+      "caption": "The empty basket returns 0 while three calls wait. Open the board and step through the returns."
+    }
+  }
+}
