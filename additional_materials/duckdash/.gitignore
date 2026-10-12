@@ -5,3 +5,7 @@ test-results/
 !dist/
 !dist/**
 *.md
+
+# Keep deployment instructions and the menu download in the repository.
+!README.md
+!public/branding/menu-copy.md

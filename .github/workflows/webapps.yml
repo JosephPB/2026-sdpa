@@ -1,0 +1,70 @@
+name: Deploy Robot Lab and DuckDash
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'additional_materials/robot-lab/**'
+      - 'additional_materials/duckdash/**'
+      - '.github/workflows/robot-lab-pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+# Both apps share this repository's Pages site, so every deployment includes both.
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: |
+            additional_materials/robot-lab/package-lock.json
+            additional_materials/duckdash/package-lock.json
+      - name: Install Robot Lab dependencies
+        run: npm ci
+        working-directory: additional_materials/robot-lab
+      - name: Test Robot Lab
+        run: npm test
+        working-directory: additional_materials/robot-lab
+      - name: Install DuckDash dependencies
+        run: npm ci
+        working-directory: additional_materials/duckdash
+      - name: Test DuckDash
+        run: npm test
+        working-directory: additional_materials/duckdash
+      - name: Build and package Robot Lab
+        run: npm run package:pages
+        working-directory: additional_materials/robot-lab
+      - name: Build DuckDash
+        run: npm run build
+        working-directory: additional_materials/duckdash
+      - name: Add DuckDash to the shared Pages site
+        run: |
+          mkdir -p additional_materials/robot-lab/pages-site/additional_materials/duckdash
+          cp -R additional_materials/duckdash/dist/. additional_materials/robot-lab/pages-site/additional_materials/duckdash/
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: additional_materials/robot-lab/pages-site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

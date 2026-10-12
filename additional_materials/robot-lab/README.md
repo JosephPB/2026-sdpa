@@ -68,16 +68,16 @@ Reaching or crossing zero counts as a collision. The robot animates to the wall,
 
 ## GitHub Pages deployment
 
-The app source lives in `additional_materials/robot-lab`. `.github/workflows/robot-lab-pages.yml` in the `$HOME` directory defines the workflow definitions.
+The app source lives in `additional_materials/robot-lab`. The shared workflow is `.github/workflows/robot-lab-pages.yml` at the repository root. It deploys both Robot Lab and DuckDash in one Pages artifact.
 
 1. Open the repository's **Settings → Pages**.
 2. Under **Build and deployment**, choose **GitHub Actions** as the source.
-3. Open **Actions → Deploy Robot Lab → Run workflow**, select `main`, and run it. Subsequent changes to this app on `main` will deploy automatically.
+3. Open **Actions → Deploy Robot Lab and DuckDash → Run workflow**, select `main`, and run it. Subsequent changes to either app on `main` will deploy both automatically.
 4. Once the workflow succeeds, open:
 
    https://josephpb.github.io/2026-sdpa/additional_materials/robot-lab/
 
-The workflow installs dependencies, tests the Python bridge, builds the app, and publishes only the generated site. It keeps this subfolder in the public URL and provides a redirect from the project-site root. It does not expose the rest of the repository as site files.
+The workflow installs locked dependencies, runs the tests and builds both apps. It publishes only their generated site files. It keeps this subfolder in the public URL and preserves the redirect from the project-site root to Robot Lab. DuckDash is available alongside it at `additional_materials/duckdash/`. It does not expose the rest of the repository as site files.
 
 ## Implementation and checks
 
