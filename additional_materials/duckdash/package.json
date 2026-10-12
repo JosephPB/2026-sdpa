@@ -1,0 +1,32 @@
+{
+  "name": "sdpa-duckdash",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "postinstall": "node scripts/vendor-python.mjs",
+    "dev": "vite --host 127.0.0.1",
+    "build": "node scripts/vendor-python.mjs && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "node scripts/vendor-python.mjs && node --test tests/*.test.mjs",
+    "test:browser": "node tests/browser.mjs"
+  },
+  "dependencies": {
+    "@codemirror/lang-python": "^6.2.1",
+    "@codemirror/state": "^6.5.2",
+    "@codemirror/view": "^6.38.1",
+    "codemirror": "^6.0.2",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "skulpt": "1.2.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.0.0",
+    "playwright": "^1.63.0",
+    "prettier": "^3.9.9",
+    "vite": "^7.1.0"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
+}
