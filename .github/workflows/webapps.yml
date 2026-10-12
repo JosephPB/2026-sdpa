@@ -1,4 +1,4 @@
-name: Deploy Robot Lab and DuckDash
+name: Deploy teaching apps and Week 4 resources
 
 on:
   push:
@@ -6,6 +6,7 @@ on:
     paths:
       - 'additional_materials/robot-lab/**'
       - 'additional_materials/duckdash/**'
+      - 'lecture_code/week4/**'
       - '.github/workflows/webapps.yml'
   workflow_dispatch:
 
@@ -16,7 +17,7 @@ concurrency:
   group: github-pages
   cancel-in-progress: true
 
-# Both apps share this repository's Pages site, so every deployment includes both.
+# Apps and teaching resources share one Pages site; publish them in one artifact.
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -41,6 +42,14 @@ jobs:
       - name: Test DuckDash
         run: npm test
         working-directory: additional_materials/duckdash
+      - uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: '1.10.18'
+      - name: Install PDF browser
+        run: npx playwright install --with-deps chromium
+        working-directory: additional_materials/duckdash
+      - name: Export Week 4 student PDF
+        run: node lecture_code/week4/export-pdf.mjs --browser chromium
       - name: Build and package Robot Lab
         run: npm run package:pages
         working-directory: additional_materials/robot-lab
@@ -51,6 +60,8 @@ jobs:
         run: |
           mkdir -p additional_materials/robot-lab/pages-site/additional_materials/duckdash
           cp -R additional_materials/duckdash/dist/. additional_materials/robot-lab/pages-site/additional_materials/duckdash/
+      - name: Add Week 4 student resources to the shared Pages site
+        run: node lecture_code/week4/package-pages.mjs --output ../../additional_materials/robot-lab/pages-site/lecture_code/week4
       - uses: actions/upload-pages-artifact@v4
         with:
           path: additional_materials/robot-lab/pages-site
