@@ -1,0 +1,9 @@
+{
+  "downloaded_date": "2026-10-31",
+  "files": {
+    "raw/bristol-classified-streets.geojson": "3a8fc31be30e53657503c452d014db478086a343e9afe55886653fa258509376",
+    "raw/traffic-2023.json": "8fabfb5ad78833d6685b4da36c0c224c8575b7fbcbfd72da0b1429b1c49f69fd",
+    "raw/air-quality-2023.geojson": "ab957b038139b94a48465ab224c843b751f48fdbdaa56e135314f23629361fc3",
+    "raw/roads-metadata.json": "a331ec0192242cf0f6747357e03c19c2fe3928b81038b146af5e57517641a089"
+  }
+}

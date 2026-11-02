@@ -1,0 +1,957 @@
+[
+  {
+    "example": 1,
+    "text": "[10 20 30]\n(3,)\n1\nint64\n",
+    "chunks": [
+      {
+        "html": "<div class=\"print-output\">[10 20 30]\n</div>",
+        "text": "[10 20 30]\n"
+      },
+      {
+        "html": "<div class=\"print-output\">(3,)\n</div>",
+        "text": "(3,)\n"
+      },
+      {
+        "html": "<div class=\"print-output\">1\n</div>",
+        "text": "1\n"
+      },
+      {
+        "html": "<div class=\"print-output\">int64\n</div>",
+        "text": "int64\n"
+      }
+    ],
+    "images": []
+  },
+  {
+    "example": 2,
+    "text": "(7, 10)\n",
+    "chunks": [
+      {
+        "html": "<div class=\"print-output\">(7, 10)\n</div>",
+        "text": "(7, 10)\n"
+      }
+    ],
+    "images": []
+  },
+  {
+    "example": 3,
+    "text": "[[ 0  1  2]\n [ 3  4  5]\n [ 6  7  8]\n [ 9 10 11]]\n[[ 0  3  6  9]\n [ 1  4  7 10]\n [ 2  5  8 11]]\n",
+    "chunks": [
+      {
+        "html": "<div class=\"print-output\">[[ 0  1  2]\n [ 3  4  5]\n [ 6  7  8]\n [ 9 10 11]]\n</div>",
+        "text": "[[ 0  1  2]\n [ 3  4  5]\n [ 6  7  8]\n [ 9 10 11]]\n"
+      },
+      {
+        "html": "<div class=\"print-output\">[[ 0  3  6  9]\n [ 1  4  7 10]\n [ 2  5  8 11]]\n</div>",
+        "text": "[[ 0  3  6  9]\n [ 1  4  7 10]\n [ 2  5  8 11]]\n"
+      }
+    ],
+    "images": []
+  },
+  {
+    "example": 4,
+    "text": "[5 6 7 8 9]\n(5,)\n[[5 6 7 8 9]]\n(1, 5)\n",
+    "chunks": [
+      {
+        "html": "<div class=\"print-output\">[5 6 7 8 9]\n</div>",
+        "text": "[5 6 7 8 9]\n"
+      },
+      {
+        "html": "<div class=\"print-output\">(5,)\n</div>",
+        "text": "(5,)\n"
+      },
+      {
+        "html": "<div class=\"print-output\">[[5 6 7 8 9]]\n</div>",
+        "text": "[[5 6 7 8 9]]\n"
+      },
+      {
+        "html": "<div class=\"print-output\">(1, 5)\n</div>",
+        "text": "(1, 5)\n"
+      }
+    ],
+    "images": []
+  },
+  {
+    "example": 5,
+    "text": "(3, 6)\n(7, 10)\n",
+    "chunks": [
+      {
+        "html": "<div class=\"print-output\">(3, 6)\n</div>",
+        "text": "(3, 6)\n"
+      },
+      {
+        "html": "<div class=\"print-output\">(7, 10)\n</div>",
+        "text": "(7, 10)\n"
+      }
+    ],
+    "images": []
+  },
+  {
+    "example": 6,
+    "text": "(7, 10, 3)\n[255  94  20]\n",
+    "chunks": [
+      {
+        "html": "<div class=\"print-output\">(7, 10, 3)\n</div>",
+        "text": "(7, 10, 3)\n"
+      },
+      {
+        "html": "<div class=\"print-output\">[255  94  20]\n</div>",
+        "text": "[255  94  20]\n"
+      }
+    ],
+    "images": []
+  },
+  {
+    "example": 7,
+    "text": "(2, 7, 10, 3)\n",
+    "chunks": [
+      {
+        "html": "<div class=\"print-output\">(2, 7, 10, 3)\n</div>",
+        "text": "(2, 7, 10, 3)\n"
+      }
+    ],
+    "images": []
+  },
+  {
+    "example": 8,
+    "text": "[[99 99  2]\n [99 99  5]]\n[[0 0]\n [0 0]]\n[[99 99  2]\n [99 99  5]]\nTrue\nFalse\n",
+    "chunks": [
+      {
+        "html": "<div class=\"print-output\">[[99 99  2]\n [99 99  5]]\n</div>",
+        "text": "[[99 99  2]\n [99 99  5]]\n"
+      },
+      {
+        "html": "<div class=\"print-output\">[[0 0]\n [0 0]]\n</div>",
+        "text": "[[0 0]\n [0 0]]\n"
+      },
+      {
+        "html": "<div class=\"print-output\">[[99 99  2]\n [99 99  5]]\n</div>",
+        "text": "[[99 99  2]\n [99 99  5]]\n"
+      },
+      {
+        "html": "<div class=\"print-output\">True\n</div>",
+        "text": "True\n"
+      },
+      {
+        "html": "<div class=\"print-output\">False\n</div>",
+        "text": "False\n"
+      }
+    ],
+    "images": []
+  },
+  {
+    "example": 9,
+    "text": "[17 30 45]\n[0.15584416 0.32467532 0.51948052]\n[3.46410162 5.         6.32455532]\n",
+    "chunks": [
+      {
+        "html": "<div class=\"print-output\">[17 30 45]\n</div>",
+        "text": "[17 30 45]\n"
+      },
+      {
+        "html": "<div class=\"print-output\">[0.15584416 0.32467532 0.51948052]\n</div>",
+        "text": "[0.15584416 0.32467532 0.51948052]\n"
+      },
+      {
+        "html": "<div class=\"print-output\">[3.46410162 5.         6.32455532]\n</div>",
+        "text": "[3.46410162 5.         6.32455532]\n"
+      }
+    ],
+    "images": []
+  },
+  {
+    "example": 10,
+    "text": "Each hour, across sites: [50 70 90]\nEach site, across hours: [ 60 150]\n",
+    "chunks": [
+      {
+        "html": "<div class=\"print-output\">Each hour, across sites: [50 70 90]\n</div>",
+        "text": "Each hour, across sites: [50 70 90]\n"
+      },
+      {
+        "html": "<div class=\"print-output\">Each site, across hours: [ 60 150]\n</div>",
+        "text": "Each site, across hours: [ 60 150]\n"
+      }
+    ],
+    "images": []
+  },
+  {
+    "example": 11,
+    "text": "uint8\nuint8\n1\n",
+    "chunks": [
+      {
+        "html": "<div class=\"print-output\">uint8\n</div>",
+        "text": "uint8\n"
+      },
+      {
+        "html": "<div class=\"print-output\">uint8\n</div>",
+        "text": "uint8\n"
+      },
+      {
+        "html": "<div class=\"print-output\">1\n</div>",
+        "text": "1\n"
+      }
+    ],
+    "images": []
+  },
+  {
+    "example": 12,
+    "text": "(7, 10, 3)\n",
+    "chunks": [
+      {
+        "html": "<div class=\"print-output\">(7, 10, 3)\n</div>",
+        "text": "(7, 10, 3)\n"
+      }
+    ],
+    "images": []
+  },
+  {
+    "example": 13,
+    "text": "(3,) \u2192 (4, 3)\n(4, 1) \u2192 (4, 3)\n(4,) \u2192 incompatible\n",
+    "chunks": [
+      {
+        "html": "<div class=\"print-output\">(3,) \u2192 (4, 3)\n</div>",
+        "text": "(3,) \u2192 (4, 3)\n"
+      },
+      {
+        "html": "<div class=\"print-output\">(4, 1) \u2192 (4, 3)\n</div>",
+        "text": "(4, 1) \u2192 (4, 3)\n"
+      },
+      {
+        "html": "<div class=\"print-output\">(4,) \u2192 incompatible\n</div>",
+        "text": "(4,) \u2192 incompatible\n"
+      }
+    ],
+    "images": []
+  },
+  {
+    "example": 14,
+    "text": "[8 2]\n",
+    "chunks": [
+      {
+        "html": "<div class=\"print-output\">[8 2]\n</div>",
+        "text": "[8 2]\n"
+      }
+    ],
+    "images": []
+  },
+  {
+    "example": 15,
+    "text": "[[ 2  2]\n [ 0 12]]\n[[ 2  7]\n [ 6 15]]\n",
+    "chunks": [
+      {
+        "html": "<div class=\"print-output\">[[ 2  2]\n [ 0 12]]\n</div>",
+        "text": "[[ 2  2]\n [ 0 12]]\n"
+      },
+      {
+        "html": "<div class=\"print-output\">[[ 2  7]\n [ 6 15]]\n</div>",
+        "text": "[[ 2  7]\n [ 6 15]]\n"
+      }
+    ],
+    "images": []
+  },
+  {
+    "example": 16,
+    "text": "[1 2 0]\n['B' 'C' 'A']\n[10 20 30]\n",
+    "chunks": [
+      {
+        "html": "<div class=\"print-output\">[1 2 0]\n</div>",
+        "text": "[1 2 0]\n"
+      },
+      {
+        "html": "<div class=\"print-output\">[&#x27;B&#x27; &#x27;C&#x27; &#x27;A&#x27;]\n</div>",
+        "text": "['B' 'C' 'A']\n"
+      },
+      {
+        "html": "<div class=\"print-output\">[10 20 30]\n</div>",
+        "text": "[10 20 30]\n"
+      }
+    ],
+    "images": []
+  },
+  {
+    "example": 17,
+    "text": "  site  bicycles\n0    A        30\n1    B        10\n2    C        20\n",
+    "chunks": [
+      {
+        "html": "<div class=\"table-output\"><table class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>site</th>\n      <th>bicycles</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>A</td>\n      <td>30</td>\n    </tr>\n    <tr>\n      <th>1</th>\n      <td>B</td>\n      <td>10</td>\n    </tr>\n    <tr>\n      <th>2</th>\n      <td>C</td>\n      <td>20</td>\n    </tr>\n  </tbody>\n</table></div>",
+        "text": "  site  bicycles\n0    A        30\n1    B        10\n2    C        20\n"
+      }
+    ],
+    "images": []
+  },
+  {
+    "example": 18,
+    "text": "      bicycles\nsite          \nA           30\nB           10\nC           20\nIndex(['A', 'B', 'C'], dtype='object', name='site')\n",
+    "chunks": [
+      {
+        "html": "<div class=\"table-output\"><table class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>bicycles</th>\n    </tr>\n    <tr>\n      <th>site</th>\n      <th></th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>A</th>\n      <td>30</td>\n    </tr>\n    <tr>\n      <th>B</th>\n      <td>10</td>\n    </tr>\n    <tr>\n      <th>C</th>\n      <td>20</td>\n    </tr>\n  </tbody>\n</table></div>",
+        "text": "      bicycles\nsite          \nA           30\nB           10\nC           20\n"
+      },
+      {
+        "html": "<div class=\"print-output\">Index([&#x27;A&#x27;, &#x27;B&#x27;, &#x27;C&#x27;], dtype=&#x27;object&#x27;, name=&#x27;site&#x27;)\n</div>",
+        "text": "Index(['A', 'B', 'C'], dtype='object', name='site')\n"
+      }
+    ],
+    "images": []
+  },
+  {
+    "example": 19,
+    "text": "0    30\n1    10\n2    20\nName: bicycles, dtype: int64\n   bicycles\n0        30\n1        10\n2        20\n",
+    "chunks": [
+      {
+        "html": "<div class=\"print-output\">0    30\n1    10\n2    20\nName: bicycles, dtype: int64\n</div>",
+        "text": "0    30\n1    10\n2    20\nName: bicycles, dtype: int64\n"
+      },
+      {
+        "html": "<div class=\"table-output\"><table class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>bicycles</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>30</td>\n    </tr>\n    <tr>\n      <th>1</th>\n      <td>10</td>\n    </tr>\n    <tr>\n      <th>2</th>\n      <td>20</td>\n    </tr>\n  </tbody>\n</table></div>",
+        "text": "   bicycles\n0        30\n1        10\n2        20\n"
+      }
+    ],
+    "images": []
+  },
+  {
+    "example": 20,
+    "text": "<class 'pandas.core.series.Series'>\nSeries\n",
+    "chunks": [
+      {
+        "html": "<div class=\"print-output\">&lt;class &#x27;pandas.core.series.Series&#x27;&gt;\n</div>",
+        "text": "<class 'pandas.core.series.Series'>\n"
+      },
+      {
+        "html": "<div class=\"print-output\">Series\n</div>",
+        "text": "Series\n"
+      }
+    ],
+    "images": []
+  },
+  {
+    "example": 21,
+    "text": "   count_point_id  hour  bicycles  cars\n0            6401     7        39   273\n1            6401     7        12   141\n2            6401     8        40   308\n3            6401     8        14   206\nRows, columns: (936, 10)\n",
+    "chunks": [
+      {
+        "html": "<div class=\"table-output\"><table class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>count_point_id</th>\n      <th>hour</th>\n      <th>bicycles</th>\n      <th>cars</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>6401</td>\n      <td>7</td>\n      <td>39</td>\n      <td>273</td>\n    </tr>\n    <tr>\n      <th>1</th>\n      <td>6401</td>\n      <td>7</td>\n      <td>12</td>\n      <td>141</td>\n    </tr>\n    <tr>\n      <th>2</th>\n      <td>6401</td>\n      <td>8</td>\n      <td>40</td>\n      <td>308</td>\n    </tr>\n    <tr>\n      <th>3</th>\n      <td>6401</td>\n      <td>8</td>\n      <td>14</td>\n      <td>206</td>\n    </tr>\n  </tbody>\n</table></div>",
+        "text": "   count_point_id  hour  bicycles  cars\n0            6401     7        39   273\n1            6401     7        12   141\n2            6401     8        40   308\n3            6401     8        14   206\n"
+      },
+      {
+        "html": "<div class=\"print-output\">Rows, columns: (936, 10)\n</div>",
+        "text": "Rows, columns: (936, 10)\n"
+      }
+    ],
+    "images": []
+  },
+  {
+    "example": 22,
+    "text": "hour        int64\nbicycles    int64\ncars        int64\ndtype: object\nbicycles    0\ncars        0\ndtype: int64\n",
+    "chunks": [
+      {
+        "html": "<div class=\"print-output\">hour        int64\nbicycles    int64\ncars        int64\ndtype: object\n</div>",
+        "text": "hour        int64\nbicycles    int64\ncars        int64\ndtype: object\n"
+      },
+      {
+        "html": "<div class=\"print-output\">bicycles    0\ncars        0\ndtype: int64\n</div>",
+        "text": "bicycles    0\ncars        0\ndtype: int64\n"
+      }
+    ],
+    "images": []
+  },
+  {
+    "example": 23,
+    "text": "       bicycles    cars\ncount     936.0   936.0\nmean        8.8   583.6\nstd        19.6   657.7\nmin         0.0     0.0\n25%         0.0    88.0\n50%         3.0   333.5\n75%        10.0   852.0\nmax       313.0  3169.0\n",
+    "chunks": [
+      {
+        "html": "<div class=\"table-output\"><table class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>bicycles</th>\n      <th>cars</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>count</th>\n      <td>936.0</td>\n      <td>936.0</td>\n    </tr>\n    <tr>\n      <th>mean</th>\n      <td>8.8</td>\n      <td>583.6</td>\n    </tr>\n    <tr>\n      <th>std</th>\n      <td>19.6</td>\n      <td>657.7</td>\n    </tr>\n    <tr>\n      <th>min</th>\n      <td>0.0</td>\n      <td>0.0</td>\n    </tr>\n    <tr>\n      <th>25%</th>\n      <td>0.0</td>\n      <td>88.0</td>\n    </tr>\n    <tr>\n      <th>50%</th>\n      <td>3.0</td>\n      <td>333.5</td>\n    </tr>\n    <tr>\n      <th>75%</th>\n      <td>10.0</td>\n      <td>852.0</td>\n    </tr>\n    <tr>\n      <th>max</th>\n      <td>313.0</td>\n      <td>3169.0</td>\n    </tr>\n  </tbody>\n</table></div>",
+        "text": "       bicycles    cars\ncount     936.0   936.0\nmean        8.8   583.6\nstd        19.6   657.7\nmin         0.0     0.0\n25%         0.0    88.0\n50%         3.0   333.5\n75%        10.0   852.0\nmax       313.0  3169.0\n"
+      }
+    ],
+    "images": []
+  },
+  {
+    "example": 24,
+    "text": "   cycles\nA      30\nB      10\n   cycles\nA      30\n10\n",
+    "chunks": [
+      {
+        "html": "<div class=\"table-output\"><table class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>cycles</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>A</th>\n      <td>30</td>\n    </tr>\n    <tr>\n      <th>B</th>\n      <td>10</td>\n    </tr>\n  </tbody>\n</table></div>",
+        "text": "   cycles\nA      30\nB      10\n"
+      },
+      {
+        "html": "<div class=\"table-output\"><table class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>cycles</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>A</th>\n      <td>30</td>\n    </tr>\n  </tbody>\n</table></div>",
+        "text": "   cycles\nA      30\n"
+      },
+      {
+        "html": "<div class=\"print-output\">10\n</div>",
+        "text": "10\n"
+      }
+    ],
+    "images": []
+  },
+  {
+    "example": 25,
+    "text": "     count_point_id  hour  bicycles  cars\n0              6401     7        39   273\n18             6401    16        31   282\n23             6401    18        32   270\n434           74782     8        31     0\n12\n",
+    "chunks": [
+      {
+        "html": "<div class=\"table-output\"><table class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>count_point_id</th>\n      <th>hour</th>\n      <th>bicycles</th>\n      <th>cars</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>6401</td>\n      <td>7</td>\n      <td>39</td>\n      <td>273</td>\n    </tr>\n    <tr>\n      <th>18</th>\n      <td>6401</td>\n      <td>16</td>\n      <td>31</td>\n      <td>282</td>\n    </tr>\n    <tr>\n      <th>23</th>\n      <td>6401</td>\n      <td>18</td>\n      <td>32</td>\n      <td>270</td>\n    </tr>\n    <tr>\n      <th>434</th>\n      <td>74782</td>\n      <td>8</td>\n      <td>31</td>\n      <td>0</td>\n    </tr>\n  </tbody>\n</table></div>",
+        "text": "     count_point_id  hour  bicycles  cars\n0              6401     7        39   273\n18             6401    16        31   282\n23             6401    18        32   270\n434           74782     8        31     0\n"
+      },
+      {
+        "html": "<div class=\"print-output\">12\n</div>",
+        "text": "12\n"
+      }
+    ],
+    "images": []
+  },
+  {
+    "example": 26,
+    "text": "   bicycles  total  cycle_share\n0        39    432        0.090\n1        12    208        0.058\n2        40    463        0.086\n3        14    275        0.051\n",
+    "chunks": [
+      {
+        "html": "<div class=\"table-output\"><table class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>bicycles</th>\n      <th>total</th>\n      <th>cycle_share</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>39</td>\n      <td>432</td>\n      <td>0.090</td>\n    </tr>\n    <tr>\n      <th>1</th>\n      <td>12</td>\n      <td>208</td>\n      <td>0.058</td>\n    </tr>\n    <tr>\n      <th>2</th>\n      <td>40</td>\n      <td>463</td>\n      <td>0.086</td>\n    </tr>\n    <tr>\n      <th>3</th>\n      <td>14</td>\n      <td>275</td>\n      <td>0.051</td>\n    </tr>\n  </tbody>\n</table></div>",
+        "text": "   bicycles  total  cycle_share\n0        39    432        0.090\n1        12    208        0.058\n2        40    463        0.086\n3        14    275        0.051\n"
+      }
+    ],
+    "images": []
+  },
+  {
+    "example": 27,
+    "text": "Observed mean: 18.0\nFill with zero: 12.0\nKeep observations: [12.0, 24.0]\n",
+    "chunks": [
+      {
+        "html": "<div class=\"print-output\">Observed mean: 18.0\n</div>",
+        "text": "Observed mean: 18.0\n"
+      },
+      {
+        "html": "<div class=\"print-output\">Fill with zero: 12.0\n</div>",
+        "text": "Fill with zero: 12.0\n"
+      },
+      {
+        "html": "<div class=\"print-output\">Keep observations: [12.0, 24.0]\n</div>",
+        "text": "Keep observations: [12.0, 24.0]\n"
+      }
+    ],
+    "images": []
+  },
+  {
+    "example": 28,
+    "text": "{'A': [0, 2], 'B': [1, 3]}\nsite\nA    15.0\nB    40.0\nName: bicycles, dtype: float64\n",
+    "chunks": [
+      {
+        "html": "<div class=\"print-output\">{&#x27;A&#x27;: [0, 2], &#x27;B&#x27;: [1, 3]}\n</div>",
+        "text": "{'A': [0, 2], 'B': [1, 3]}\n"
+      },
+      {
+        "html": "<div class=\"print-output\">site\nA    15.0\nB    40.0\nName: bicycles, dtype: float64\n</div>",
+        "text": "site\nA    15.0\nB    40.0\nName: bicycles, dtype: float64\n"
+      }
+    ],
+    "images": []
+  },
+  {
+    "example": 29,
+    "text": "  site  mean_cycles  peak_cycles  observations\n0    A         15.0           20             2\n1    B         40.0           50             2\n",
+    "chunks": [
+      {
+        "html": "<div class=\"table-output\"><table class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>site</th>\n      <th>mean_cycles</th>\n      <th>peak_cycles</th>\n      <th>observations</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>A</td>\n      <td>15.0</td>\n      <td>20</td>\n      <td>2</td>\n    </tr>\n    <tr>\n      <th>1</th>\n      <td>B</td>\n      <td>40.0</td>\n      <td>50</td>\n      <td>2</td>\n    </tr>\n  </tbody>\n</table></div>",
+        "text": "  site  mean_cycles  peak_cycles  observations\n0    A         15.0           20             2\n1    B         40.0           50             2\n"
+      }
+    ],
+    "images": []
+  },
+  {
+    "example": 30,
+    "text": "   count_point_id  count_date  hour  ...  bicycles  buses  motor_vehicles\n0            6401  2023-07-13     7  ...        51     31             589\n1            6401  2023-07-13     8  ...        54     31             684\n2            6401  2023-07-13     9  ...        25     41             652\n\n[3 rows x 7 columns]\n",
+    "chunks": [
+      {
+        "html": "<div class=\"table-output\"><table class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>count_point_id</th>\n      <th>count_date</th>\n      <th>hour</th>\n      <th>cars</th>\n      <th>bicycles</th>\n      <th>buses</th>\n      <th>motor_vehicles</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>6401</td>\n      <td>2023-07-13</td>\n      <td>7</td>\n      <td>414</td>\n      <td>51</td>\n      <td>31</td>\n      <td>589</td>\n    </tr>\n    <tr>\n      <th>1</th>\n      <td>6401</td>\n      <td>2023-07-13</td>\n      <td>8</td>\n      <td>514</td>\n      <td>54</td>\n      <td>31</td>\n      <td>684</td>\n    </tr>\n    <tr>\n      <th>2</th>\n      <td>6401</td>\n      <td>2023-07-13</td>\n      <td>9</td>\n      <td>438</td>\n      <td>25</td>\n      <td>41</td>\n      <td>652</td>\n    </tr>\n  </tbody>\n</table></div>",
+        "text": "   count_point_id  count_date  hour  ...  bicycles  buses  motor_vehicles\n0            6401  2023-07-13     7  ...        51     31             589\n1            6401  2023-07-13     8  ...        54     31             684\n2            6401  2023-07-13     9  ...        25     41             652\n\n[3 rows x 7 columns]\n"
+      }
+    ],
+    "images": []
+  },
+  {
+    "example": 31,
+    "text": "   count_point_id   cars  bicycles  motor_vehicles  observed_hours\n0            6401  490.8      31.4           682.6              12\n1            8599  859.2      24.1          1069.5              12\n2           16961  925.5      26.1          1224.7              12\n3           17817  812.3       7.3          1084.7              12\n",
+    "chunks": [
+      {
+        "html": "<div class=\"table-output\"><table class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>count_point_id</th>\n      <th>cars</th>\n      <th>bicycles</th>\n      <th>motor_vehicles</th>\n      <th>observed_hours</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>6401</td>\n      <td>490.8</td>\n      <td>31.4</td>\n      <td>682.6</td>\n      <td>12</td>\n    </tr>\n    <tr>\n      <th>1</th>\n      <td>8599</td>\n      <td>859.2</td>\n      <td>24.1</td>\n      <td>1069.5</td>\n      <td>12</td>\n    </tr>\n    <tr>\n      <th>2</th>\n      <td>16961</td>\n      <td>925.5</td>\n      <td>26.1</td>\n      <td>1224.7</td>\n      <td>12</td>\n    </tr>\n    <tr>\n      <th>3</th>\n      <td>17817</td>\n      <td>812.3</td>\n      <td>7.3</td>\n      <td>1084.7</td>\n      <td>12</td>\n    </tr>\n  </tbody>\n</table></div>",
+        "text": "   count_point_id   cars  bicycles  motor_vehicles  observed_hours\n0            6401  490.8      31.4           682.6              12\n1            8599  859.2      24.1          1069.5              12\n2           16961  925.5      26.1          1224.7              12\n3           17817  812.3       7.3          1084.7              12\n"
+      }
+    ],
+    "images": []
+  },
+  {
+    "example": 32,
+    "text": "   count_point_id road_name   cars  bicycles\n0            6401       A38  490.8      31.4\n1            8599        A4  859.2      24.1\n2           16961      A370  925.5      26.1\n3           17817       A37  812.3       7.3\n",
+    "chunks": [
+      {
+        "html": "<div class=\"table-output\"><table class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>count_point_id</th>\n      <th>road_name</th>\n      <th>cars</th>\n      <th>bicycles</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>6401</td>\n      <td>A38</td>\n      <td>490.8</td>\n      <td>31.4</td>\n    </tr>\n    <tr>\n      <th>1</th>\n      <td>8599</td>\n      <td>A4</td>\n      <td>859.2</td>\n      <td>24.1</td>\n    </tr>\n    <tr>\n      <th>2</th>\n      <td>16961</td>\n      <td>A370</td>\n      <td>925.5</td>\n      <td>26.1</td>\n    </tr>\n    <tr>\n      <th>3</th>\n      <td>17817</td>\n      <td>A37</td>\n      <td>812.3</td>\n      <td>7.3</td>\n    </tr>\n  </tbody>\n</table></div>",
+        "text": "   count_point_id road_name   cars  bicycles\n0            6401       A38  490.8      31.4\n1            8599        A4  859.2      24.1\n2           16961      A370  925.5      26.1\n3           17817       A37  812.3       7.3\n"
+      }
+    ],
+    "images": []
+  },
+  {
+    "example": 33,
+    "text": "",
+    "chunks": [],
+    "images": [
+      "assets/output-33-1.png"
+    ]
+  },
+  {
+    "example": 34,
+    "text": "",
+    "chunks": [],
+    "images": [
+      "assets/output-34-1.png"
+    ]
+  },
+  {
+    "example": 35,
+    "text": "",
+    "chunks": [],
+    "images": [
+      "assets/output-35-1.png"
+    ]
+  },
+  {
+    "example": 36,
+    "text": "",
+    "chunks": [],
+    "images": [
+      "assets/output-36-1.png"
+    ]
+  },
+  {
+    "example": 37,
+    "text": "",
+    "chunks": [],
+    "images": [
+      "assets/output-37-1.png"
+    ]
+  },
+  {
+    "example": 38,
+    "text": "",
+    "chunks": [],
+    "images": [
+      "assets/output-38-1.png"
+    ]
+  },
+  {
+    "example": 39,
+    "text": "",
+    "chunks": [],
+    "images": [
+      "assets/output-39-1.png"
+    ]
+  },
+  {
+    "example": 40,
+    "text": "",
+    "chunks": [],
+    "images": [
+      "assets/output-40-1.png"
+    ]
+  },
+  {
+    "example": 41,
+    "text": "",
+    "chunks": [],
+    "images": [
+      "assets/output-41-1.png"
+    ]
+  },
+  {
+    "example": 42,
+    "text": "",
+    "chunks": [],
+    "images": [
+      "assets/output-42-1.png"
+    ]
+  },
+  {
+    "example": 43,
+    "text": "",
+    "chunks": [],
+    "images": [
+      "assets/output-43-1.png"
+    ]
+  },
+  {
+    "example": 44,
+    "text": "",
+    "chunks": [],
+    "images": [
+      "assets/output-44-1.png"
+    ]
+  },
+  {
+    "example": 45,
+    "text": "[[0 1 2]\n [3 4 5]\n [0 1 2]\n [3 4 5]]\n(2, 2, 3)\n[(2, 2), (2, 1)]\n[1.5 2.5 3.5]\n[1. 4.]\n",
+    "chunks": [
+      {
+        "html": "<div class=\"print-output\">[[0 1 2]\n [3 4 5]\n [0 1 2]\n [3 4 5]]\n</div>",
+        "text": "[[0 1 2]\n [3 4 5]\n [0 1 2]\n [3 4 5]]\n"
+      },
+      {
+        "html": "<div class=\"print-output\">(2, 2, 3)\n</div>",
+        "text": "(2, 2, 3)\n"
+      },
+      {
+        "html": "<div class=\"print-output\">[(2, 2), (2, 1)]\n</div>",
+        "text": "[(2, 2), (2, 1)]\n"
+      },
+      {
+        "html": "<div class=\"print-output\">[1.5 2.5 3.5]\n</div>",
+        "text": "[1.5 2.5 3.5]\n"
+      },
+      {
+        "html": "<div class=\"print-output\">[1. 4.]\n</div>",
+        "text": "[1. 4.]\n"
+      }
+    ],
+    "images": []
+  },
+  {
+    "example": 46,
+    "text": "[10 30 45]\n[  10  200 3000]\n[10 -5]\n[10.   2.5 -5. ]\n45\n3000\n",
+    "chunks": [
+      {
+        "html": "<div class=\"print-output\">[10 30 45]\n</div>",
+        "text": "[10 30 45]\n"
+      },
+      {
+        "html": "<div class=\"print-output\">[  10  200 3000]\n</div>",
+        "text": "[  10  200 3000]\n"
+      },
+      {
+        "html": "<div class=\"print-output\">[10 -5]\n</div>",
+        "text": "[10 -5]\n"
+      },
+      {
+        "html": "<div class=\"print-output\">[10.   2.5 -5. ]\n</div>",
+        "text": "[10.   2.5 -5. ]\n"
+      },
+      {
+        "html": "<div class=\"print-output\">45\n</div>",
+        "text": "45\n"
+      },
+      {
+        "html": "<div class=\"print-output\">3000\n</div>",
+        "text": "3000\n"
+      }
+    ],
+    "images": []
+  },
+  {
+    "example": 47,
+    "text": "[3. 4. 6.]\n[2. 4. 8.]\n[0. 0. 1.]\n[1. 2. 1.]\n[1. 2. 4.]\n(array([0.33333333, 0.66666667, 0.33333333]), array([0., 0., 1.]))\n",
+    "chunks": [
+      {
+        "html": "<div class=\"print-output\">[3. 4. 6.]\n</div>",
+        "text": "[3. 4. 6.]\n"
+      },
+      {
+        "html": "<div class=\"print-output\">[2. 4. 8.]\n</div>",
+        "text": "[2. 4. 8.]\n"
+      },
+      {
+        "html": "<div class=\"print-output\">[0. 0. 1.]\n</div>",
+        "text": "[0. 0. 1.]\n"
+      },
+      {
+        "html": "<div class=\"print-output\">[1. 2. 1.]\n</div>",
+        "text": "[1. 2. 1.]\n"
+      },
+      {
+        "html": "<div class=\"print-output\">[1. 2. 4.]\n</div>",
+        "text": "[1. 2. 4.]\n"
+      },
+      {
+        "html": "<div class=\"print-output\">(array([0.33333333, 0.66666667, 0.33333333]), array([0., 0., 1.]))\n</div>",
+        "text": "(array([0.33333333, 0.66666667, 0.33333333]), array([0., 0., 1.]))\n"
+      }
+    ],
+    "images": []
+  },
+  {
+    "example": 48,
+    "text": "[9 6 6 8 5]\n[4 4 7 1 6]\n[3 2 0 4 1]\n",
+    "chunks": [
+      {
+        "html": "<div class=\"print-output\">[9 6 6 8 5]\n</div>",
+        "text": "[9 6 6 8 5]\n"
+      },
+      {
+        "html": "<div class=\"print-output\">[4 4 7 1 6]\n</div>",
+        "text": "[4 4 7 1 6]\n"
+      },
+      {
+        "html": "<div class=\"print-output\">[3 2 0 4 1]\n</div>",
+        "text": "[3 2 0 4 1]\n"
+      }
+    ],
+    "images": []
+  },
+  {
+    "example": 49,
+    "text": "['high' 'low' 'high' 'low']\n[0 2]\n3\n0\n2\n",
+    "chunks": [
+      {
+        "html": "<div class=\"print-output\">[&#x27;high&#x27; &#x27;low&#x27; &#x27;high&#x27; &#x27;low&#x27;]\n</div>",
+        "text": "['high' 'low' 'high' 'low']\n"
+      },
+      {
+        "html": "<div class=\"print-output\">[0 2]\n</div>",
+        "text": "[0 2]\n"
+      },
+      {
+        "html": "<div class=\"print-output\">3\n</div>",
+        "text": "3\n"
+      },
+      {
+        "html": "<div class=\"print-output\">0\n</div>",
+        "text": "0\n"
+      },
+      {
+        "html": "<div class=\"print-output\">2\n</div>",
+        "text": "2\n"
+      }
+    ],
+    "images": []
+  },
+  {
+    "example": 50,
+    "text": "[1.6 1.8]\nTrue\n5.000000000000001\n2.4083189157584592\n",
+    "chunks": [
+      {
+        "html": "<div class=\"print-output\">[1.6 1.8]\n</div>",
+        "text": "[1.6 1.8]\n"
+      },
+      {
+        "html": "<div class=\"print-output\">True\n</div>",
+        "text": "True\n"
+      },
+      {
+        "html": "<div class=\"print-output\">5.000000000000001\n</div>",
+        "text": "5.000000000000001\n"
+      },
+      {
+        "html": "<div class=\"print-output\">2.4083189157584592\n</div>",
+        "text": "2.4083189157584592\n"
+      }
+    ],
+    "images": []
+  },
+  {
+    "example": 51,
+    "text": "[1. 3.]\n[3. 1.]\nTrue\n",
+    "chunks": [
+      {
+        "html": "<div class=\"print-output\">[1. 3.]\n</div>",
+        "text": "[1. 3.]\n"
+      },
+      {
+        "html": "<div class=\"print-output\">[3. 1.]\n</div>",
+        "text": "[3. 1.]\n"
+      },
+      {
+        "html": "<div class=\"print-output\">True\n</div>",
+        "text": "True\n"
+      }
+    ],
+    "images": []
+  },
+  {
+    "example": 52,
+    "text": "   x  y\nA  1  8\nB  2  9\n   0  1  2\n0  0  1  2\n1  3  4  5\n",
+    "chunks": [
+      {
+        "html": "<div class=\"table-output\"><table class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>x</th>\n      <th>y</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>A</th>\n      <td>1</td>\n      <td>8</td>\n    </tr>\n    <tr>\n      <th>B</th>\n      <td>2</td>\n      <td>9</td>\n    </tr>\n  </tbody>\n</table></div>",
+        "text": "   x  y\nA  1  8\nB  2  9\n"
+      },
+      {
+        "html": "<div class=\"table-output\"><table class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>0</th>\n      <th>1</th>\n      <th>2</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>0</td>\n      <td>1</td>\n      <td>2</td>\n    </tr>\n    <tr>\n      <th>1</th>\n      <td>3</td>\n      <td>4</td>\n      <td>5</td>\n    </tr>\n  </tbody>\n</table></div>",
+        "text": "   0  1  2\n0  0  1  2\n1  3  4  5\n"
+      }
+    ],
+    "images": []
+  },
+  {
+    "example": 53,
+    "text": "   cycles\nA      10\nA      30\nSeries\nDataFrame\nTrue\n",
+    "chunks": [
+      {
+        "html": "<div class=\"table-output\"><table class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>cycles</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>A</th>\n      <td>10</td>\n    </tr>\n    <tr>\n      <th>A</th>\n      <td>30</td>\n    </tr>\n  </tbody>\n</table></div>",
+        "text": "   cycles\nA      10\nA      30\n"
+      },
+      {
+        "html": "<div class=\"print-output\">Series\n</div>",
+        "text": "Series\n"
+      },
+      {
+        "html": "<div class=\"print-output\">DataFrame\n</div>",
+        "text": "DataFrame\n"
+      },
+      {
+        "html": "<div class=\"print-output\">True\n</div>",
+        "text": "True\n"
+      }
+    ],
+    "images": []
+  },
+  {
+    "example": 54,
+    "text": "   cars  cycles\nA    12       2\n   cycles\nA       2\nB       5\n",
+    "chunks": [
+      {
+        "html": "<div class=\"table-output\"><table class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>cars</th>\n      <th>cycles</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>A</th>\n      <td>12</td>\n      <td>2</td>\n    </tr>\n  </tbody>\n</table></div>",
+        "text": "   cars  cycles\nA    12       2\n"
+      },
+      {
+        "html": "<div class=\"table-output\"><table class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>cycles</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>A</th>\n      <td>2</td>\n    </tr>\n    <tr>\n      <th>B</th>\n      <td>5</td>\n    </tr>\n  </tbody>\n</table></div>",
+        "text": "   cycles\nA       2\nB       5\n"
+      }
+    ],
+    "images": []
+  },
+  {
+    "example": 55,
+    "text": "  site  cars road\n0    B    20    X\n  site  cars road\n0    A  10.0  NaN\n1    B  20.0    X\n2    C   NaN    Y\n",
+    "chunks": [
+      {
+        "html": "<div class=\"table-output\"><table class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>site</th>\n      <th>cars</th>\n      <th>road</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>B</td>\n      <td>20</td>\n      <td>X</td>\n    </tr>\n  </tbody>\n</table></div>",
+        "text": "  site  cars road\n0    B    20    X\n"
+      },
+      {
+        "html": "<div class=\"table-output\"><table class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>site</th>\n      <th>cars</th>\n      <th>road</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>A</td>\n      <td>10.0</td>\n      <td>NaN</td>\n    </tr>\n    <tr>\n      <th>1</th>\n      <td>B</td>\n      <td>20.0</td>\n      <td>X</td>\n    </tr>\n    <tr>\n      <th>2</th>\n      <td>C</td>\n      <td>NaN</td>\n      <td>Y</td>\n    </tr>\n  </tbody>\n</table></div>",
+        "text": "  site  cars road\n0    A  10.0  NaN\n1    B  20.0    X\n2    C   NaN    Y\n"
+      }
+    ],
+    "images": []
+  },
+  {
+    "example": 56,
+    "text": "     x   y\n0  1.0 NaN\n2  3.0 NaN\n     x\n0  1.0\n1  NaN\n2  3.0\n     x   y\n0  1.0 NaN\n1  2.0 NaN\n2  3.0 NaN\n",
+    "chunks": [
+      {
+        "html": "<div class=\"table-output\"><table class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>x</th>\n      <th>y</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>1.0</td>\n      <td>NaN</td>\n    </tr>\n    <tr>\n      <th>2</th>\n      <td>3.0</td>\n      <td>NaN</td>\n    </tr>\n  </tbody>\n</table></div>",
+        "text": "     x   y\n0  1.0 NaN\n2  3.0 NaN\n"
+      },
+      {
+        "html": "<div class=\"table-output\"><table class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>x</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>1.0</td>\n    </tr>\n    <tr>\n      <th>1</th>\n      <td>NaN</td>\n    </tr>\n    <tr>\n      <th>2</th>\n      <td>3.0</td>\n    </tr>\n  </tbody>\n</table></div>",
+        "text": "     x\n0  1.0\n1  NaN\n2  3.0\n"
+      },
+      {
+        "html": "<div class=\"table-output\"><table class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>x</th>\n      <th>y</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>1.0</td>\n      <td>NaN</td>\n    </tr>\n    <tr>\n      <th>1</th>\n      <td>2.0</td>\n      <td>NaN</td>\n    </tr>\n    <tr>\n      <th>2</th>\n      <td>3.0</td>\n      <td>NaN</td>\n    </tr>\n  </tbody>\n</table></div>",
+        "text": "     x   y\n0  1.0 NaN\n1  2.0 NaN\n2  3.0 NaN\n"
+      }
+    ],
+    "images": []
+  },
+  {
+    "example": 57,
+    "text": "Groups: 4\nE 240\nN 216\nS 228\nW 252\n           count  mean  max\ndirection                  \nE            240   9.5  211\nN            216   6.8   49\nS            228   7.3   62\nW            252  11.3  313\n",
+    "chunks": [
+      {
+        "html": "<div class=\"print-output\">Groups: 4\n</div>",
+        "text": "Groups: 4\n"
+      },
+      {
+        "html": "<div class=\"print-output\">E 240\n</div>",
+        "text": "E 240\n"
+      },
+      {
+        "html": "<div class=\"print-output\">N 216\n</div>",
+        "text": "N 216\n"
+      },
+      {
+        "html": "<div class=\"print-output\">S 228\n</div>",
+        "text": "S 228\n"
+      },
+      {
+        "html": "<div class=\"print-output\">W 252\n</div>",
+        "text": "W 252\n"
+      },
+      {
+        "html": "<div class=\"table-output\"><table class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>count</th>\n      <th>mean</th>\n      <th>max</th>\n    </tr>\n    <tr>\n      <th>direction</th>\n      <th></th>\n      <th></th>\n      <th></th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>E</th>\n      <td>240</td>\n      <td>9.5</td>\n      <td>211</td>\n    </tr>\n    <tr>\n      <th>N</th>\n      <td>216</td>\n      <td>6.8</td>\n      <td>49</td>\n    </tr>\n    <tr>\n      <th>S</th>\n      <td>228</td>\n      <td>7.3</td>\n      <td>62</td>\n    </tr>\n    <tr>\n      <th>W</th>\n      <td>252</td>\n      <td>11.3</td>\n      <td>313</td>\n    </tr>\n  </tbody>\n</table></div>",
+        "text": "           count  mean  max\ndirection                  \nE            240   9.5  211\nN            216   6.8   49\nS            228   7.3   62\nW            252  11.3  313\n"
+      }
+    ],
+    "images": []
+  },
+  {
+    "example": 58,
+    "text": "      bicycles      cars\nhour                    \n7       18.475  1165.075\n8       31.525  1208.975\n9       15.525   960.625\n10       9.025   895.675\n11       8.150   936.850\n                     x\n2023-01-01 00:00:00  3\n2023-01-01 02:00:00  7\n",
+    "chunks": [
+      {
+        "html": "<div class=\"table-output\"><table class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>bicycles</th>\n      <th>cars</th>\n    </tr>\n    <tr>\n      <th>hour</th>\n      <th></th>\n      <th></th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>7</th>\n      <td>18.475</td>\n      <td>1165.075</td>\n    </tr>\n    <tr>\n      <th>8</th>\n      <td>31.525</td>\n      <td>1208.975</td>\n    </tr>\n    <tr>\n      <th>9</th>\n      <td>15.525</td>\n      <td>960.625</td>\n    </tr>\n    <tr>\n      <th>10</th>\n      <td>9.025</td>\n      <td>895.675</td>\n    </tr>\n    <tr>\n      <th>11</th>\n      <td>8.150</td>\n      <td>936.850</td>\n    </tr>\n  </tbody>\n</table></div>",
+        "text": "      bicycles      cars\nhour                    \n7       18.475  1165.075\n8       31.525  1208.975\n9       15.525   960.625\n10       9.025   895.675\n11       8.150   936.850\n"
+      },
+      {
+        "html": "<div class=\"table-output\"><table class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>x</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>2023-01-01 00:00:00</th>\n      <td>3</td>\n    </tr>\n    <tr>\n      <th>2023-01-01 02:00:00</th>\n      <td>7</td>\n    </tr>\n  </tbody>\n</table></div>",
+        "text": "                     x\n2023-01-01 00:00:00  3\n2023-01-01 02:00:00  7\n"
+      }
+    ],
+    "images": []
+  },
+  {
+    "example": 59,
+    "text": "",
+    "chunks": [],
+    "images": [
+      "assets/output-59-1.png"
+    ]
+  },
+  {
+    "example": 60,
+    "text": "",
+    "chunks": [],
+    "images": [
+      "assets/output-60-1.png"
+    ]
+  },
+  {
+    "example": 61,
+    "text": "",
+    "chunks": [],
+    "images": [
+      "assets/output-61-1.png"
+    ]
+  },
+  {
+    "example": 62,
+    "text": "",
+    "chunks": [],
+    "images": [
+      "assets/output-62-1.png"
+    ]
+  },
+  {
+    "example": 63,
+    "text": "[ 14  99 220 138  29]\n",
+    "chunks": [
+      {
+        "html": "<div class=\"print-output\">[ 14  99 220 138  29]\n</div>",
+        "text": "[ 14  99 220 138  29]\n"
+      }
+    ],
+    "images": [
+      "assets/output-63-1.png"
+    ]
+  },
+  {
+    "example": 64,
+    "text": "",
+    "chunks": [],
+    "images": [
+      "assets/output-64-1.png"
+    ]
+  },
+  {
+    "example": 65,
+    "text": "",
+    "chunks": [],
+    "images": [
+      "assets/output-65-1.png"
+    ]
+  }
+]

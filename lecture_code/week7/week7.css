@@ -1,0 +1,74 @@
+/* Week 7 follows the previous weeks' Bristol template. */
+.reveal pre {font-size:27px; margin:.3em 0;}
+.reveal pre code {line-height:1.22;}
+.reveal .run-controls {display:flex;align-items:center;gap:12px;margin:3px 0 6px;min-height:34px;}
+.reveal .run-button {font:20px Arial;background:#a71930;color:white;border:0;padding:6px 15px;cursor:pointer;}
+.reveal .run-button:disabled {opacity:.45;cursor:default;}
+.reveal .run-status {font:18px Arial;color:#555;}
+.reveal .run-result {font:23px/1.3 Menlo,Consolas,monospace;white-space:normal;margin:0 0 12px;}
+.reveal .run-result:empty {display:none;}
+.reveal .print-output {white-space:pre-wrap;overflow-wrap:anywhere;padding:3px 12px;border-left:3px solid #a71930;margin:5px 0 10px;background:#fafafa;}
+.reveal .print-output:last-child {margin-bottom:0;}
+.reveal .run-result img {max-height:325px;max-width:100%;object-fit:contain;display:block;margin:3px auto;}
+.reveal .table-output {margin:7px 0 12px;}
+.reveal .run-result table {font:23px/1.25 Arial,sans-serif;border-collapse:collapse;margin:0;width:auto;min-width:43%;}
+.reveal .run-result th,.reveal .run-result td {padding:5px 16px;border-bottom:1px solid #d3d3d3;}
+.reveal .run-result thead {background:#f3f3f3;}
+.reveal .run-result tbody th {color:#666;font-weight:normal;}
+.reveal .plot-slide pre {font-size:25px;}
+.reveal .plot-slide .run-result {margin:0;}
+.reveal .plot-demo .run-result img {max-height:355px;}
+.reveal .reference-slide {font-size:.83em;}
+.reveal .reference-slide pre {font-size:23px;}
+.reveal .reference-slide .run-result {font-size:21px;}
+.reveal .reference-slide .run-result table {font-size:21px;}
+.reveal .slice-frame {height:535px;}
+.reveal .activity-slide > p {font-size:.82em;}
+.reveal .activity-slide > p:last-child {font-size:.65em;}
+.reveal .diagram {display:block;width:100%;max-height:350px;object-fit:contain;margin:8px auto;}
+.reveal .binary-slide .diagram {max-height:370px;margin-top:35px;}
+.reveal .binary-slide pre {font-size:25px;}
+.reveal .rgb-slide .diagram {height:235px;}
+.reveal .rgb-slide p {font-size:.8em;}
+.reveal .rgb-slide pre {font-size:26px;}
+.reveal .duck-slices .diagram {height:250px;}
+.reveal .video-array-slide .diagram {height:350px;}
+.reveal .tint-slide .diagram {height:230px;}
+.reveal .transform-slide .diagram {height:230px;}
+.reveal .transform-slide .math {font-size:.8em;}
+.reveal .array-video {display:block;width:100%;height:630px;object-fit:contain;background:white;margin:0 auto;}
+.reveal .video-slide h2 {margin-bottom:.2em;}
+.reveal .title-slide h2 {max-width:90%;font-size:1.75em;margin-top:110px;margin-bottom:70px;}
+.reveal .title-slide p {font-size:.95em;}
+.reveal .plot-anatomy {margin-top:42px;grid-template-columns:62% 36%;}
+.reveal .plot-anatomy .function-code {font-size:27px;line-height:2.1;padding:20px 14px;border-left-color:#a71930;}
+.reveal .plot-anatomy .anatomy-labels p {font-size:27px;margin:0 0 25px;}
+.reveal .aggregation-code pre {font-size:25px;}
+.reveal .site-hour-slide table {font-size:.75em;}
+.reveal .site-hour-slide p {font-size:.85em;}
+.reveal .sorting-slide table {width:55%;font-size:.72em;}
+.reveal .sorting-slide pre {font-size:25px;}
+.reveal .sorting-slide p {font-size:.85em;}
+.reveal figcaption,.reveal .graphic-caption {display:none;}
+.visually-hidden {position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+.reveal .map-opening h2 {display:none;}
+@media print {.run-controls{display:none}.reveal .slice-frame{display:block}.reveal .array-video{height:500px}}
+.reveal #s11 .slice-frame,.reveal #s14 .slice-frame{height:630px}
+.reveal #memory-recap .slice-frame,.reveal #s15 .slice-frame{height:600px}
+.reveal .plot-two-styles .column>p{font-size:.78em}
+.reveal .plot-two-styles pre{font-size:23px}
+.reveal .plot-two-styles .run-result img{max-height:245px}
+.reveal .plot-two-styles>p{font-size:.8em}
+.reveal .map-code-slide pre{font-size:22px}
+.reveal .map-code-slide .column>p{font-size:.74em}
+.reveal .map-code-slide .run-result img{max-height:560px;width:100%;max-width:100%}
+.reveal .map-output{display:flex;align-items:center;justify-content:center;min-height:470px}
+.reveal .map-output .run-result{width:100%}
+
+.reveal .closing-questions .fragment {font-size:.82em;margin:.5em 0;}
+.reveal #numpy-types p {font-size:.78em;}
+.reveal #s19 p {font-size:.75em;}
+
+/* Answer markers control variants without restyling the full master. */
+.reveal .quiz-output > .answer {border:0;padding:0;font-size:inherit}
+.reveal .closing-questions .answer {border:0;padding:0}
