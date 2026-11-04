@@ -1,0 +1,13 @@
+project:
+  type: default
+  render: [week7.qmd]
+  resources:
+    - assets/**
+    - data/**
+    - live/**
+    - activities/**
+    - runtime/**
+    - runner.js
+    - worker.js
+execute:
+  eval: false

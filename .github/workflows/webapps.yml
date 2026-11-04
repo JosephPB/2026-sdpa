@@ -1,4 +1,4 @@
-name: Deploy teaching apps and Week 4 resources
+name: Deploy teaching apps and lecture resources
 
 on:
   push:
@@ -7,6 +7,7 @@ on:
       - 'additional_materials/robot-lab/**'
       - 'additional_materials/duckdash/**'
       - 'lecture_code/week4/**'
+      - 'lecture_code/week7/**'
       - '.github/workflows/webapps.yml'
   workflow_dispatch:
 
@@ -62,6 +63,8 @@ jobs:
           cp -R additional_materials/duckdash/dist/. additional_materials/robot-lab/pages-site/additional_materials/duckdash/
       - name: Add Week 4 student resources to the shared Pages site
         run: node lecture_code/week4/package-pages.mjs --output ../../additional_materials/robot-lab/pages-site/lecture_code/week4
+      - name: Add the interactive Week 7 deck to the shared Pages site
+        run: node lecture_code/week7/package-pages.mjs --output ../../additional_materials/robot-lab/pages-site/lecture_code/week7
       - uses: actions/upload-pages-artifact@v4
         with:
           path: additional_materials/robot-lab/pages-site

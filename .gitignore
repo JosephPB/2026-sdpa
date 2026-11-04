@@ -70,3 +70,8 @@ Desktop.ini
 !/lecture_code/week2/week2_files/libs/revealjs/dist/**
 !/lecture_code/week2_presenter/week2_files/libs/revealjs/dist/
 !/lecture_code/week2_presenter/week2_files/libs/revealjs/dist/**
+
+# The live Week 7 deck ships its Reveal.js library and browser Python packages.
+!/lecture_code/week7/week7_files/libs/revealjs/dist/
+!/lecture_code/week7/week7_files/libs/revealjs/dist/**
+!/lecture_code/week7/runtime/*.whl
