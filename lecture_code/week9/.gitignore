@@ -1,0 +1,8 @@
+.quarto/
+__pycache__/
+.DS_Store
+output/.mpl-cache/
+output/pages/
+
+/.quarto/
+**/*.quarto_ipynb
