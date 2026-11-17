@@ -75,3 +75,7 @@ Desktop.ini
 !/lecture_code/week7/week7_files/libs/revealjs/dist/
 !/lecture_code/week7/week7_files/libs/revealjs/dist/**
 !/lecture_code/week7/runtime/*.whl
+
+# Week 9's published slides also need the bundled Reveal.js runtime.
+!/lecture_code/week9/week9_files/libs/revealjs/dist/
+!/lecture_code/week9/week9_files/libs/revealjs/dist/**

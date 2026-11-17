@@ -8,6 +8,7 @@ on:
       - 'additional_materials/duckdash/**'
       - 'lecture_code/week4/**'
       - 'lecture_code/week7/**'
+      - 'lecture_code/week9/**'
       - '.github/workflows/webapps.yml'
   workflow_dispatch:
 
@@ -65,6 +66,11 @@ jobs:
         run: node lecture_code/week4/package-pages.mjs --output ../../additional_materials/robot-lab/pages-site/lecture_code/week4
       - name: Add the interactive Week 7 deck to the shared Pages site
         run: node lecture_code/week7/package-pages.mjs --output ../../additional_materials/robot-lab/pages-site/lecture_code/week7
+      - name: Render the latest Week 9 teaching slides
+        run: quarto render week9.qmd
+        working-directory: lecture_code/week9
+      - name: Add the Week 9 deck to the shared Pages site
+        run: node lecture_code/week9/package-pages.mjs --output ../../additional_materials/robot-lab/pages-site/lecture_code/week9
       - uses: actions/upload-pages-artifact@v4
         with:
           path: additional_materials/robot-lab/pages-site
