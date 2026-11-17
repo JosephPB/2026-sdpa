@@ -1,0 +1,2209 @@
+<!DOCTYPE html>
+<html lang="en-GB"><head>
+<script src="week8_files/libs/clipboard/clipboard.min.js"></script>
+<script src="week8_files/libs/quarto-html/tabby.min.js"></script>
+<script src="week8_files/libs/quarto-html/popper.min.js"></script>
+<script src="week8_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="week8_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="week8_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="week8_files/libs/quarto-html/quarto-syntax-highlighting-bb62276ab45c84d9efd712f51ff97b5a.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
+
+  <meta name="author" content="Software Development: Programming and Algorithms">
+  <title>Week 8: Data types and sources</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="week8_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="week8_files/libs/revealjs/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #24292e;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #24292e; } /* Normal */
+    code span.al { color: #ff5555; font-weight: bold; } /* Alert */
+    code span.an { color: #6a737d; } /* Annotation */
+    code span.at { color: #d73a49; } /* Attribute */
+    code span.bn { color: #005cc5; } /* BaseN */
+    code span.bu { color: #d73a49; } /* BuiltIn */
+    code span.cf { color: #d73a49; } /* ControlFlow */
+    code span.ch { color: #032f62; } /* Char */
+    code span.cn { color: #005cc5; } /* Constant */
+    code span.co { color: #6a737d; } /* Comment */
+    code span.cv { color: #6a737d; } /* CommentVar */
+    code span.do { color: #6a737d; } /* Documentation */
+    code span.dt { color: #d73a49; } /* DataType */
+    code span.dv { color: #005cc5; } /* DecVal */
+    code span.er { color: #ff5555; text-decoration: underline; } /* Error */
+    code span.ex { color: #d73a49; font-weight: bold; } /* Extension */
+    code span.fl { color: #005cc5; } /* Float */
+    code span.fu { color: #6f42c1; } /* Function */
+    code span.im { color: #032f62; } /* Import */
+    code span.in { color: #6a737d; } /* Information */
+    code span.kw { color: #d73a49; } /* Keyword */
+    code span.op { color: #24292e; } /* Operator */
+    code span.ot { color: #6f42c1; } /* Other */
+    code span.pp { color: #d73a49; } /* Preprocessor */
+    code span.re { color: #6a737d; } /* RegionMarker */
+    code span.sc { color: #005cc5; } /* SpecialChar */
+    code span.ss { color: #032f62; } /* SpecialString */
+    code span.st { color: #032f62; } /* String */
+    code span.va { color: #e36209; } /* Variable */
+    code span.vs { color: #032f62; } /* VerbatimString */
+    code span.wa { color: #ff5555; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="week8_files/libs/revealjs/dist/theme/quarto-5eadfb56873cc7136ef31b4984534e15.css">
+  <link rel="stylesheet" href="week8.css">
+  <link href="week8_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="week8_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="week8_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="week8_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+
+<section id="title" class="slide level2 title-slide center">
+<h2>Week 8: Data types and sources</h2>
+<p>Software Development: Programming and Algorithms</p>
+<p>Delivered by: Dr Joseph Aylett-Bullock</p>
+<p><img class="cover-illustration" src="assets/duck-detective.png" alt="A pixel duck examines a small array with a magnifying glass"></p>
+<aside class="notes">
+<p>Illustration generated for this lecture with the built-in image-generation tool. Prompt and saved asset are recorded in visual-notes.md.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="recap" class="slide level2">
+<h2>Last week</h2>
+<div class="comparison"><div><img class="image-half" src="assets/duck.png" alt="The colour duck image used for NumPy arrays"><p>NumPy arrays</p></div><div><img class="image-half" src="assets/traffic-line.png" alt="Hourly cars and taxis at a Bristol traffic count site"><p>pandas tables and Matplotlib figures</p></div></div>
+<aside class="notes">
+<p>0–3 minutes. Use answers to judge the recap pace. First 40 minutes consolidate Week 7, including the memory reminder and tutorial window. The second half starts with where this traffic data came from. The source data are the saved 2023 Bristol DfT observations used in Week 7, downloaded 31 October 2026.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="memory" class="slide level2">
+<h2>Names, objects and memory</h2>
+<div class="animation" data-animation="memory" aria-label="Slide-controlled string, list and array memory diagrams">
+
+</div>
+<aside class="notes">
+<p>3–6 minutes. Reuses the Week 7 examples as a slide-controlled sequence. Each normal Next advances strings, then lists, then arrays through aliasing and mutation. Strings: upper returns a new object. List and ndarray aliases refer to the same object; mutation is visible through both names. This is a names/objects diagram rather than a literal picture of physical addresses. Numeric NumPy arrays use a typed data buffer; a Python list holds references. Use the reference slide for that allocation distinction. The standalone Week 7 activity remains in activities/memory.html if useful outside the lecture route.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="array-columns" class="slide level2">
+<h2>One-dimensional arrays as columns</h2>
+<p>A 1D array can supply one column of a table.</p>
+<p><img class="diagram" src="assets/array-columns.svg" alt="Two arrays with three values supply two columns in a table with three rows"></p>
+<p>A 1D array has shape <code>(3,)</code></p>
+<aside class="notes">
+<p>6–8 minutes. New recap clarification. Show each input array vertically to illustrate its use as a column, but distinguish display from shape: x and y each have shape (3,), not (3,1). Taking corresponding values from x and y makes one row of the combined (3,2) array. Axis 0 indexes rows and axis 1 indexes columns in this table interpretation. x[:,None] explicitly turns x into a two-dimensional column of shape (3,1); x[None,:] makes a row of shape (1,3).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="array-stacking" class="slide level2">
+<h2>Arrange arrays as columns or rows</h2>
+<p><img class="diagram short" src="assets/array-stacking.svg" alt="The same two arrays form a three-by-two array when combined as columns or a two-by-three array when combined as rows"></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>])</span>
+<span id="cb1-2"><a href="" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
+<span id="cb1-3"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.column_stack((x, y)))  <span class="co"># three rows, two columns</span></span>
+<span id="cb1-5"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.vstack((x, y)))        <span class="co"># two rows, three columns</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<aside class="notes">
+<p>8–9 minutes. Concept first, code second. Introduce import numpy as np here if running this slide independently. A 1D array’s transpose still has shape (3,): x.T does not create a column. In the first result each column comes from one input array; in the second, each row does. The two-dimensional shape is (number of rows, number of columns). These are illustrations of basic numeric arrays, not the full higher-dimensional axis vocabulary.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="axes" class="slide level2">
+<h2>Array axes</h2>
+<p><img class="diagram" src="assets/array-axes.svg" alt="The duck image has 7 rows, 10 columns and 3 colour channels"></p>
+<p><code>RGB[:, :, 0]</code> selects the first colour channel at every pixel.</p>
+<aside class="notes">
+<p>9–10 minutes. Identify row, column, channel before discussing syntax. An integer index removes an axis. RGB[1] has shape (10,3), whereas RGB[1:2] has shape (1,10,3). Reuse the duck rather than introducing a new image. Python’s zero-based indexing applies to all axes.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="slice" class="slide level2">
+<h2>Two-dimensional slicing</h2>
+<div class="slice-quiz"><div><img src="assets/slice-input.svg" alt="Array a has four rows and five columns containing 0 through 19"></div><div><p><code>a[1:3, 1:4]</code></p><p>Which values are selected?<br>What is the result's shape?</p><div class="fragment"><img src="assets/slice-answer.svg" alt="Answer: rows [6,7,8] and [11,12,13], shape (2,3)"></div></div></div>
+<aside class="notes">
+<p>10–11 minutes, together with the following code slide. Ask first. Normal Next reveals only the right-hand result; the following slide shows the code. The result is [[6,7,8],[11,12,13]], shape (2,3). Endpoint exclusion holds on each sliced axis. Basic slicing normally gives a view, so mutation can affect the original buffer.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="slice-code" class="slide level2">
+<h2>Slicing in NumPy</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-2"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> np.arange(<span class="dv">20</span>).reshape(<span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb2-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a[<span class="dv">1</span>:<span class="dv">3</span>, <span class="dv">1</span>:<span class="dv">4</span>])</span>
+<span id="cb2-5"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a[<span class="dv">1</span>].shape)</span>
+<span id="cb2-6"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a[<span class="dv">1</span>:<span class="dv">2</span>].shape)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<pre class="output">[[ 6  7  8]
+ [11 12 13]]
+(5,)
+(1, 5)</pre>
+<p>An integer index removes an axis. A length-one slice keeps it.</p>
+</section>
+<section id="matrix" class="slide level2">
+<h2>Matrix multiplication</h2>
+<div class="animation" data-animation="matrix" aria-label="Step through row-by-column matrix multiplication">
+
+</div>
+<aside class="notes">
+<p>11–15 minutes, including next slide. Three steps per output cell: select row/column, multiply and sum, store. Ask for the second result before advancing. The inner dimensions must match: (m,n) @ (n,p) gives (m,p). Reuse the exact two matrices shown in Week 7. This is algebraic matrix multiplication, not elementwise multiplication.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="matrix-code" class="slide level2">
+<h2>Two multiplication operators</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">3</span>, <span class="dv">4</span>]])</span>
+<span id="cb3-2"><a href="" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> np.array([[<span class="dv">2</span>, <span class="dv">1</span>], [<span class="dv">0</span>, <span class="dv">3</span>]])</span>
+<span id="cb3-3"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A <span class="op">*</span> B)</span>
+<span id="cb3-5"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A <span class="op">@</span> B)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<pre class="output">[[ 2  2]
+ [ 0 12]]
+[[ 2  7]
+ [ 6 15]]</pre>
+<p><code>*</code> multiplies corresponding values. <code>@</code> takes row–column products.</p>
+<aside class="notes">
+<p>Brief callback: the Week 7 duck stretch used transform @ point, mapping [4,2] to [8,2]. Do not spend time introducing a second matrix example unless needed. Additional shape reminder is in reference.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="window-question" class="slide level2">
+<h2>Tutorial 7A: Exercise 6</h2>
+<p><strong>Compute averages using a sliding window over an array.</strong></p>
+<p>Take the input <code>[5, 2, 4, 6, 3, 1]</code>. A sliding window of size 2 is applied. The current sum of the pair <code>[5, 2]</code> is 7. Continue iterating through the entire array, sliding the window by 1 for the next iteration.</p>
+<p>What are the averages? Try different window sizes.</p>
+<div class="fragment">
+<p>Expected result: <strong><code>[3.5, 3, 5, 4.5, 2]</code></strong></p>
+</div>
+<aside class="notes">
+<p>Tutorial 7A – Numpy, Exercise 6. The full question is reproduced with spelling and punctuation corrected. It supplies the input, width, first pair sum, expected result and instruction to try other widths. Keep the expected result hidden until students predict it. This opening is part of the 15–25 minute window segment.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="window" class="slide level2">
+<h2>A sliding window</h2>
+<p>A window of two values moves one position at a time.</p>
+<div class="animation" data-animation="window" aria-label="A moving window averages neighbouring values">
+
+</div>
+<aside class="notes">
+<p>15–20 minutes. Tutorial 7A, Exercise 6. Input and width match the supplied notebook. Use the first iteration to explain the concept before showing any loop. Normal Next reveals the selected window’s mean; the next advance moves to the following window. Stop before the last result and ask for it. Ask what changes at width 3: four complete windows; the reference gives their means. This notebook contains the question, not the solution; avoid attributing any particular technique to its solution.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="window-trace" class="slide level2">
+<h2>Going through the motions</h2>
+<p><code>values = np.array([5, 2, 4, 6, 3, 1])</code> · <code>width = 2</code> · <code>averages = []</code></p>
+<div class="animation" data-animation="window" data-trace="true" aria-label="Trace each executed line and inspect the current variables">
+
+</div>
+<aside class="notes">
+<p>20–25 minutes. Use this as a quiz: show the loop and ask for the values on the right after each iteration. Normal Next reveals the answer; the next advance asks about the next iteration. The display uses range(5), whose general form is range(len(values)-width+1). The last valid start is n-width. Students can use print statements to reproduce this trace; live/recap.py includes them. This is a lecturer explanation, not a request for everyone to code now. The source array is unchanged; the current window name is rebound; the results list is mutated. The right-hand values are the state after the complete current iteration. They stay hidden during the prediction state. The code is not being executed line by line by this quiz; use the printed trace in live/recap.py to inspect each assignment if needed.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="dataframes" class="slide level2">
+<h2>DataFrames</h2>
+<p><img class="diagram" src="assets/dataframe.svg" alt="A labelled traffic table supports selection, grouping, joins and missing-value handling"></p>
+<p>Column names describe the fields. Each column has a data type.</p>
+<aside class="notes">
+<p>25–28 minutes. These three rows are selected fields from saved real traffic records, simplified to show a table. Label row/column/index and distinguish a Series from a DataFrame. Why powerful: named fields and vectorised operations; inspect, filter, group and join without separate loops over records. Different columns can have different dtypes. Link to Tutorial 7B: manual/automatic cars are two subsets selected by a condition.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="dataframe-code" class="slide level2">
+<h2>Select rows and columns</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb4-2"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="" aria-hidden="true" tabindex="-1"></a>traffic <span class="op">=</span> pd.read_csv(<span class="st">'data/bristol_traffic_2023.csv'</span>)</span>
+<span id="cb4-4"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(traffic.iloc[<span class="dv">0</span>:<span class="dv">3</span>, <span class="dv">0</span>:<span class="dv">2</span>])      <span class="co"># positions; stop excluded</span></span>
+<span id="cb4-6"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(traffic.loc[<span class="dv">0</span>:<span class="dv">2</span>, [<span class="st">'cars'</span>]]) <span class="co"># labels; stop included here</span></span>
+<span id="cb4-7"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="" aria-hidden="true" tabindex="-1"></a>busy <span class="op">=</span> traffic.loc[traffic[<span class="st">'cars'</span>] <span class="op">&gt;</span> <span class="dv">300</span>,</span>
+<span id="cb4-9"><a href="" aria-hidden="true" tabindex="-1"></a>                   [<span class="st">'count_point_id'</span>, <span class="st">'hour'</span>, <span class="st">'cars'</span>]]</span>
+<span id="cb4-10"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(busy.head())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>busy</code> contains the rows that satisfy the condition.</p>
+<aside class="notes">
+<p>28–32 minutes. Introduce import pandas as pd verbally or run the shared setup in live/recap.py; add import if typing from scratch. Predict each selection before running. The CSV creates a unique ascending RangeIndex, which is why loc[0:2] has these semantics here. One column in double brackets returns a DataFrame. Ask whether the condition is a single Boolean or a Boolean value for each row. Mention missing is not zero and briefly recall groupby if that was rushed in Week 7. The reference includes groupby and missing values.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="charts" class="slide level2">
+<h2>Which chart?</h2>
+<p><img class="chart-gallery" src="assets/chart-gallery.png" alt="Line, scatter, histogram, bar, horizontal bar and pie charts using the saved Bristol traffic observations"></p>
+<aside class="notes">
+<p>32–36 minutes. Ask for the chart before naming its method. The first five were the principal Week 7 chart families; pie is a brief comparison, not a new live demo. Pie shares cover only the four labelled categories. All charts use saved DfT records. Group directions within site/date/hour before comparing sites. The chart titles indicate the question, not a claim of causation. imshow displays images and is recalled in the file-import section.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="plot-code" class="slide level2">
+<h2>Build a plot</h2>
+<div class="columns">
+<div class="column" style="width:51%;">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb5-2"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb5-4"><a href="" aria-hidden="true" tabindex="-1"></a>ax.plot(day[<span class="st">'hour'</span>], day[<span class="st">'cars'</span>], <span class="st">'o-'</span>)</span>
+<span id="cb5-5"><a href="" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Hour starting'</span>)</span>
+<span id="cb5-6"><a href="" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'Cars and taxis counted'</span>)</span>
+<span id="cb5-7"><a href="" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>Figure</code>: whole canvas</p>
+<p><code>Axes</code>: plotting area</p>
+</div><div class="column" style="width:47%;">
+<p><img class="chart-single" src="assets/traffic-line-code.png" alt="A line chart of cars and taxis at site 6401 on 13 July 2023"></p>
+</div></div>
+<aside class="notes">
+<p>36–40 minutes. live/recap.py defines day from one site/date after summing directions. Keep labels visible. Type the five lines live, then change to a histogram if useful. This is a short demonstration: students have tutorials for practice. Reference gives method names for all six chart types. If time is tight, keep the prebuilt plot and explain which line adds what.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="structure" class="slide level2">
+<h2>Structured and unstructured data</h2>
+<p><img class="diagram" src="assets/structure.svg" alt="Repeated table fields compared with free text and an image"></p>
+<p>The pixels form a NumPy array. Recognising the duck extracts meaning from the image.</p>
+<aside class="notes">
+<p>40–43 minutes. Unstructured does not literally mean without structure: an image has dimensions, a document has paragraphs, and email has headers. The distinction concerns whether the information of interest is already arranged in an explicit data model. Images, video, reports and free text are common examples. Relational databases and spreadsheets are common structured examples. Do not equate structured with numeric. The duck is deliberately labelled as image content: the pixel array is organised numerically, while the semantic observation “this image contains a duck” is not supplied as a field. Extracting that field requires interpretation. This is why images are commonly described as unstructured data in analysis workflows.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="semi" class="slide level2">
+<h2>Semi-structured data</h2>
+<p><img class="diagram" src="assets/nested-record.svg" alt="A JSON record contains a site field and nested car and bicycle counts"></p>
+<aside class="notes">
+<p>43–45 minutes. JSON and XML commonly carry semi-structured data. The same JSON can follow a strict schema; file extension alone does not determine degree of structure. Text mining, NLP and information retrieval can extract usable fields from unstructured content. Storage options include document/graph databases; names and roles are in reference. Avoid presenting Hadoop as a NoSQL database.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="qualitative" class="slide level2">
+<h2>Quantitative or qualitative?</h2>
+<div class="animation" data-animation="classify" data-kind="qualitative" aria-label="Sort examples into quantitative and qualitative columns">
+
+</div>
+<aside class="notes">
+<p>45–47 minutes. Definitions remain below headings. One word/phrase appears; take a vote; reveal the placement. Numeric count-point ID is the trap. These examples use familiar records. The original shoes, grades, exam scores and jersey numbers remain in the reference quiz.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="discrete" class="slide level2">
+<h2>Discrete or continuous?</h2>
+<div class="animation" data-animation="classify" data-kind="discrete" aria-label="Sort examples into discrete and continuous columns">
+
+</div>
+<aside class="notes">
+<p>47–48 minutes. Move quickly if the answers are confident. Shoe sizes show that decimal values can be discrete. Rounding a continuous measurement does not make the underlying phenomenon discrete. Original walking time, cow count and milk volume are in reference.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="binning" class="slide level2">
+<h2>Discretisation</h2>
+<div class="animation" data-animation="bins" aria-label="Measurements are assigned to bins using equal widths or equal counts">
+
+</div>
+<aside class="notes">
+<p>48–52 minutes. Click through raw dots, equal-width boundaries, bin colours, category assignment, equal-count boundaries. Measurements are illustrative, not extracted Bristol observations. Grouping supports summaries, simpler representations and visualisation; exact information is lost. pd.cut uses intervals; pd.qcut uses sample quantiles. Equal counts can be complicated by ties. The original deck also covers replacing values with bin mean, median or nearest observed boundary: use the worked reference if asked and mention this alternative briefly. Binning alone does not guarantee smaller storage.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="scales" class="slide level2">
+<h2>Scales of measurement</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Scale</th>
+<th>Example</th>
+<th>What is meaningful?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Nominal</strong></td>
+<td>Count-point ID</td>
+<td>Equality; category counts</td>
+</tr>
+<tr class="even">
+<td><strong>Ordinal</strong></td>
+<td>Poor / fair / good</td>
+<td>Order; gaps are unspecified</td>
+</tr>
+<tr class="odd">
+<td><strong>Interval</strong></td>
+<td>Calendar year</td>
+<td>Differences; ratios are not meaningful</td>
+</tr>
+<tr class="even">
+<td><strong>Ratio</strong></td>
+<td>Vehicle count; elapsed duration</td>
+<td>Differences and ratios; meaningful zero</td>
+</tr>
+</tbody>
+</table>
+<p>Is averaging the numbers in this column useful?</p>
+<aside class="notes">
+<p>52–55 minutes. The practical purpose is deciding which operations make sense, not memorising a hierarchy. “What is meaningful?” asks which comparisons or calculations tell us something about the underlying quantity, rather than just manipulating its written numbers.</p>
+<ul>
+<li><strong>Nominal:</strong> equality means “same category or different category”. We can count how many observations belong to each category. A count-point ID identifies a site; averaging IDs gives a number with no useful interpretation as a site or measurement. Changing the arbitrary ID codes would change the average without changing the sites.</li>
+<li><strong>Ordinal:</strong> order is meaningful: good ranks above fair, which ranks above poor. The gaps are unspecified: poor to fair need not be the same improvement as fair to good. Category frequencies, ranks and a median category can be useful; averaging codes such as 1, 2, 3 assumes something extra about the spacing.</li>
+<li><strong>Interval:</strong> equal differences represent equal changes. The difference between 10 °C and 20 °C is 10 °C, as is the difference between 20 °C and 30 °C. Zero Celsius is a chosen reference, so 20 °C is not twice as hot as 10 °C. Converting to Fahrenheit changes that numerical ratio while preserving the temperature difference in converted units. A mean temperature can be meaningful; a ratio of Celsius readings is not a ratio of absolute temperatures.</li>
+<li><strong>Ratio:</strong> there is a meaningful zero indicating absence of the measured quantity. Twenty cars is twice ten cars; ten minutes of elapsed duration is twice five minutes. Differences and ratios are both meaningful. Each successive scale also supports the earlier comparisons.</li>
+</ul>
+<p>Return to “Is averaging the numbers in this column useful?” The answer depends on what the values mean, not simply whether Python stores them as integers or floats. Calendar year is interval; elapsed duration is ratio. Ratio data can be discrete. A label encoded as an integer remains a label. Measurement scale is different from Python dtype, storage structure or file format. Additional original test examples are in reference.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="break" class="slide level2 process-pause">
+<h2>Data acquisition</h2>
+<div class="flow">
+<span>Source</span><b>→</b><span>Documentation</span><b>→</b><span>Retrieve + save</span><b>→</b><span>Process</span><b>→</b><span>Use</span>
+</div>
+<aside class="notes">
+<p>55–65 minutes remains the scheduled pause. Show only the process diagram during this interval; do not display a break heading or duration. Resume by asking where last week’s CSV came from.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="files" class="slide level2">
+<h2>Reading a file</h2>
+<div class="columns">
+<div class="column" style="width:56%;">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb6-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> PIL <span class="im">import</span> Image</span>
+<span id="cb6-3"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="" aria-hidden="true" tabindex="-1"></a>traffic <span class="op">=</span> pd.read_csv(</span>
+<span id="cb6-5"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="st">'data/bristol_traffic_2023.csv'</span>)</span>
+<span id="cb6-6"><a href="" aria-hidden="true" tabindex="-1"></a>RGB <span class="op">=</span> np.array(</span>
+<span id="cb6-7"><a href="" aria-hidden="true" tabindex="-1"></a>    Image.<span class="bu">open</span>(<span class="st">'assets/duck.png'</span>)</span>
+<span id="cb6-8"><a href="" aria-hidden="true" tabindex="-1"></a>         .convert(<span class="st">'RGB'</span>))</span>
+<span id="cb6-9"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(RGB.shape)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column" style="width:42%;">
+<p><img class="image-half" src="assets/duck.png" alt="The same image becomes a numeric RGB array"></p>
+</div></div>
+<p>A CSV becomes a table. An image becomes an array.</p>
+<aside class="notes">
+<p>65–67 minutes. This is a recall of code students already saw, leading into the new concepts. NumPy imported in recap. imshow(RGB) displays the colour array. Ask where the CSV was obtained before it was read. The DfT raw response is bundled in data/raw/traffic-2023.json.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="sources" class="slide level2">
+<h2>Data sources</h2>
+<p><img class="diagram" src="assets/sources.svg" alt="Files, APIs, databases, sensors and webpages feed the same retrieve-and-process workflow"></p>
+<p>Choose an appropriate source for the questions you’re trying to answer</p>
+<aside class="notes">
+<p>67–69 minutes. Include CSV/Excel/text/XML files; database queries; instruments; API and webpage routes. An API is an interface, not a data format. URLs may return files or HTML as well as JSON. A wrapper library is another way to access an API. We use direct requests to see the steps.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="workflow" class="slide level2">
+<h2>Getting the Bristol traffic data</h2>
+<div class="workflow-aligned">
+<div><h3>Source</h3><div class="workflow-example"><p>DfT traffic data</p><p>2023 surveys<br>Bristol</p></div></div>
+<div><h3>Documentation</h3><div class="workflow-example"><p>site, date,<br>hour, direction</p></div></div>
+<div><h3>Retrieve + save</h3><div class="workflow-example"><p>Raw response</p><pre>{"data": [ … ]}</pre><p>Keep the original JSON.</p></div></div>
+<div><h3>Process</h3><div class="workflow-example"><p>pandas DataFrame</p><pre>hour,cars
+…,…</pre><p>Select and check fields.</p></div></div>
+<div><h3>Use</h3><div class="workflow-example"><p>Matplotlib</p><img src="assets/traffic-line.png" alt="A plot made from the processed Bristol observations"></div></div>
+</div>
+<aside class="notes">
+<p>69–71 minutes. Each example sits directly under the stage it belongs to; there is a single connected flow. The Week 7 CSV was derived from the saved DfT API response. Raw JSON belongs under Retrieve + save; selected, checked columns under Process; the plotted analysis under Use. Source: https://roadtraffic.dft.gov.uk/api/raw-counts . Saved 31 October 2026: 936 records, last_page=1. These are sampled surveys, not continuous monitoring. Explain the difference between preserving a raw source and making a derived table.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="documentation" class="slide level2">
+<h2>Read the documentation</h2>
+<div class="flow compact">
+<span>Source</span><b>→</b><span class="current">Documentation</span><b>→</b><span>Retrieve + save</span><b>→</b><span>Process</span><b>→</b><span>Use</span>
+</div>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Check</th>
+<th>In our traffic example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>What does one record represent?</td>
+<td>A site, date, hour and direction</td>
+</tr>
+<tr class="even">
+<td>Which fields and units?</td>
+<td>Vehicle counts; coordinates in degrees</td>
+</tr>
+<tr class="odd">
+<td>Which place and period?</td>
+<td>Bristol, 2023; sampled survey days</td>
+</tr>
+<tr class="even">
+<td>How do we request a subset?</td>
+<td>Filters and page size</td>
+</tr>
+<tr class="odd">
+<td>How do we know we have everything?</td>
+<td>Pagination metadata</td>
+</tr>
+<tr class="even">
+<td>What can we do with it?</td>
+<td>Check access, licence and attribution</td>
+</tr>
+</tbody>
+</table>
+<aside class="notes">
+<p>71–74 minutes. Use the actual source site or bundled data/source-notes.md in a live demonstration. Local authority ID 144 comes from the Week 7 source audit; do not assume IDs from another API use the same scheme. DfT download page: https://roadtraffic.dft.gov.uk/downloads . Show source documentation before writing the request. If the service is unavailable, make that visible and use the labelled cached response. More details in source-notes.md.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="api" class="slide level2">
+<h2>Anatomy of a web API</h2>
+<p><img class="diagram" src="assets/api-anatomy.svg" alt="A client sends a method, URL and headers; a server returns status, headers and a body"></p>
+<p>An API defines how to request an operation and interpret its result.</p>
+<aside class="notes">
+<p>74–76 minutes. Application Programming Interface. Web APIs are one kind: libraries and operating systems also expose APIs. HTTP supplies request/response rules; HTTPS protects transport. Method, URL, headers and optional body form a request. Status, headers and body form the response. The resource path here is an illustrative teaching API, not the DfT endpoint. See MDN HTTP overview and Requests documentation in references.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="http" class="slide level2">
+<h2>GET and POST</h2>
+<div class="animation" data-animation="http" aria-label="Animate GET retrieval and POST creation between a Python client and a teaching server">
+
+</div>
+<aside class="notes">
+<p>76–79 minutes, together with REST. Normal slide Next progresses through GET: outbound request, server processing, response and client receipt. Point to the server table: two existing rows contain 182 and 233 cars. GET reads these records; the stored table remains unchanged. The response label summarises the records rather than displaying their full JSON bodies.</p>
+<p>The next advance starts POST. The request body contains site A38 and cars 286. When the server processes it, it assigns ID 3 and adds the complete row (3, A38, 286) to its stored table. This happens before the 201 Created response returns. Compare the body sent by the client with the new highlighted server row. A successful response then identifies /observations/3, and the client receives the created record. The highlight persists; receiving the response does not add another row.</p>
+<p>This table is a schematic view of the server’s records, resembling a DataFrame so students can follow the fields. An API does not require the server to use pandas; it might store records in a database or another structure. The optional local teaching server uses an in-memory list of dictionaries. POST often creates a resource; more generally it submits data for processing. This animation is a local simulation and makes no external request. Status codes and resource names illustrate a conventional design. JSON parsing happens after Python receives a Response. Distinguish request body from response body.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="rest" class="slide level2">
+<h2>REST APIs</h2>
+<div class="url-anatomy" aria-label="The URL is divided into scheme, host, resource path and query"><div><code>https://</code><span>scheme</span></div><div><code>example.org</code><span>host</span></div><div><code>/observations</code><span>resource path</span></div><div><code>?site=A38</code><span>query</span></div></div>
+<p>A resource has a URL. Each request supplies the context the server needs.</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Method</th>
+<th>Typical purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>GET</td>
+<td>Retrieve a representation</td>
+</tr>
+<tr class="even">
+<td>POST</td>
+<td>Submit data; commonly create a resource</td>
+</tr>
+<tr class="odd">
+<td>PUT / PATCH</td>
+<td>Replace / partially modify a resource</td>
+</tr>
+<tr class="even">
+<td>DELETE</td>
+<td>Remove a resource</td>
+</tr>
+</tbody>
+</table>
+<aside class="notes">
+<p>REST = Representational State Transfer, an architectural style. Resource URLs and consistent interface semantics matter; JSON alone does not make an API RESTful. Each request supplies its context (stateless interactions). GET is the only external method demonstrated. Further reference: client/server separation, cache constraints and layered systems. Method behaviour depends on documented endpoint semantics. Reference source: Fielding dissertation chapter 5 and MDN methods.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="formats" class="slide level2">
+<h2>Three records, four representations</h2>
+<div class="formats">
+<div><h3>CSV</h3><pre>site,cars
+A38,<em>182</em>
+A4,233
+M32,286</pre></div>
+<div><h3>JSON</h3><pre>[
+  {"site": "A38", "cars": <em>182</em>},
+  {"site": "A4", "cars": 233},
+  {"site": "M32", "cars": 286}
+]</pre></div>
+<div><h3>XML</h3><pre>&lt;observations&gt;
+  &lt;record site="A38" cars="<em>182</em>" /&gt;
+  &lt;record site="A4" cars="233" /&gt;
+  &lt;record site="M32" cars="286" /&gt;
+&lt;/observations&gt;</pre></div>
+<div><h3>HTML</h3><pre>&lt;table&gt;
+  &lt;tr&gt;&lt;td&gt;A38&lt;/td&gt;&lt;td&gt;<em>182</em>&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;A4&lt;/td&gt;&lt;td&gt;233&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;M32&lt;/td&gt;&lt;td&gt;286&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</pre></div>
+</div>
+<aside class="notes">
+<p>79–83 minutes. Follow each record across all four representations. These are illustrative records, not four publisher endpoints or a claim that the sites have these counts. JSON uses an array of objects; XML repeats elements under one root; HTML repeats table rows; CSV repeats rows under a header. Use established parsers rather than splitting markup by hand.</p>
+<p><strong>Reading the HTML:</strong> HTML means HyperText Markup Language. Angle brackets delimit tags: <code>&lt;table&gt;</code> opens a table and <code>&lt;/table&gt;</code> closes it. The slash in a closing tag marks the end of that element. <code>&lt;tr&gt;</code> means table row; <code>&lt;td&gt;</code> means a data cell within that row. Read the first row aloud: open a row, open a cell, put A38 in it, close the cell; open a second cell, put 182 in it, close that cell and the row. The text between the tags is the content. Tags describe its structure so a browser can display it. These angle brackets are markup syntax, not Python comparison operators. Nesting creates the document tree we inspect when scraping. Attributes such as <code>class="price_color"</code> add information to an opening tag and help us select elements later. Indentation helps people read the source.</p>
+<p><strong>Reading the XML:</strong> XML means Extensible Markup Language. It is a text format for representing structured information as nested elements and attributes. Unlike HTML’s standard vocabulary for webpage structure, XML lets a format define tags for its own domain. Here <code>&lt;observations&gt;</code> is the root enclosing three <code>&lt;record&gt;</code> elements. <code>site</code> and <code>cars</code> are attributes, with quoted values. The <code>/&gt;</code> ending makes each record a self-closing element: it has attributes but no nested content. Other XML formats put values inside child elements instead. XML requires properly nested, matching, case-sensitive tags. These attribute values are text; a parser or a schema-aware application must interpret the car counts as numbers. JSON’s unquoted counts are numeric values already. CSV and HTML text also need appropriate type conversion.</p>
+<p><strong>Why use XML, and who still uses it?</strong> Its explicit nesting suits hierarchical information and documents that mix prose with markup. Namespaces help combine vocabularies; schemas can specify and validate an agreed structure. It remains part of established exchange standards: SVG graphics use XML, modern Office files such as DOCX, XLSX and PPTX package XML with other assets, and SOAP web-service messages use XML. Our SVG diagrams are an example close to hand. XML has not stopped being used.</p>
+<p><strong>Why do many newer simple web APIs choose JSON?</strong> JSON directly represents objects, arrays and primitive values and maps naturally to familiar dictionaries and lists after parsing. For simple records it often needs less markup than opening/closing tags. This makes it convenient for web applications. That is a format tradeoff, not a rule that XML is obsolete or that REST requires JSON. XML remains useful for document markup, validation requirements and existing standards. XHTML is an XML formulation of HTML. Domain formats and custom-format documentation are in reference.</p>
+<p>Sources: <a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax">HTML syntax (MDN)</a>, <a href="https://www.w3.org/XML/">XML introduction (W3C)</a>, <a href="https://www.w3.org/TR/REC-xml/">XML specification (W3C)</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/SVG">SVG (MDN)</a>, <a href="https://learn.microsoft.com/en-us/office/open-xml/open-xml-sdk">Office Open XML (Microsoft)</a>, <a href="https://www.w3.org/TR/soap12-part1/">SOAP (W3C)</a>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="request-code" class="slide level2">
+<h2>Send a request</h2>
+<div class="flow compact">
+<span>Source</span><b>→</b><span>Documentation</span><b>→</b><span class="current">Retrieve + save</span><b>→</b><span>Process</span><b>→</b><span>Use</span>
+</div>
+<div class="request-sequence">
+<div class="request-frame fragment fade-out" data-fragment-index="0">
+<h3 id="the-full-url">The full URL</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb7-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb7-3"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> (<span class="st">'https://roadtraffic.dft.gov.uk/api/raw-counts'</span></span>
+<span id="cb7-5"><a href="" aria-hidden="true" tabindex="-1"></a>       <span class="st">'?filter[local_authority_id]=144&amp;filter[year]=2023'</span></span>
+<span id="cb7-6"><a href="" aria-hidden="true" tabindex="-1"></a>       <span class="st">'&amp;page[size]=2&amp;fields=road_name,cars_and_taxis'</span>)</span>
+<span id="cb7-7"><a href="" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(url, timeout<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb7-8"><a href="" aria-hidden="true" tabindex="-1"></a>response.raise_for_status()</span>
+<span id="cb7-9"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(json.dumps(response.json()[<span class="st">'data'</span>], indent<span class="op">=</span><span class="dv">2</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<pre class="output">[
+  {
+    "road_name": "A38",
+    "cars_and_taxis": 182
+  },
+  {
+    "road_name": "A38",
+    "cars_and_taxis": 233
+  }
+]</pre>
+</div>
+<div class="request-frame fragment fade-in-then-out" data-fragment-index="0">
+<h3 id="put-variables-into-the-url-with-an-f-string">Put variables into the URL with an f-string</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="" aria-hidden="true" tabindex="-1"></a>base <span class="op">=</span> <span class="st">'https://roadtraffic.dft.gov.uk/api/raw-counts'</span></span>
+<span id="cb8-2"><a href="" aria-hidden="true" tabindex="-1"></a>authority, year <span class="op">=</span> <span class="dv">144</span>, <span class="dv">2023</span></span>
+<span id="cb8-3"><a href="" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> (<span class="ss">f'</span><span class="sc">{</span>base<span class="sc">}</span><span class="ss">?filter[local_authority_id]=</span><span class="sc">{</span>authority<span class="sc">}</span><span class="ss">'</span></span>
+<span id="cb8-4"><a href="" aria-hidden="true" tabindex="-1"></a>       <span class="ss">f'&amp;filter[year]=</span><span class="sc">{</span>year<span class="sc">}</span><span class="ss">&amp;page[size]=2'</span></span>
+<span id="cb8-5"><a href="" aria-hidden="true" tabindex="-1"></a>       <span class="st">'&amp;fields=road_name,cars_and_taxis'</span>)</span>
+<span id="cb8-6"><a href="" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(url, timeout<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb8-7"><a href="" aria-hidden="true" tabindex="-1"></a>response.raise_for_status()</span>
+<span id="cb8-8"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(json.dumps(response.json()[<span class="st">'data'</span>], indent<span class="op">=</span><span class="dv">2</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<pre class="output">[
+  {
+    "road_name": "A38",
+    "cars_and_taxis": 182
+  },
+  {
+    "road_name": "A38",
+    "cars_and_taxis": 233
+  }
+]</pre>
+</div>
+<div class="request-frame fragment" data-fragment-index="1">
+<h3 id="let-requests-build-the-query-from-a-dictionary">Let Requests build the query from a dictionary</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="" aria-hidden="true" tabindex="-1"></a>base <span class="op">=</span> <span class="st">'https://roadtraffic.dft.gov.uk/api/raw-counts'</span></span>
+<span id="cb9-2"><a href="" aria-hidden="true" tabindex="-1"></a>params <span class="op">=</span> {<span class="st">'filter[local_authority_id]'</span>: <span class="dv">144</span>,</span>
+<span id="cb9-3"><a href="" aria-hidden="true" tabindex="-1"></a>          <span class="st">'filter[year]'</span>: <span class="dv">2023</span>, <span class="st">'page[size]'</span>: <span class="dv">2</span>,</span>
+<span id="cb9-4"><a href="" aria-hidden="true" tabindex="-1"></a>          <span class="st">'fields'</span>: <span class="st">'road_name,cars_and_taxis'</span>}</span>
+<span id="cb9-5"><a href="" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(base, params<span class="op">=</span>params, timeout<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb9-6"><a href="" aria-hidden="true" tabindex="-1"></a>response.raise_for_status()</span>
+<span id="cb9-7"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(json.dumps(response.json()[<span class="st">'data'</span>], indent<span class="op">=</span><span class="dv">2</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<pre class="output">[
+  {
+    "road_name": "A38",
+    "cars_and_taxis": 182
+  },
+  {
+    "road_name": "A38",
+    "cars_and_taxis": 233
+  }
+]</pre>
+</div>
+</div>
+<aside class="notes">
+<p>83–86 minutes. Normal Next replaces the full literal URL with the f-string version, then the params dictionary. All three request the same two records and two fields. No URL is abbreviated. Shared setup imports requests and json. Read the URL aloud: the resource path precedes ?, &amp; separates query parameters, and each name=value supplies a filter or option. An f-string substitutes the expressions inside braces; values containing spaces or reserved characters would need encoding. Prefer params for real requests: Requests encodes values and constructs the query string. page[size]=2 limits one page; fields selects two fields. This is a preview, not the full Bristol dataset. json.dumps formats the parsed data list as JSON for display. The response body also contains pagination metadata, omitted from this small printed preview. raise_for_status() raises an HTTPError on 4xx/5xx responses; a successful 200 continues. Timeouts and connection errors raise separately. The presenter Run buttons make real requests unless the server is explicitly started in saved mode. The complete bristol_traffic_pipeline.py downloads all records. DfT API documentation: https://roadtraffic.dft.gov.uk/api-documentation .</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="save-code" class="slide level2">
+<h2>Inspect and save the response</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.headers.get(<span class="st">'Content-Type'</span>))</span>
+<span id="cb10-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.text[:<span class="dv">200</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="columns">
+<div class="column" style="width:49%;">
+<h3 id="with-open">With <code>open</code></h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'output/traffic-response.json'</span>,</span>
+<span id="cb11-2"><a href="" aria-hidden="true" tabindex="-1"></a>          <span class="st">'w'</span>, encoding<span class="op">=</span><span class="st">'utf-8'</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb11-3"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="bu">file</span>.write(response.text)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column" style="width:49%;">
+<h3 id="with-pathlib.path">With <code>pathlib.Path</code></h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb12-2"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="" aria-hidden="true" tabindex="-1"></a>Path(<span class="st">'output/traffic-response.json'</span>).write_text(</span>
+<span id="cb12-4"><a href="" aria-hidden="true" tabindex="-1"></a>    response.text, encoding<span class="op">=</span><span class="st">'utf-8'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></div>
+<p>Save the original response before changing its contents.</p>
+<aside class="notes">
+<p>86–89 minutes. Inspect first, then compare two equivalent saving options. with open(…, ‘w’) opens a text file for writing; file is the name for the open file object. Indentation defines the with block; leaving it closes the file, including if an error occurs. ‘w’ replaces an existing file; encoding=‘utf-8’ specifies how text is stored. pathlib.Path represents a filesystem path; write_text opens, writes and closes the file in one call. Both snippets save the same unmodified response body. The shared setup creates output/; if typing from scratch, first run Path(‘output’).mkdir(exist_ok=True). The full pipeline also saves the request URL, params, acquisition date and live/saved mode. Response has attributes and methods, connecting Week 5. response.content is bytes; response.text is decoded text. requests.get does not return a DataFrame.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="parse-concept" class="slide level2">
+<h2>Parse the response</h2>
+<div class="flow compact">
+<span>Source</span><b>→</b><span>Documentation</span><b>→</b><span>Retrieve + save</span><b>→</b><span class="current">Process</span><b>→</b><span>Use</span>
+</div>
+<p>JSON is a text format. <code>response.json()</code> parses that text into Python objects.</p>
+<p>We call the parsed response body <strong><code>payload</code></strong>. It is an ordinary variable name.</p>
+<p><img class="diagram short" src="assets/response-types.svg" alt="Parsing a JSON object produces a Python dict; its data array becomes a list, which can form a DataFrame"></p>
+<p>A JSON <strong>object</strong> becomes a Python <strong>dict</strong>. A JSON <strong>array</strong> becomes a <strong>list</strong>.</p>
+<aside class="notes">
+<p>89–91 minutes. Payload means the content carried in a message, as distinct from HTTP status and headers. Here payload is our chosen Python variable name for the parsed JSON body: payload = response.json(). It is not a Python keyword or a special Requests object. A dict here is the parsed representation of the response’s JSON object. Parsing is not a cast to a DataFrame. Not all JSON becomes a dict: arrays become lists, true/false become True/False and null becomes None. Draw attention to the intermediate objects before showing code. This DfT response contains data and pagination fields; data is a list of record dictionaries. A different API may use a different schema. Do not assume every response contains data. Use keys, len and selected records to inspect it.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="parse-code" class="slide level2">
+<h2>Inspect the parsed objects</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="" aria-hidden="true" tabindex="-1"></a>payload <span class="op">=</span> response.json()</span>
+<span id="cb13-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">list</span>(payload)[:<span class="dv">4</span>])</span>
+<span id="cb13-3"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="" aria-hidden="true" tabindex="-1"></a>records <span class="op">=</span> payload[<span class="st">'data'</span>]</span>
+<span id="cb13-5"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(records)</span>
+<span id="cb13-6"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(records))</span>
+<span id="cb13-7"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(records)</span>
+<span id="cb13-9"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<pre class="output">['current_page', 'data', 'first_page_url', 'from']
+[{'road_name': 'A38', 'cars_and_taxis': 182},
+ {'road_name': 'A38', 'cars_and_taxis': 233}]
+2
+  road_name  cars_and_taxis
+0       A38             182
+1       A38             233</pre>
+<aside class="notes">
+<p>91–93 minutes. This uses the same two-record, two-field preview requested on slide 33. Print the records so students can recognise the list of dictionaries, then see how pandas arranges the fields into columns. response.json() parses body text into Python objects. json.loads(text) and json.load(file) are reference alternatives. Students predict dict → list → DataFrame from the preceding diagram. The full 31 October saved query contains 936 records; do not confuse that complete query with this two-record page.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="pagination" class="slide level2">
+<h2>Check for more pages</h2>
+<ol type="1">
+<li><strong>Read the documentation:</strong> look for <code>page</code>, <code>limit</code>, <code>offset</code> or <code>cursor</code> parameters.</li>
+<li><strong>Inspect the response:</strong> pagination may appear in JSON metadata or an HTTP <code>Link</code> header.</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(payload.keys())</span>
+<span id="cb14-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(payload.get(<span class="st">'next_page_url'</span>))</span>
+<span id="cb14-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.links.get(<span class="st">'next'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Follow the documented next-page link or cursor until there are no more pages.</p>
+<div class="fragment">
+<p>Our two-record preview has more pages. The complete saved query contains<br> <strong>936 records</strong> and fits on one page when <code>page[size] = 10000</code>.</p>
+</div>
+<aside class="notes">
+<p>93–94 minutes, including the following illustration. Pagination conventions differ across APIs: first read source documentation; inspect top-level keys and nested links/meta/paging blocks, and response.headers.get(‘Link’). Requests exposes parsed Link headers via response.links. response.links.get(‘next’) returns a link-info dict when present, not the URL string itself. On this DfT response pagination is in the JSON, so response.links can be empty. None for next_page_url means no next page for this result, not that the API lacks pagination. Absence of a next field does not establish completeness without knowing the documented schema. Our saved body has total=936 and last_page=1; the full demo checks totals and follows links. Sources: https://requests.readthedocs.io/en/latest/user/advanced/#link-headers and https://docs.github.com/en/rest/using-the-rest-api/using-pagination-in-the-rest-api .</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="pagination-demo" class="slide level2">
+<h2>Following pagination links</h2>
+<div class="animation" data-animation="pagination" aria-label="A paginated teaching response reveals six records across three pages">
+
+</div>
+<aside class="notes">
+<p>Illustrative teaching response, not a claim about the saved DfT query. Each Next fetches the linked page and appends its records. The last page has no next link. Six records in total are collected from three pages of two. Final advance shows the complete list. An API may instead use cursors or offsets; follow its documentation. This is a quick visual within the existing API demonstration time.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="process-code" class="slide level2">
+<h2>Process the records</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="" aria-hidden="true" tabindex="-1"></a>counts <span class="op">=</span> df[[<span class="st">'road_name'</span>, <span class="st">'cars_and_taxis'</span>]].copy()</span>
+<span id="cb15-2"><a href="" aria-hidden="true" tabindex="-1"></a>counts <span class="op">=</span> counts.rename(columns<span class="op">=</span>{<span class="st">'cars_and_taxis'</span>: <span class="st">'cars'</span>})</span>
+<span id="cb15-3"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(counts.dtypes)</span>
+<span id="cb15-5"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(counts.isna().<span class="bu">sum</span>())</span>
+<span id="cb15-6"><a href="" aria-hidden="true" tabindex="-1"></a>counts.to_csv(<span class="st">'output/traffic-counts.csv'</span>, index<span class="op">=</span><span class="va">False</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Check fields, types, units and missing values before summarising.</p>
+<aside class="notes">
+<p>94–98 minutes. This small example processes the same two-field preview into a CSV. Then open live/bristol_traffic_pipeline.py for the full source-to-plot walkthrough: request all fields/records, follow pagination, check types/missingness/duplicates, combine directions within site/date/hour, select site 6401 on 13 July 2023 and plot. Preview data do not include the site/date/hour fields needed for that aggregation. Keep the raw response separate from the processed CSV. Missing observations are not automatically zero; one sampled day is not an annual traffic estimate.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="scrape" class="slide level2">
+<h2>Data on a webpage</h2>
+<div class="flow compact">
+<span>Source</span><b>→</b><span class="current">Documentation</span><b>→</b><span>Retrieve + save</span><b>→</b><span>Process</span><b>→</b><span>Use</span>
+</div>
+<div class="scrape-overview"><img class="scrape-illustration" src="assets/book-spider.png" alt="A friendly pixel spider inspects an open book"><div class="comparison"><div><h3>A download or API is available</h3><p>Use its documented fields and access method.</p></div><div><h3>The required values are in HTML</h3><p>Inspect the document and extract the relevant elements.</p></div></div></div>
+<p>Check access conditions and request rates before retrieving pages.</p>
+<aside class="notes">
+<p>98–101 minutes. The workflow is unchanged. Scraping = retrieving a page and extracting information from its markup. Some pages depend on JavaScript; values seen in a browser may not be present in the initial HTML. Open https://books.toscrape.com/ live. It is a public scraping-practice site; its prices and ratings are demonstration data. Identify a book title and price, then inspect its HTML. The code fetches this public page directly. The saved page is only an explicitly selected fallback. The small book-spider illustration was generated for this lecture with the built-in image-generation tool; see visual-notes.md.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="html" class="slide level2">
+<h2>HTML elements</h2>
+<p><img class="diagram" src="assets/html-tree.svg" alt="A book article contains a price paragraph with class price_color and the text £51.77"></p>
+<p>Tags and attributes help us select the values we need.</p>
+<aside class="notes">
+<p>101–104 minutes. Show the live Books to Scrape page beside the matching markup fragment. Explain tag, attribute and text before code. article.product_pod selects each book; .price_color selects its price paragraph. Nesting describes context. An absent match is a condition to inspect. BeautifulSoup parses; requests retrieves. Scrapy and Selenium are tool signposts in reference, not additional coding exercises.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="scrape-code" class="slide level2">
+<h2>Extract values from HTML</h2>
+<div class="flow compact">
+<span>Source</span><b>→</b><span>Documentation</span><b>→</b><span>Retrieve + save</span><b>→</b><span class="current">Process</span><b>→</b><span>Use</span>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bs4 <span class="im">import</span> BeautifulSoup</span>
+<span id="cb16-2"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="" aria-hidden="true" tabindex="-1"></a>page <span class="op">=</span> requests.get(<span class="st">'https://books.toscrape.com/'</span>, timeout<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb16-4"><a href="" aria-hidden="true" tabindex="-1"></a>page.raise_for_status()</span>
+<span id="cb16-5"><a href="" aria-hidden="true" tabindex="-1"></a>page.encoding <span class="op">=</span> <span class="st">'utf-8'</span></span>
+<span id="cb16-6"><a href="" aria-hidden="true" tabindex="-1"></a>soup <span class="op">=</span> BeautifulSoup(page.text, <span class="st">'html.parser'</span>)</span>
+<span id="cb16-7"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="" aria-hidden="true" tabindex="-1"></a>prices <span class="op">=</span> soup.select(<span class="st">'article.product_pod .price_color'</span>)</span>
+<span id="cb16-9"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([price.get_text(strip<span class="op">=</span><span class="va">True</span>) <span class="cf">for</span> price <span class="kw">in</span> prices[:<span class="dv">3</span>]])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<pre class="output">['£51.77', '£53.74', '£50.10']</pre>
+<p><a href="https://books.toscrape.com/" target="_blank">Open the live website</a></p>
+<p><code>raise_for_status()</code> stops on an HTTP error such as <strong>404</strong> or <strong>500</strong>.<br> A successful <strong>200</strong> response continues to the next line.</p>
+<aside class="notes">
+<p>104–110 minutes. raise_for_status() checks the HTTP status and raises requests.HTTPError for a 4xx or 5xx response. It returns normally for 200; it does not itself print anything or check the page’s contents. This prevents us continuing to parse an error page as book data. It does not detect every possible problem: a 200 page can still contain unexpected HTML or an empty match. live/scrape_demo.py fetches the public site, prints the selected element and first three prices, then saves a title/price table. First inspect prices[0], then extract text. Set UTF-8 explicitly for the pound sign. Change the selector to .missing and inspect the empty result. Prices and ratings are artificial practice data. –saved explicitly reads the captured page if needed. Requests reference: https://requests.readthedocs.io/en/latest/user/quickstart/#response-status-codes .</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="finish" class="slide level2">
+<h2>Process and use the data</h2>
+<div class="flow compact">
+<span>Source</span><b>→</b><span>Documentation</span><b>→</b><span>Retrieve + save</span><b>→</b><span class="current">Process</span><b>→</b><span class="current">Use</span>
+</div>
+<div class="analysis-recap">
+<div><h3>NumPy arrays</h3><div class="recap-media"><img class="recap-duck" src="assets/duck.png" alt="The image stored as an array"></div><p>Slice and transform<br>numerical data.</p></div>
+<div><h3>pandas DataFrames</h3><div class="recap-media">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">site</th>
+<th data-quarto-table-cell-role="th">hour</th>
+<th data-quarto-table-cell-role="th">cars</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A38</td>
+<td>12</td>
+<td>182</td>
+</tr>
+<tr class="even">
+<td>A38</td>
+<td>14</td>
+<td>233</td>
+</tr>
+</tbody>
+</table>
+</div><p>Inspect, clean and select.<br>Group and combine tables.</p></div>
+<div><h3>Matplotlib graphs</h3><div class="recap-media"><img src="assets/traffic-line.png" alt="A Matplotlib graph of the Bristol observations"></div><p>Explore patterns.<br>Communicate results.</p></div>
+</div>
+<p>Later lectures will explore how to use Python for data analysis.</p>
+<aside class="notes">
+<p>110–116 minutes. Connect the acquisition story back to familiar objects: numeric arrays and their slices, labelled DataFrames and their operations, Matplotlib figures and chart choices. Libraries overlap: pandas can plot and NumPy underlies many operations. The table shows selected raw example rows, not all data or grouped hourly counts. The plot groups directions within each observed hour, as explained earlier. Future lectures extend the analysis: EDA, missing values, appropriate summaries/plots and outliers. Keep source period, units and provenance with results. Ask where to inspect a wrong value and where to check for missing records.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="questions" class="slide level2">
+<h2>Questions</h2>
+<div class="exit-quiz" aria-label="Four questions, each followed by its answer">
+<p class="exit-intro fragment fade-out" data-fragment-index="0">Explain your answer before revealing it.</p>
+<div class="exit-frame fragment fade-in-then-out" data-fragment-index="0" data-question="1" data-answer="false"><h3>Question 1</h3><p class="exit-question">Why does a width-three window over six values produce four complete windows?</p></div>
+<div class="exit-frame fragment fade-in-then-out" data-fragment-index="1" data-question="1" data-answer="true"><h3>Question 1</h3><p class="exit-question">Why does a width-three window over six values produce four complete windows?</p><p class="exit-answer">The valid start indices are 0, 1, 2 and 3.<br>Number of complete windows = 6 − 3 + 1 = 4.</p></div>
+<div class="exit-frame fragment fade-in-then-out" data-fragment-index="2" data-question="2" data-answer="false"><h3>Question 2</h3><p class="exit-question">What is wrong with averaging count-point IDs?</p></div>
+<div class="exit-frame fragment fade-in-then-out" data-fragment-index="3" data-question="2" data-answer="true"><h3>Question 2</h3><p class="exit-question">What is wrong with averaging count-point IDs?</p><p class="exit-answer">IDs are nominal labels. Their mean has no useful interpretation as a site or a measured quantity.</p></div>
+<div class="exit-frame fragment fade-in-then-out" data-fragment-index="4" data-question="3" data-answer="false"><h3>Question 3</h3><p class="exit-question">How does a <code>Response</code> differ from <code>payload['data']</code>?</p></div>
+<div class="exit-frame fragment fade-in-then-out" data-fragment-index="5" data-question="3" data-answer="true"><h3>Question 3</h3><p class="exit-question">How does a <code>Response</code> differ from <code>payload['data']</code>?</p><p class="exit-answer">A <code>Response</code> contains the HTTP status, headers and body.<br>In our API example, <code>payload['data']</code> is a list of records from the parsed JSON body.</p></div>
+<div class="exit-frame fragment fade-in-then-out" data-fragment-index="6" data-question="4" data-answer="false"><h3>Question 4</h3><p class="exit-question">What would you check before scraping a webpage?</p></div>
+<div class="exit-frame fragment fade-in-then-out" data-fragment-index="7" data-question="4" data-answer="true"><h3>Question 4</h3><p class="exit-question">What would you check before scraping a webpage?</p><p class="exit-answer">Check for a documented download or API, the fields you need, access rules, terms and rate limits. Then inspect the HTML to find the data.</p></div>
+</div>
+<aside class="notes">
+<p>116–120 minutes. Normal slide Next reveals question 1, then its answer, then question 2 and its answer, and so on. Only the current question is displayed. Pause for a prediction or explanation before each answer; Previous reverses the sequence. Answers: the last valid window start is 3, so starts 0–3 give 6−3+1=4 windows; IDs are nominal labels; Response contains HTTP status/headers/body while payload[‘data’] is a parsed list in this API schema; check documented download/API, required fields and access/terms/rate limits, then inspect HTML. For question 3, response.json() parses the body into payload before indexing its ‘data’ field. Later lectures: EDA, appropriate plots/summaries and dealing with outliers. End the main route here. Following slides are reference material, not additional timed content.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="reference" class="slide level2 section-slide">
+<h2>Reference material</h2>
+<p>Worked examples and documentation</p>
+</section>
+<section id="ref-memory" class="slide level2 reference-slide">
+<h2>Reference: names and data buffers</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Object</th>
+<th>Storage and behaviour</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>String</td>
+<td>Immutable text; methods such as <code>upper()</code> return a string</td>
+</tr>
+<tr class="even">
+<td>List</td>
+<td>Mutable sequence of references to Python objects</td>
+</tr>
+<tr class="odd">
+<td>Numeric NumPy array</td>
+<td>Shape and dtype describe a typed data buffer</td>
+</tr>
+<tr class="even">
+<td>Basic array slice</td>
+<td>Usually a separate array object sharing the original buffer</td>
+</tr>
+<tr class="odd">
+<td>Array copy</td>
+<td>Independent data buffer</td>
+</tr>
+</tbody>
+</table>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="" aria-hidden="true" tabindex="-1"></a>original <span class="op">=</span> np.array([<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>])</span>
+<span id="cb17-2"><a href="" aria-hidden="true" tabindex="-1"></a>view <span class="op">=</span> original[<span class="dv">1</span>:]</span>
+<span id="cb17-3"><a href="" aria-hidden="true" tabindex="-1"></a>view[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">99</span>        <span class="co"># original is now [10, 99, 30]</span></span>
+<span id="cb17-4"><a href="" aria-hidden="true" tabindex="-1"></a>copy <span class="op">=</span> original.copy()</span>
+<span id="cb17-5"><a href="" aria-hidden="true" tabindex="-1"></a>copy[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">0</span>        <span class="co"># original remains [10, 99, 30]</span></span>
+<span id="cb17-6"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(original)</span>
+<span id="cb17-7"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(copy)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<aside class="notes">
+<p>NumPy object arrays are an exception to the fixed-width numeric-values simplification: their elements hold references to Python objects. Basic versus advanced indexing matters for copying. Official guide: https://numpy.org/doc/stable/user/basics.copies.html . Allocation details are conceptual, not a promise about physical addresses or fixed byte counts across Python implementations.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="ref-window" class="slide level2 reference-slide">
+<h2>Reference: windows and inspection</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="" aria-hidden="true" tabindex="-1"></a>values <span class="op">=</span> np.array([<span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">3</span>, <span class="dv">1</span>])</span>
+<span id="cb18-2"><a href="" aria-hidden="true" tabindex="-1"></a>width <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb18-3"><a href="" aria-hidden="true" tabindex="-1"></a>averages <span class="op">=</span> []</span>
+<span id="cb18-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> start <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(values) <span class="op">-</span> width <span class="op">+</span> <span class="dv">1</span>):</span>
+<span id="cb18-5"><a href="" aria-hidden="true" tabindex="-1"></a>    stop <span class="op">=</span> start <span class="op">+</span> width</span>
+<span id="cb18-6"><a href="" aria-hidden="true" tabindex="-1"></a>    window <span class="op">=</span> values[start:stop]</span>
+<span id="cb18-7"><a href="" aria-hidden="true" tabindex="-1"></a>    average <span class="op">=</span> window.mean()</span>
+<span id="cb18-8"><a href="" aria-hidden="true" tabindex="-1"></a>    averages.append(<span class="bu">float</span>(average))</span>
+<span id="cb18-9"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(start, stop, window, average, averages)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Width 2: <code>[3.5, 3.0, 5.0, 4.5, 2.0]</code></p>
+<p>Width 3: <code>[3.667, 4.0, 4.333, 3.333]</code> (rounded)</p>
+<aside class="notes">
+<p>Source exercise: supplied Tutorial 7A – Numpy, Exercise 6. Restrict width to 1 through len(values). Optional library bridge after understanding: np.lib.stride_tricks.sliding_window_view(values, width).mean(axis=-1). NumPy sliding_window_view documentation: https://numpy.org/doc/stable/reference/generated/numpy.lib.stride_tricks.sliding_window_view.html . Be clear that this returns overlapping views; do not mutate them as part of this demonstration.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="ref-pandas" class="slide level2 reference-slide">
+<h2>Reference: DataFrame operations</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect missing entries before deciding what they mean.</span></span>
+<span id="cb19-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(traffic.isna().<span class="bu">sum</span>())</span>
+<span id="cb19-3"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Group and combine directions within each observed hour.</span></span>
+<span id="cb19-5"><a href="" aria-hidden="true" tabindex="-1"></a>site_hour <span class="op">=</span> traffic.groupby(</span>
+<span id="cb19-6"><a href="" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'count_point_id'</span>, <span class="st">'count_date'</span>, <span class="st">'hour'</span>], as_index<span class="op">=</span><span class="va">False</span></span>
+<span id="cb19-7"><a href="" aria-hidden="true" tabindex="-1"></a>)[[<span class="st">'bicycles'</span>, <span class="st">'cars'</span>]].<span class="bu">sum</span>()</span>
+<span id="cb19-8"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-9"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter rows; select named columns.</span></span>
+<span id="cb19-10"><a href="" aria-hidden="true" tabindex="-1"></a>selected <span class="op">=</span> site_hour.loc[site_hour[<span class="st">'bicycles'</span>] <span class="op">&gt;=</span> <span class="dv">30</span>,</span>
+<span id="cb19-11"><a href="" aria-hidden="true" tabindex="-1"></a>                         [<span class="st">'count_point_id'</span>, <span class="st">'bicycles'</span>]]</span>
+<span id="cb19-12"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(selected.head())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>groupby</code> defines groups; a summary such as <code>sum</code> produces the result.</p>
+<aside class="notes">
+<p>Do not fill missing values with zero by default. sum skips missing values by default; use an explicit min_count policy if applying this to incomplete groups. The bundled count columns have no missing values. pandas indexing guide: https://pandas.pydata.org/docs/user_guide/indexing.html . GroupBy guide: https://pandas.pydata.org/docs/user_guide/groupby.html . Tutorial 7B uses mtcars, reading a CSV, statistics and subsets by transmission.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="ref-plots" class="slide level2 reference-slide">
+<h2>Reference: plotting methods</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Question</th>
+<th>Matplotlib method</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>How does a quantity change with x?</td>
+<td><code>ax.plot(x, y)</code></td>
+</tr>
+<tr class="even">
+<td>How are two quantities related?</td>
+<td><code>ax.scatter(x, y)</code></td>
+</tr>
+<tr class="odd">
+<td>What is the distribution?</td>
+<td><code>ax.hist(values, bins=15)</code></td>
+</tr>
+<tr class="even">
+<td>How do categories compare?</td>
+<td><code>ax.bar(labels, values)</code></td>
+</tr>
+<tr class="odd">
+<td>Which categories rank highest?</td>
+<td><code>ax.barh(labels, values)</code></td>
+</tr>
+<tr class="even">
+<td>What are the shares of a defined total?</td>
+<td><code>ax.pie(values, labels=labels)</code></td>
+</tr>
+<tr class="odd">
+<td>What does an image array contain?</td>
+<td><code>ax.imshow(RGB)</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>fig, ax = plt.subplots()</code> creates a Figure and an Axes. Label units.</p>
+<aside class="notes">
+<p>Matplotlib plot types: https://matplotlib.org/stable/plot_types/index.html . Do not confuse a histogram’s bins with categorical bars. Pie and stacked plots require a meaningful common total; bars often make close comparisons easier. The gallery pie is explicitly only the four shown categories. Matplotlib legend/colourbar labels are needed when using colour or size to encode quantities.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="ref-classification" class="slide level2 reference-slide">
+<h2>Reference: classification answers</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Example from the original deck</th>
+<th>Classification</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Shoe brand; letter grade; jersey number</td>
+<td>Qualitative</td>
+</tr>
+<tr class="even">
+<td>Number correct on an exam</td>
+<td>Quantitative, discrete</td>
+</tr>
+<tr class="odd">
+<td>Number of cows</td>
+<td>Quantitative, discrete</td>
+</tr>
+<tr class="even">
+<td>Walking duration; volume of milk</td>
+<td>Quantitative, continuous</td>
+</tr>
+<tr class="odd">
+<td>Jersey number</td>
+<td>Nominal</td>
+</tr>
+<tr class="even">
+<td>Food ranking: poor / fair / good</td>
+<td>Ordinal</td>
+</tr>
+<tr class="odd">
+<td>Calendar year; Celsius temperature</td>
+<td>Interval</td>
+</tr>
+<tr class="even">
+<td>Elapsed marathon duration</td>
+<td>Ratio</td>
+</tr>
+</tbody>
+</table>
+<p>Three hours is twice the duration of 1.5 hours.</p>
+</section>
+<section id="ref-bins" class="slide level2 reference-slide">
+<h2>Reference: binning and representative values</h2>
+<p>Sorted values: <code>10, 15, 25, 34, 44, 48, 55, 59, 64, 69, 88, 94</code></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Equal-count group</th>
+<th style="text-align: right;">Mean</th>
+<th style="text-align: right;">Median</th>
+<th>Observed endpoints</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>10, 15, 25</td>
+<td style="text-align: right;">16.67</td>
+<td style="text-align: right;">15</td>
+<td>10, 25</td>
+</tr>
+<tr class="even">
+<td>34, 44, 48</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: right;">44</td>
+<td>34, 48</td>
+</tr>
+<tr class="odd">
+<td>55, 59, 64</td>
+<td style="text-align: right;">59.33</td>
+<td style="text-align: right;">59</td>
+<td>55, 64</td>
+</tr>
+<tr class="even">
+<td>69, 88, 94</td>
+<td style="text-align: right;">83.67</td>
+<td style="text-align: right;">88</td>
+<td>69, 94</td>
+</tr>
+</tbody>
+</table>
+<p>Replace values with the mean, median or nearest endpoint to smooth within a bin.</p>
+<p>For <code>[10, 15, 25]</code>, nearest-endpoint replacement gives <code>[10, 10, 25]</code>.</p>
+<aside class="notes">
+<p>Corrects the original medians and clarifies equal-count grouping. A tie between endpoints needs a defined policy. Assigning categories and replacing measurements are distinct operations. pd.cut(x, bins=3) makes equal-width intervals; pd.qcut(x, q=3) makes quantile-based groups, subject to ties. Documentation: https://pandas.pydata.org/docs/reference/api/pandas.cut.html and https://pandas.pydata.org/docs/reference/api/pandas.qcut.html . Binning does not automatically guarantee file-size reduction.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="ref-unstructured" class="slide level2 reference-slide">
+<h2>Reference: extracting fields from content</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Task or tool</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Text mining / NLP</td>
+<td>Extract language features or entities</td>
+</tr>
+<tr class="even">
+<td>Information retrieval</td>
+<td>Find and rank relevant content</td>
+</tr>
+<tr class="odd">
+<td>MongoDB</td>
+<td>Document database</td>
+</tr>
+<tr class="even">
+<td>Neo4j</td>
+<td>Graph database</td>
+</tr>
+<tr class="odd">
+<td>HBase</td>
+<td>Wide-column database</td>
+</tr>
+<tr class="even">
+<td>Hadoop</td>
+<td>Distributed storage/processing ecosystem</td>
+</tr>
+</tbody>
+</table>
+<p>An email can combine structured headers with free-text content.</p>
+<aside class="notes">
+<p>These are signposts preserving the original unstructured-data slide. No installation/demo implied. Official sources: https://www.mongodb.com/docs/ ; https://neo4j.com/docs/ ; https://hbase.apache.org/ ; https://hadoop.apache.org/ . Different tools serve different roles; they do not make unstructured meaning automatically interpretable.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="ref-formats" class="slide level2 reference-slide">
+<h2>Reference: formats and parsers</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Representation</th>
+<th>Read with</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>CSV file or stream</td>
+<td><code>pd.read_csv(...)</code> or Python <code>csv</code></td>
+</tr>
+<tr class="even">
+<td>JSON response body</td>
+<td><code>response.json()</code></td>
+</tr>
+<tr class="odd">
+<td>JSON text / file</td>
+<td><code>json.loads(text)</code> / <code>json.load(file)</code></td>
+</tr>
+<tr class="even">
+<td>XML</td>
+<td>An XML parser, e.g.&nbsp;<code>xml.etree.ElementTree</code></td>
+</tr>
+<tr class="odd">
+<td>HTML</td>
+<td>An HTML parser, e.g.&nbsp;BeautifulSoup</td>
+</tr>
+<tr class="even">
+<td>XHTML</td>
+<td>HTML expressed using XML syntax</td>
+</tr>
+<tr class="odd">
+<td>Shapefile / RVT</td>
+<td>Domain-specific geospatial / building-model tools</td>
+</tr>
+</tbody>
+</table>
+<p>Document the schema, units and version of a custom format.</p>
+<aside class="notes">
+<p>JSON https://docs.python.org/3/library/json.html ; CSV https://docs.python.org/3/library/csv.html ; XML https://docs.python.org/3/library/xml.etree.elementtree.html . Formats are separate from transport and from measurement scale. Use established parsers. CSV parsers handle quoting and embedded delimiters, so splitting every line on commas is inadequate.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="ref-rest" class="slide level2 reference-slide">
+<h2>Reference: REST and failures</h2>
+<p>REST describes architectural constraints: client/server separation, stateless interactions, caching, a uniform interface and layers; code-on-demand is optional.</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Situation</th>
+<th>What to inspect</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Timeout or connection failure</td>
+<td>Network/service availability; catch request exceptions</td>
+</tr>
+<tr class="even">
+<td>Non-success HTTP status</td>
+<td>Status and error body; <code>raise_for_status()</code></td>
+</tr>
+<tr class="odd">
+<td>Unexpected content or schema</td>
+<td>Content type, body preview, keys and types</td>
+</tr>
+<tr class="even">
+<td>Only some records returned</td>
+<td>Pagination and documented totals</td>
+</tr>
+<tr class="odd">
+<td>Too many requests</td>
+<td>Published limits; retry guidance</td>
+</tr>
+</tbody>
+</table>
+<aside class="notes">
+<p>Fielding, chapter 5: https://ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm . HTTP methods: https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods . Requests quickstart https://requests.readthedocs.io/en/latest/user/quickstart/ . REST is not a synonym for arbitrary HTTP+JSON. Do not blindly retry POST: repeated submission may duplicate an action unless endpoint semantics/idempotency mechanisms prevent it.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="ref-scraping" class="slide level2 reference-slide">
+<h2>Reference: scrape, extract and store</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect links and resolve relative destinations when needed.</span></span>
+<span id="cb20-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> urllib.parse <span class="im">import</span> urljoin</span>
+<span id="cb20-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> anchor <span class="kw">in</span> soup.find_all(<span class="st">'a'</span>)[:<span class="dv">3</span>]:</span>
+<span id="cb20-4"><a href="" aria-hidden="true" tabindex="-1"></a>    href <span class="op">=</span> anchor.get(<span class="st">'href'</span>)</span>
+<span id="cb20-5"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> href:</span>
+<span id="cb20-6"><a href="" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(urljoin(page.url, href))</span>
+<span id="cb20-7"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-8"><a href="" aria-hidden="true" tabindex="-1"></a>values <span class="op">=</span> [<span class="bu">float</span>(p.get_text(strip<span class="op">=</span><span class="va">True</span>).removeprefix(<span class="st">'£'</span>))</span>
+<span id="cb20-9"><a href="" aria-hidden="true" tabindex="-1"></a>          <span class="cf">for</span> p <span class="kw">in</span> prices]</span>
+<span id="cb20-10"><a href="" aria-hidden="true" tabindex="-1"></a>pd.DataFrame({<span class="st">'price_gbp'</span>: values}).to_csv(</span>
+<span id="cb20-11"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="st">'output/scraped-prices.csv'</span>, index<span class="op">=</span><span class="va">False</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>BeautifulSoup parses documents. Scrapy organises crawls. Selenium automates a browser.</p>
+<aside class="notes">
+<p>https://www.crummy.com/software/BeautifulSoup/bs4/doc/ ; https://docs.scrapy.org/ ; https://www.selenium.dev/documentation/ . Need a parser specified (html.parser here). JavaScript-rendered data may be absent in downloaded initial HTML. Check terms, permissions, robots guidance and rate limits. The live example uses https://books.toscrape.com/ ; the captured HTML is available as an explicitly selected fallback. Prices and ratings are synthetic practice data.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="ref-sources" class="slide level2 reference-slide">
+<h2>Reference: sources and reading</h2>
+<ul>
+<li>DfT road traffic data: <a href="https://roadtraffic.dft.gov.uk/downloads">downloads and guidance</a></li>
+<li><a href="https://requests.readthedocs.io/en/latest/user/quickstart/">Requests quickstart</a></li>
+<li><a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/">BeautifulSoup documentation</a></li>
+<li><a href="https://wesmckinney.com/book/accessing-data">Python for Data Analysis: data loading</a></li>
+<li><a href="https://ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm">REST architectural constraints</a></li>
+</ul>
+<p>Saved traffic response: <strong>31 October 2026</strong>. Observations: <strong>2023</strong>.</p>
+<p>Next session: exploratory data analysis, appropriate summaries and plots, outliers.</p>
+<aside class="notes">
+<p>Original reading slide named Python for Data Analysis chapter 6 and Web Scraping with Python. Use the linked data-loading chapter rather than assuming the same chapter number across editions. Original Web Scraping with Python reference: https://learning.oreilly.com/library/view/web-scraping-with/9781491985564/ . DfT public-sector information under Open Government Licence v3.0, https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/ . Retain attribution and source limitations. data/source-notes.md records provenance and interpretation. All new diagrams are editable teaching diagrams; chart data are the bundled saved records. The duck and memory activity are reused from Week 7.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+<p>bristol.ac.uk</p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="week8_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="week8_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="week8_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="week8_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="week8_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="week8_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="week8_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="week8_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="week8_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': false,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'fast',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1600,
+
+        height: 900,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 7.0e-2,
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <div class="brand-logo" role="img" aria-label="University of Bristol"><img src="assets/bristol-slide-original.jpeg" alt=""></div>
+    <script src="animations.js"></script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>

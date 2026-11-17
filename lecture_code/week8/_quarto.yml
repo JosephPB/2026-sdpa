@@ -1,0 +1,11 @@
+project:
+  type: default
+  render: [week8.qmd]
+  resources:
+    - assets/**
+    - activities/**
+    - data/**
+    - live/**
+    - animations.js
+execute:
+  eval: false

@@ -1,0 +1,7 @@
+```{=html}
+<pre class="executed-output">Original: [100. 200. 300.]
+Min–max: [0.  0.5 1. ]
+z-scores: [-1.225  0.     1.225]
+z mean / SD: 0.0 1.0
+</pre>
+```

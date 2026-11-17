@@ -1,0 +1,7 @@
+{
+  "source": "https://roadtraffic.dft.gov.uk/api/raw-counts?filter%5Blocal_authority_id%5D=144&filter%5Byear%5D=2023&page%5Bsize%5D=2&fields=road_name%2Ccars_and_taxis",
+  "retrieved": "2026-11-09",
+  "mode": "live",
+  "fields": "road_name,cars_and_taxis",
+  "page_size": 2
+}

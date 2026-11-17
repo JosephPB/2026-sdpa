@@ -1,0 +1,6 @@
+{
+  "url": "https://books.toscrape.com/",
+  "retrieved": "2026-11-08T19:53:37.555096+00:00",
+  "status": 200,
+  "purpose": "Optional saved fallback for a live public scraping demo; prices are synthetic teaching data."
+}

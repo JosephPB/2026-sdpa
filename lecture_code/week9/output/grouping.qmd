@@ -1,0 +1,8 @@
+```{=html}
+<pre class="executed-output"> hour  cars  bicycles
+    7   414        51
+    8   514        54
+    9   438        25
+Observed site-hours: 480
+</pre>
+```

@@ -1,0 +1,32 @@
+[
+  {
+    "name": "categories",
+    "code": "import pandas as pd\n\ntraffic = pd.read_csv('data/bristol_traffic_2023.csv')\ntraffic['direction'] = (traffic['direction']\n    .astype('string').str.strip().str.upper()\n    .fillna('Missing'))\ncounts = traffic['direction'].value_counts(dropna=False)\nsummary = pd.DataFrame({\n    'records': counts,\n    'proportion': counts / len(traffic),\n    'percent': 100 * counts / len(traffic)\n})\nprint(summary.round(3))",
+    "stdout": "           records  proportion  percent\ndirection                              \nW              252       0.269   26.923\nE              240       0.256   25.641\nS              228       0.244   24.359\nN              216       0.231   23.077\n",
+    "images": []
+  },
+  {
+    "name": "summary",
+    "code": "cars = hourly['cars']\nprint(cars.describe().round(1))\nprint('Median:', cars.median())\nprint('Range:', cars.max() - cars.min())\nprint('Sample variance:',\n      round(cars.var(ddof=1), 1))",
+    "stdout": "count     480.0\nmean     1138.0\nstd      1272.4\nmin         8.0\n25%       183.8\n50%       679.0\n75%      1422.2\nmax      5867.0\nName: cars, dtype: float64\nMedian: 679.0\nRange: 5859\nSample variance: 1618942.5\n",
+    "images": []
+  },
+  {
+    "name": "correlation",
+    "code": "paired = hourly[['cars', 'bicycles']]\nprint(paired.corr().round(3))",
+    "stdout": "          cars  bicycles\ncars      1.00     -0.13\nbicycles -0.13      1.00\n",
+    "images": []
+  },
+  {
+    "name": "scaling",
+    "code": "x = np.array([100., 200., 300.])\nminmax = (x - x.min()) / np.ptp(x)\nz = (x - x.mean()) / x.std(ddof=0)\nprint('Original:', x)\nprint('Min\u2013max:', minmax)\nprint('z-scores:', np.round(z, 3))\nprint('z mean / SD:',\n      round(z.mean(), 3),\n      round(z.std(ddof=0), 3))",
+    "stdout": "Original: [100. 200. 300.]\nMin\u2013max: [0.  0.5 1. ]\nz-scores: [-1.225  0.     1.225]\nz mean / SD: 0.0 1.0\n",
+    "images": []
+  },
+  {
+    "name": "grouping",
+    "code": "site_hour = traffic.groupby(\n    ['count_point_id', 'count_date', 'hour'],\n    as_index=False\n)[['cars', 'bicycles']].sum()\nprint(site_hour[['hour', 'cars', 'bicycles']]\n      .head(3).to_string(index=False))\nprint('Observed site-hours:', len(site_hour))",
+    "stdout": " hour  cars  bicycles\n    7   414        51\n    8   514        54\n    9   438        25\nObserved site-hours: 480\n",
+    "images": []
+  }
+]

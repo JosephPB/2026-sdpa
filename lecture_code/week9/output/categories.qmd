@@ -1,0 +1,9 @@
+```{=html}
+<pre class="executed-output">           records  proportion  percent
+direction                              
+W              252       0.269   26.923
+E              240       0.256   25.641
+S              228       0.244   24.359
+N              216       0.231   23.077
+</pre>
+```

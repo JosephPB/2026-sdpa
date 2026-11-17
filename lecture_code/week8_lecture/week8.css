@@ -1,0 +1,200 @@
+/* Week 8 uses the same Bristol type, colours and spacing as Weeks 5 and 7. */
+.reveal pre {font-size:29px;margin:.35em 0;box-sizing:border-box;max-width:100%;}
+.reveal pre code {line-height:1.25;max-height:570px;}
+.reveal .title-slide h2 {font-size:1.8em;max-width:90%;margin-top:110px;margin-bottom:70px;}
+.reveal .title-slide p {font-size:.95em;}
+.reveal .diagram {width:100%;height:420px;object-fit:contain;display:block;margin:15px auto;}
+.reveal .diagram.tall {height:540px;}
+.reveal .diagram.short {height:290px;}
+.reveal .image-half {height:350px;width:100%;object-fit:contain;image-rendering:pixelated;}
+.reveal .memory-frame {width:100%;height:580px;border:0;}
+.reveal .columns {align-items:start;}
+.reveal .output {font:28px/1.4 Menlo,Consolas,monospace;white-space:pre-wrap;border-left:4px solid #a71930;background:#fafafa;padding:12px 18px;margin-top:18px;}
+.reveal .small {font-size:.68em;}
+.reveal .lead {font-size:1.15em;margin-top:40px;}
+.reveal .source-note {font-size:20px;color:#555;}
+.reveal .section-slide h2 {margin-top:150px;font-size:1.9em;}
+.reveal .flow {display:flex;align-items:center;gap:15px;margin:55px 0 35px;font-size:30px;}
+.reveal .flow>span {flex:1;padding:16px 0;border-bottom:3px solid #bbb;}
+.reveal .flow>span.current {border-color:#a71930;color:#a71930;font-weight:bold;}
+.reveal .flow>b {font-weight:normal;color:#888;flex:0;}
+.reveal .flow.compact {font-size:23px;margin:8px 0 28px;gap:12px;}
+.reveal .flow.compact>span {padding:8px 0;}
+.reveal .formats {display:grid;grid-template-columns:1fr 1fr;gap:25px 45px;}
+.reveal .formats h3 {font-size:29px;margin:8px 0;}
+.reveal .formats pre {font-size:23px;min-height:130px;}
+.reveal .formats em {color:#a71930;font-style:normal;font-weight:bold;}
+.reveal .comparison {display:grid;grid-template-columns:1fr 1fr;gap:55px;margin-top:35px;}
+.reveal .comparison>div {border-top:3px solid #a71930;padding-top:15px;}
+.reveal .comparison h3 {font-size:34px;}
+.reveal .comparison p {font-size:30px;}
+.reveal .scales {font-size:29px;}
+.reveal .scales td {vertical-align:middle;padding:17px 12px;}
+.reveal .reference-slide {font-size:.85em;}
+.reveal .reference-slide pre {font-size:24px;}
+.reveal .reference-slide table {font-size:.8em;}
+.reveal .reference-slide p {margin:.4em 0;}
+.reveal .chart-gallery {width:100%;height:490px;object-fit:contain;}
+.reveal .chart-single {height:380px;width:100%;object-fit:contain;}
+.reveal .break-slide h2 {margin-top:130px;font-size:2em;}
+.reveal .question {margin-top:35px;font-size:1.05em;}
+.reveal .animation {position:relative;margin-top:15px;min-height:450px;}
+.reveal .anim-stage {min-height:340px;position:relative;}
+.reveal .anim-stage svg {width:100%;height:335px;overflow:visible;}
+.reveal .anim-status {font:27px/1.4 Arial,sans-serif;border-left:4px solid #a71930;padding:8px 18px;min-height:56px;margin-top:15px;}
+.reveal .anim-status code {font-size:.88em;}
+.reveal .anim-math {font:36px/1.5 Menlo,monospace;text-align:center;min-height:60px;}
+.reveal .window-layout {display:grid;grid-template-columns:58% 39%;gap:3%;align-items:start;}
+.reveal .trace-code {font:25px/1.5 Menlo,monospace;white-space:pre;margin:0;background:transparent;border:0;}
+.reveal .trace-code span {display:block;padding:0 6px;color:#999;}
+.reveal .trace-code .active {background:#fff0bc;color:#242424;}
+.reveal .state-values {font:27px/1.65 Menlo,monospace;padding-top:5px;}
+.reveal .window-array {display:flex;justify-content:center;gap:0;margin:10px 0 30px;}
+.reveal .window-array span {position:relative;display:inline-block;width:100px;padding:13px;border:1px solid #aaa;text-align:center;font:34px Menlo,monospace;}
+.reveal .window-array span.selected {background:#f6e4e8;border-color:#a71930;}
+.reveal .window-array small {position:absolute;top:-24px;left:0;width:100%;color:#777;font:19px Arial;}
+.reveal .sort-columns {display:grid;grid-template-columns:1fr 1fr;gap:60px;min-height:280px;}
+.reveal .sort-columns>div {border-top:3px solid #a71930;padding-top:12px;}
+.reveal .sort-columns h3 {font-size:36px;margin:0 0 10px;}
+.reveal .sort-columns .definition {font-size:23px;color:#555;min-height:65px;}
+.reveal .sort-columns .placed {font-size:29px;line-height:1.65;}
+.reveal .sort-prompt {text-align:center;font-size:45px;min-height:80px;margin:12px 0 20px;color:#a71930;}
+.reveal .sort-prompt.arrive {animation:arrive .35s ease-out;}
+.reveal .sort-item {animation:arrive .35s ease-out;}
+.reveal .http-stage {display:grid;grid-template-columns:27% 43% 27%;gap:1.5%;min-height:340px;}
+.reveal .http-endpoint {border-top:3px solid #a71930;padding-top:15px;}
+.reveal .http-endpoint h3 {font-size:34px;}
+.reveal .http-endpoint p {font-size:25px;}
+.reveal .http-middle {position:relative;padding-top:30px;}
+.reveal .http-middle .wire {border-bottom:2px solid #bbb;position:absolute;top:130px;left:0;width:100%;}
+.reveal .http-packet {font:24px/1.5 Menlo,monospace;position:relative;background:white;padding:10px;text-align:center;}
+.reveal .http-packet.request {animation:request .7s ease-out;}
+.reveal .http-packet.response {animation:response .7s ease-out;}
+.reveal .http-packet.response.settled {animation:none;}
+.reveal .server-table {width:100%;margin:15px 0;font:25px/1.5 Menlo,monospace;}
+.reveal .server-table th,.reveal .server-table td {padding:10px 12px;text-align:left;border-bottom:1px solid #ccc;}
+.reveal .server-table th {font-weight:bold;}
+.reveal .server-table .new-record {color:#a71930;background:#f6e4e8;}
+.reveal .http-body {font:24px/1.4 Menlo,monospace;color:#a71930;white-space:pre-wrap;}
+.reveal .http-subtitle {font-size:22px;color:#666;text-align:center;margin-top:18px;}
+@keyframes request {from{transform:translateX(-180px);opacity:0}to{transform:translateX(0);opacity:1}}
+@keyframes response {from{transform:translateX(180px);opacity:0}to{transform:translateX(0);opacity:1}}
+@keyframes arrive {from{transform:translateY(-15px);opacity:0}to{transform:translateY(0);opacity:1}}
+@media(prefers-reduced-motion:reduce){.reveal *{animation:none!important;transition:none!important;}}
+@media print{.anim-controls{display:none!important}.reveal .animation{min-height:0}.brand-logo{display:none}.reveal .memory-frame{height:500px}}
+
+/* Diagram states are Reveal fragments, controlled by the normal slide navigation. */
+.reveal .animation-cues {position:absolute;top:0;left:0;width:1px;height:1px;overflow:hidden;pointer-events:none;}
+.reveal .animation-cue {position:absolute;width:1px;height:1px;}
+.reveal .memory-kind,.reveal .http-method {font-size:34px;color:#a71930;margin:0 0 20px;}
+.reveal .memory-layout {display:grid;grid-template-columns:38% 60%;gap:2%;align-items:center;}
+.reveal .memory-layout svg {height:340px;font-family:Arial,sans-serif;}
+.reveal .memory-layout .trace-code {font-size:27px;}
+.reveal .trace-code .done {color:#242424;}
+.reveal .slice-quiz {display:grid;grid-template-columns:52% 45%;gap:3%;align-items:start;margin-top:30px;}
+.reveal .slice-quiz img {width:100%;height:340px;object-fit:contain;}
+.reveal .slice-quiz .fragment img {height:260px;}
+.reveal .slice-quiz p {font-size:32px;}
+.reveal .quiz-prompt {font-size:26px;margin:0 0 14px;}
+.reveal .quiz-answer {visibility:hidden;opacity:0;transition:opacity .25s ease;}
+.reveal .quiz-answer.revealed {visibility:visible;opacity:1;}
+.reveal .quiz-pending {color:#777;}
+.reveal .window-layout {grid-template-columns:58% 39%;min-height:235px;}
+.reveal .state-values {padding:0;font-size:27px;}
+.reveal .formats {gap:20px 40px;}
+.reveal .formats>div {min-width:0;}
+.reveal .formats pre {font-size:23px;line-height:1.32;min-height:165px;padding:10px 14px;}
+.reveal .formats h3 {margin:0 0 8px;}
+.reveal .url-anatomy {display:flex;justify-content:center;gap:0;margin:45px 0 35px;}
+.reveal .url-anatomy>div {display:flex;flex-direction:column;align-items:center;gap:18px;}
+.reveal .url-anatomy code {display:block;padding:0 4px 16px;border-bottom:3px solid #a71930;font-size:33px;white-space:nowrap;}
+.reveal .url-anatomy>div:nth-child(even) code {border-color:#167b83;}
+.reveal .url-anatomy span {font-size:27px;color:#555;}
+.reveal #parse-concept>.diagram {height:285px;}
+.reveal #window-question>p {font-size:32px;line-height:1.5;}
+@media print{.reveal .quiz-answer{visibility:visible;opacity:1}.animation-cues{display:none!important}}
+
+.reveal .cover-illustration {position:absolute;right:75px;bottom:65px;width:420px;height:280px;object-fit:contain;margin:0;}
+.reveal .process-pause>h2 {display:none;}
+.reveal .process-pause>.flow {margin-top:270px;font-size:32px;}
+.reveal .workflow-aligned {display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:30px;margin-top:65px;}
+.reveal .workflow-aligned>div {position:relative;min-width:0;}
+.reveal .workflow-aligned>div:not(:last-child)::after {content:'→';position:absolute;top:0;right:-25px;color:#999;font-size:29px;}
+.reveal .workflow-aligned h3 {font-size:27px;margin:0;padding-bottom:16px;border-bottom:3px solid #a71930;white-space:nowrap;}
+.reveal .workflow-example {padding-top:24px;min-height:300px;}
+.reveal .workflow-example p {font-size:26px;line-height:1.4;}
+.reveal .workflow-example pre {font-size:23px;padding:10px 6px;}
+.reveal .workflow-example img {width:100%;height:190px;object-fit:contain;margin:8px 0;}
+.reveal .analysis-recap {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;margin:45px 0 30px;}
+.reveal .analysis-recap h3 {font-size:32px;min-height:48px;}
+.reveal .analysis-recap img {width:100%;height:235px;object-fit:contain;margin:10px 0 15px;}
+.reveal .analysis-recap img.recap-duck {image-rendering:pixelated;}
+.reveal .analysis-recap table {font-size:25px;height:235px;margin:10px 0 15px;}
+.reveal .analysis-recap p {font-size:29px;}
+.reveal .analysis-recap .recap-media {height:260px;display:flex;align-items:center;justify-content:center;}
+.reveal .analysis-recap .recap-media table {height:auto;margin:0;}
+.reveal .analysis-recap .recap-media td,.reveal .analysis-recap .recap-media th {padding:16px 10px;}
+.reveal .scrape-overview {display:grid;grid-template-columns:26% 70%;gap:4%;align-items:center;margin-top:40px;}
+.reveal .scrape-overview .comparison {margin-top:0;gap:30px;}
+.reveal .scrape-overview h3 {font-size:29px;}
+.reveal .scrape-overview p {font-size:27px;}
+.reveal .scrape-illustration {width:100%;height:300px;object-fit:contain;margin:0;}
+.reveal .pagination-values {display:flex;justify-content:space-between;gap:35px;font-size:28px;margin:10px 0 25px;}
+.reveal #pagination>ol {font-size:29px;line-height:1.4;}
+.reveal #pagination>ol li {margin-bottom:10px;}
+.reveal #pagination pre {font-size:27px;}
+.reveal #pagination>.fragment {font-size:29px;}
+
+/* Each question is followed by its answer through normal slide navigation. */
+.reveal .exit-quiz {position:relative;min-height:440px;margin-top:50px;}
+.reveal .exit-frame,.reveal .exit-intro {position:absolute;inset:0;}
+.reveal .exit-frame h3 {font-size:29px;color:#a71930;margin:0 0 22px;}
+.reveal .exit-frame .exit-question {font-size:40px;line-height:1.4;margin:0;max-width:1300px;}
+.reveal .exit-frame .exit-answer {font-size:32px;line-height:1.5;margin:40px 0 0;padding:10px 24px;border-left:4px solid #a71930;max-width:1250px;}
+.reveal .exit-intro {font-size:38px;color:#555;}
+
+.reveal .request-sequence {position:relative;min-height:560px;}
+.reveal .request-frame {position:absolute;inset:0;}
+.reveal .request-frame {display:grid;grid-template-columns:minmax(0,60fr) minmax(0,37fr);grid-template-rows:min-content 1fr;gap:0 3%;align-items:start;}
+.reveal .request-frame>h3,.reveal .request-frame>.code-example {grid-column:1/-1;}
+.reveal .request-frame>pre.output {font-size:22px;white-space:pre-wrap;}
+.reveal .request-frame pre code {white-space:pre-wrap;overflow-wrap:anywhere;}
+.reveal .request-frame h3 {font-size:29px;margin:10px 0 20px;}
+.reveal #request-code pre {font-size:25px;}
+.reveal #save-code h3 {font-size:28px;}
+.reveal #save-code pre {font-size:23px;}
+.reveal #save-code .columns {margin-top:20px;}
+.reveal #parse-concept>.diagram {height:235px;}
+.reveal #scrape-code>p:last-of-type {font-size:26px;}
+
+/* Code and its result share the slide, following the Week 7 layout. */
+.reveal .code-example {display:grid;grid-template-columns:minmax(0,60fr) minmax(0,37fr);gap:3%;align-items:start;}
+.reveal .code-example>.code-source,.reveal .run-result {min-width:0;}
+.reveal .code-example pre {font-size:23px;}
+.reveal .code-example pre code {white-space:pre-wrap;overflow-wrap:anywhere;}
+.reveal .run-result {font-size:22px;line-height:1.35;}
+.reveal .run-result .print-output {font:21px/1.3 Menlo,Consolas,monospace;white-space:pre-wrap;overflow-wrap:anywhere;padding:8px 12px;border:0;border-left:3px solid #a71930;background:transparent;margin:8px 0;}
+.reveal .run-result .table-output {overflow:visible;}
+.reveal .run-result table {font-size:20px;margin:8px 0;table-layout:fixed;width:100%;}
+.reveal .run-result th,.reveal .run-result td {overflow-wrap:anywhere;padding:5px 6px;}
+.reveal .run-result img {display:block;max-width:100%;max-height:400px;object-fit:contain;margin:0;}
+.reveal .column .code-example {display:block;}
+.reveal #save-code>.code-example {grid-template-columns:45fr 52fr;}
+.reveal #save-code .run-result .print-output {font-size:19px;}
+.reveal .run-controls {display:flex;align-items:center;gap:16px;margin:12px 0 18px;font:19px Arial,sans-serif;}
+.reveal .run-button {background:#a71930;color:white;border:0;padding:8px 20px;font:21px Arial,sans-serif;cursor:pointer;}
+.reveal .run-button:disabled {opacity:.5;cursor:wait;}
+.reveal .run-status {font-size:18px;color:#666;}
+.reveal .run-result .error {color:#a71930;}
+.reveal #array-stacking .diagram {height:260px;}
+.reveal #array-stacking .run-result {font-size:20px;}
+.reveal #pagination .run-result .print-output {font-size:18px;}
+.reveal .reference-slide .code-example pre {font-size:21px;}
+.reveal .reference-slide .run-result .print-output {font-size:18px;}
+@media print {.reveal .run-controls {display:none!important;}}
+.reveal .binning-pair h3 {font-size:27px;margin:10px 0 0;}
+.reveal .binning-pair .animation {min-height:0;margin:0;}
+.reveal .binning-pair .anim-stage {min-height:0;}
+.reveal .binning-pair svg {height:210px;}
+.reveal .binning-pair .anim-status {display:none;}
+.reveal .student-questions li {margin-bottom:30px;}

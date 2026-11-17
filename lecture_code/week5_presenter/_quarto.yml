@@ -1,0 +1,10 @@
+project:
+  type: default
+  render: [week5.qmd]
+  resources: ["assets/**", "live/**", "runtime/**", "config.js", "deck.js", "code-cells.js"]
+execute:
+  eval: false
+format:
+  revealjs:
+    chalkboard:
+      buttons: true

@@ -1,0 +1,15 @@
+```{=html}
+<pre class="executed-output">count     480.0
+mean     1138.0
+std      1272.4
+min         8.0
+25%       183.8
+50%       679.0
+75%      1422.2
+max      5867.0
+Name: cars, dtype: float64
+Median: 679.0
+Range: 5859
+Sample variance: 1618942.5
+</pre>
+```

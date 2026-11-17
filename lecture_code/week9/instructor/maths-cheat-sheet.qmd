@@ -1,0 +1,133 @@
+---
+title: ""
+format:
+  html:
+    theme: none
+    css: maths-cheat-sheet.css
+    html-math-method: mathml
+    embed-resources: true
+    toc: false
+    anchor-sections: false
+---
+
+::: {.sheet}
+# Week 9: board mathematics
+
+**Lecturer reference · 1 / 3 · Centre and spread**
+
+Use observations $x_1,\ldots,x_n$. A bar denotes a sample mean; $\mu,\sigma$ denote population or stated reference parameters.
+
+## Centre
+
+$$\overline{x}=\frac{1}{n}\sum_{i=1}^{n}x_i$$
+
+Sort first: $x_{(1)}\leq\cdots\leq x_{(n)}$. For odd $n$, the median is $x_{((n+1)/2)}$; for even $n$, average $x_{(n/2)}$ and $x_{(n/2+1)}$. The mode is the most frequent value; it need not be unique.
+
+## Variance and standard deviation
+
+$$s^2=\frac{\sum_{i=1}^{n}(x_i-\overline{x})^2}{n-1},\qquad s=\sqrt{s^2}\quad(n>1)$$
+
+For a complete finite population $x_1,\ldots,x_N$:
+
+$$\mu=\frac{1}{N}\sum_{i=1}^{N}x_i,\qquad \sigma^2=\frac{1}{N}\sum_{i=1}^{N}(x_i-\mu)^2,\qquad\sigma=\sqrt{\sigma^2}$$
+
+Variance has squared units; SD has the original units. With the usual independent-sampling assumptions, $n-1$ corrects bias in estimating population **variance**; it does not make $s$ exactly unbiased for $\sigma$.
+
+## Range, quartiles and IQR
+
+$$R=x_{\max}-x_{\min},\qquad Q_1=P_{25},\quad Q_2=\operatorname{median}(x),\quad Q_3=P_{75},\qquad IQR=Q_3-Q_1$$
+
+The five-number summary is min, Q1, median, Q3, max. Quantile interpolation conventions differ; state the convention for a tiny sample.
+
+## A short calculation to put on the board
+
+For $x=[2,4,4,6]$: $n=4$, $\overline{x}=4$, deviations $[-2,0,0,2]$, squared deviations $[4,0,0,4]$, sum $8$.
+
+$$s^2=8/3\approx2.667,\quad s\approx1.633;\qquad \sigma^2=8/4=2,\quad\sigma\approx1.414$$
+
+**Board sequence:** mean → deviations → square → sum → denominator → square root. In pandas, `.var()` and `.std()` default to `ddof=1`; NumPy defaults to `ddof=0`.
+:::
+
+::: {.sheet}
+# Flags and relationships
+
+**Lecturer reference · 2 / 3**
+
+## Tukey boxplot fences and whiskers
+
+$$L=Q_1-1.5IQR,\qquad U=Q_3+1.5IQR$$
+
+$$w_L=\min\{x_i:x_i\geq L\},\qquad w_U=\max\{x_i:x_i\leq U\}$$
+
+The fences are calculated cutoffs. The whiskers end at **observed values** within them. Flag $x_i<L$ or $x_i>U$; equality is inside. Whiskers need not be the min/max or the fences themselves.
+
+## Three-SD and Hampel rules
+
+$$\text{3-SD flag:}\quad |x_i-\overline{x}|>3s$$
+
+For a normal population, about 68%, 95%, 99.7% lie within $\mu\pm\sigma$, $\mu\pm2\sigma$, $\mu\pm3\sigma$. This is not a universal guarantee for thresholds estimated from any sample.
+
+$$m=\operatorname{median}_i(x_i),\qquad MAD=\operatorname{median}_i|x_i-m|$$
+
+$$\text{Hampel flag:}\quad |x_i-m|>3\,(1.4826)\,MAD$$
+
+The factor 1.4826 gives normal-consistent scale. It is not a normalising transformation of the data. IQR and MAD resist a minority of extremes; mean/SD are more sensitive. Skew, small samples and masking matter. Zero SD/MAD needs separate handling. **A flag starts an investigation.**
+
+## Covariance and Pearson correlation
+
+$$s_{xy}=\frac{1}{n-1}\sum_{i=1}^{n}(x_i-\overline{x})(y_i-\overline{y})$$
+
+$$r=\frac{s_{xy}}{s_xs_y}=\frac{\sum_i(x_i-\overline{x})(y_i-\overline{y})}{\sqrt{\sum_i(x_i-\overline{x})^2\;\sum_i(y_i-\overline{y})^2}},\qquad -1\leq r\leq1$$
+
+Use **matched pairs**. If either variable is constant, $r$ is undefined. Correlation measures linear association, not causation; $r=0$ does not rule out a curve. Inspect groups and influential points.
+
+Optional link to the fitted line:
+
+$$\widehat{y}=b_0+b_1x,\qquad b_1=r\frac{s_y}{s_x},\qquad b_0=\overline{y}-b_1\overline{x}$$
+
+Anscombe's quartet: $r\approx0.816$ and $\widehat y\approx3+0.5x$ in each dataset, despite very different shapes. Datasaurus: $r\approx-0.06$; it is not the strong-correlation example.
+:::
+
+::: {.sheet}
+# Transformations and distances
+
+**Lecturer reference · 3 / 3**
+
+## Frequencies and proportions
+
+$$p_k=\frac{n_k}{n},\qquad \text{percentage}_k=100p_k$$
+
+Name the denominator: all records, records within a row/group, people, or exposure. A category code is a label, not a measurement.
+
+## Min–max normalisation
+
+$$u_i=\frac{x_i-x_{\min}}{x_{\max}-x_{\min}},\qquad x_i'=a+(b-a)u_i$$
+
+For $[100,200,300]$: $u=[0,0.5,1]$. For target interval $[-1,1]$: $x'=2u-1=[-1,0,1]$. A constant feature gives zero denominator; new values can lie outside the fitted range.
+
+## Standardisation
+
+$$z_i=\frac{x_i-\mu_{\mathrm{ref}}}{\sigma_{\mathrm{ref}}}$$
+
+For descriptive sample standardisation, use $\overline{x}$ and a stated SD convention. Reference data then have mean 0 and SD 1 **under that same convention**. $z=2$ means two reference SDs above the reference mean. Shape is not made normal.
+
+For $[100,200,300]$, population-style SD is $\sqrt{20000/3}\approx81.650$:
+
+$$z\approx[-1.225,0,1.225].$$
+
+Using sample SD 100 instead gives $[-1,0,1]$. Both are legitimate conventions if used consistently. Do not silently switch denominators.
+
+## Decimal scaling and robust scaling
+
+$$x_i'=\frac{x_i}{10^j},\qquad j=\min\{k\in\mathbb{Z}_{\geq0}:\max_i|x_i|/10^k<1\}$$
+
+$[120,450,900]/1000=[0.12,0.45,0.90]$. Optional robust scaling: $(x_i-m)/IQR$ (with explicit handling of $IQR=0$); this is distinct from Hampel flagging.
+
+## Euclidean distance
+
+$$d(\mathbf a,\mathbf b)=\sqrt{\sum_{j=1}^{p}(a_j-b_j)^2}$$
+
+Lecture points: $A=(100,20)$, $B=(130,80)$, $C=(200,25)$. Raw: $d(A,B)\approx67.08$, $d(A,C)\approx100.12$. After feature-wise min–max scaling: $d(A,B)\approx1.044$, $d(A,C)\approx1.003$. The nearest point changes.
+
+**Keep in mind:** scaling changes feature contributions to distance; positive affine rescaling leaves Pearson $r$ unchanged. For modelling, learn transformation parameters on training data and reuse them on new data. Scaling is neither an outlier-removal rule nor a requirement for every question.
+:::

@@ -1,0 +1,6 @@
+numpy>=2.0
+pandas>=2.2
+matplotlib>=3.8
+Pillow>=10
+requests>=2.31
+beautifulsoup4>=4.12

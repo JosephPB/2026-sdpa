@@ -1,0 +1,18 @@
+{
+  "master_slides": 69,
+  "student_slides": 69,
+  "master_solutions": 11,
+  "student_solutions": 0,
+  "student_notes": 0,
+  "answer_text_leaks": [],
+  "executed_examples": 5,
+  "pdf_pages": 69,
+  "pdf_answer_text_leaks": 0,
+  "maths_cheat_sheet_pages": 3,
+  "live_reveal_checks": [
+    "eight alternating exit questions/answers",
+    "joint scatterplot hidden then revealed",
+    "second scaling panel hidden then revealed"
+  ],
+  "visual_review": "Revised slide contact sheets and all three maths-reference pages reviewed; final enlarged screenshot and Pearson formula rechecked."
+}

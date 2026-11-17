@@ -1,0 +1,19 @@
+{
+  "traffic": {
+    "source": "https://roadtraffic.dft.gov.uk/api/raw-counts",
+    "params": {
+      "filter[local_authority_id]": 144,
+      "filter[year]": 2023,
+      "page[size]": 10000
+    },
+    "retrieved": "2026-10-31",
+    "copied_from": "Week 7 data/raw/traffic-2023.json",
+    "records": 936,
+    "last_page": 1
+  },
+  "teaching_html": {
+    "kind": "Local teaching fixture",
+    "based_on": "First three records of the saved DfT response",
+    "publisher_page": false
+  }
+}
