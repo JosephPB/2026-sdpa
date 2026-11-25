@@ -1,0 +1,85 @@
+---
+title: "AI-assisted programming: reading and practical guide"
+subtitle: "Software Development: Programming and Algorithms"
+lang: en-GB
+format:
+  html:
+    toc: true
+    embed-resources: true
+    theme: cosmo
+---
+
+## How to use this material
+
+This guide accompanies the 15-minute video and complements lecture 11B. The video demonstrates a small workflow; these links let you explore the evidence and guidance in more detail. Check the specific assessment brief before using AI in assessed work. This guide does not grant permission for any particular assessment.
+
+## Programming foundations and AI
+
+**Strömberg, Lei and Wu (2026), [The Generative AI Learning Penalty: Evidence from Chinese Secondary Education](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6868618).** This preprint is the source named in the two lecturer-supplied Economist graphics on slide 4. It uses longitudinal records of 26,811 Chinese secondary-school pupils and a difference-in-differences design. The comparison motivates separating homework completion from learning. It is not a randomised programming experiment, and the images do not establish what happens for every kind of AI assistance.
+
+**Lucchetti et al. (2024), [Substance Beats Style: Why Beginning Students Fail to Code with LLMs](https://arxiv.org/abs/2410.19792).** The study distinguishes technical vocabulary from the information a prompt conveys. Its findings support specifying behaviour and constraints rather than relying on jargon. Read with this question in mind: have I supplied enough information to distinguish a correct answer from a plausible one?
+
+**Bastani et al. (2025), [Generative AI without guardrails can harm learning: Evidence from high school mathematics](https://doi.org/10.1073/pnas.2422633122).** This mathematics trial distinguishes improved assisted practice performance from subsequent unassisted performance, and compares unrestricted assistance with a tutor designed to protect learning. It motivates a learning safeguard, not a claim that every AI use harms learning or that the same effects have been measured in this programming cohort.
+
+## Dependencies and security
+
+**Spracklen et al. (2025), [We Have a Package for You!](https://www.usenix.org/conference/usenixsecurity25/presentation/spracklen).** The authors document hallucinated package recommendations and a supply-chain attack opportunity. A suggested package name is not a trustworthy source. Check the package against the actual project's documentation, confirm why you need it and review its provenance before installation. The study is not evidence that AI caused a general increase in cyberattacks.
+
+**OWASP, [Secure Coding with AI](https://cheatsheetseries.owasp.org/cheatsheets/Secure_Coding_with_AI_Cheat_Sheet.html).** Practical guidance on reviewing generated code and controlling the risks of tool-enabled assistance. For our teaching demo, the useful starting point is a restricted local folder without sensitive data, external installations, network access or connected hardware. A request in a prompt does not replace enforced permissions.
+
+## A reusable prompt structure
+
+State the task and function interface. Describe inputs, outputs, assumptions and constraints. Give a small example with the expected answer. Ask for an approach and test cases before implementation. Request one understandable change at a time.
+
+For the video example:
+
+> Write `flag_force(readings, threshold)`. Return one Boolean per reading, in order. A reading at or above the threshold gives True. An empty input gives an empty list. Assume finite numerical readings and threshold, all in newtons. `[2, 5, 8]` with threshold `5` gives `[False, True, True]`. Use the standard library only, with no file or network access. Explain the approach and suggest tests first. Wait before implementing.
+
+For learning, try: “Give me a hint before showing the solution.” For debugging, supply the relevant code, input, actual result and expected result, with secrets removed. For architecture, ask for the simplest structure and the tradeoffs of any proposed dependency. For optimisation, ask for a bottleneck hypothesis and a measurement plan rather than accepting a speed claim.
+
+## The local demonstration
+
+The `demo` folder contains a correct function, a deliberately buggy counterpart and four shared tests. It requires Python 3 and no third-party packages. Open a terminal in `demo`:
+
+```bash
+python test_force.py --buggy
+```
+
+This intentionally exits with a failure: equality is missing. Then run:
+
+```bash
+python -m unittest -v
+```
+
+The corrected implementation passes the same four tests. `python3` may be the Python command on your system. The deck condenses terminal output for readability. The agent screens are labelled fictional mock-ups, not recordings of an actual AI session.
+
+The function assumes valid finite numbers. It does not validate missing values, NaN, unit mismatches or sensor faults. Those concerns belong in a larger system's validation and requirements. Do not use this classroom example to control equipment or make safety decisions. Four passing tests do not prove general correctness or safety.
+
+## A short review checklist
+
+- Can I explain the code and predict a small example?
+- Do tests reflect the requirements, including the boundary cases?
+- Have I read the diff and checked for unrelated changes?
+- Are dependencies necessary, trustworthy and appropriately licensed?
+- Have I kept credentials and sensitive information out of the shared context?
+- Can the agent act only within the intended scope?
+- Does this use comply with the assessment rules, including disclosure?
+
+Practise a small adaptation without AI. Keep the useful thinking in your workflow. Prefer existing documentation, deterministic tools or a direct edit when they suffice, avoiding unnecessary generation and its resource use.
+
+## Readability and simplicity
+
+[Donald Knuth's *Literate Programming*](https://www-cs-faculty.stanford.edu/~knuth/lp.html) treats programs as communication for human readers. This is the specific source for the deck's readability point, rather than a quotation from *The Art of Computer Programming*. Our application to AI assistance: prefer clear names and purposeful explanations, ask for a concise rationale, and review the result. A longer answer is not necessarily more helpful, and a shorter program is not necessarily clearer.
+
+[Martin Fowler's explanation of YAGNI](https://martinfowler.com/bliki/Yagni.html) addresses speculative capabilities. During an experiment, ask which current requirement justifies an extra class, package or abstraction. Keep tests, validation and maintainability. Revisit the structure when requirements grow rather than building every anticipated extension now.
+
+## AI-agent incidents and their limits
+
+- **Replit / SaaStr, July 2025:** [Replit acknowledges](https://replit.com/blog/doubling-down-on-our-commitment-to-secure-vibe-coding) that its agent deleted data from Jason Lemkin's application database. [SaaStr's firsthand account](https://www.saastr.com/replits-new-release-address-most-of-the-challenges-we-hit-vibe-coding-but-is-prosumer-vibe-coding-really-ready-for-commercial-apps-yet/) reports ignored code-freeze instructions and false advice that recovery was impossible. Recovery succeeded. The affected application was under development; avoid describing this as deletion of SaaStr's entire business. Our teaching lesson: enforce permissions outside the conversation and check recovery advice against authoritative documentation and actual system state.
+- **Amazon Q Developer, July 2025:** [AWS's security bulletin](https://aws.amazon.com/security/security-bulletins/AWS-2025-015/) documents a compromised build credential that allowed malicious code into the VS Code extension. AWS says it failed to execute and changed no customer environments. This was a supply-chain compromise, **not a confirmed customer data breach**. Our teaching lesson: scrutinise the coding tool itself, apply security updates and limit its access to secrets and sensitive files.
+
+These incidents illustrate possible failure modes, not prevalence or comparative product safety. An agent's explanation of its own actions is not a reliable substitute for logs. Avoid inferring intent from apologies or claims that it “panicked”. For student projects, work on disposable copies, keep credentials out of shared context, review changes and test recovery before granting broader access.
+
+## Recording and accessibility
+
+Most slides advance on demand. Slides 8 and 9 play scripted typing and response animations on entry, with pause, replay and show-complete controls. These animations do not contact an AI service or execute code. Reduced-motion preferences show their final states by default. The reading guide provides a linear alternative to the presentation. The final state of each animated scene appears when printing the deck.

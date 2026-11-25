@@ -1,0 +1,11 @@
+/.quarto/
+**/*.quarto_ipynb
+/.backups/
+/backup-before-*/
+/output/
+/ai_coding.html
+/ai_coding_files/
+/reading.html
+/ai_coding.pdf
+/references.html
+/references.pdf

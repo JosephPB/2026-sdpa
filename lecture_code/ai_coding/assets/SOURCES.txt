@@ -1,0 +1,35 @@
+Image provenance
+
+ai-homework-scores.jpeg and ai-exam-scores.jpeg:
+Lecturer-supplied Economist graphics, preserved without cropping or alteration.
+Underlying study named in both images: Strömberg, Lei and Wu (June 2026),
+The Generative AI Learning Penalty: Evidence from Chinese Secondary Education.
+https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6868618
+
+outline-page-2-0.png:
+Extracted original embedded image from page 2 of the lecturer-supplied
+AI for programming lecture-2.pdf. Malicious vs normal user/package attack.
+Related paper: https://www.usenix.org/conference/usenixsecurity25/presentation/spracklen
+
+outline-page-3-0.jpg:
+Extracted original embedded workflow diagram from page 3 of the same PDF.
+The supplied outline does not identify the graphic's original creator.
+
+outline-page-6-0.png:
+Extracted original embedded vibe-coding-spectrum illustration from page 6
+of the same PDF. Reproduced as supplied, not redrawn.
+
+rubber-duck.png:
+Generated with the built-in image-generation tool for this lecture.
+Prompt: A single classic yellow rubber bath duck with an orange beak,
+three-quarter view facing left, clean softly lit product photograph.
+Fully isolated on a transparent background. No text, no accessories,
+no water, no extra objects. Small visual cue for rubber-duck debugging
+in a university lecture slide.
+
+bristol-slide-original.jpeg:
+Existing course branding, reused unchanged from the lecture template.
+
+Earlier 01–04 mock-up PNGs are retained as source assets but are no longer
+embedded on slides 8–9. The new interfaces use editable HTML and demos.js.
+

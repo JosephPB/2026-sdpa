@@ -9,6 +9,7 @@ on:
       - 'lecture_code/week4/**'
       - 'lecture_code/week7/**'
       - 'lecture_code/week9/**'
+      - 'lecture_code/ai_coding/**'
       - '.github/workflows/webapps.yml'
   workflow_dispatch:
 
@@ -71,6 +72,10 @@ jobs:
         working-directory: lecture_code/week9
       - name: Add the Week 9 deck to the shared Pages site
         run: node lecture_code/week9/package-pages.mjs --output ../../additional_materials/robot-lab/pages-site/lecture_code/week9
+      - name: Test the AI coding lecture examples
+        run: python3 -m unittest discover -s lecture_code/ai_coding/demo -v
+      - name: Render, export and check the AI coding resources
+        run: node lecture_code/ai_coding/build-pages.mjs --browser chromium --output ../../additional_materials/robot-lab/pages-site/lecture_code/ai_coding
       - uses: actions/upload-pages-artifact@v4
         with:
           path: additional_materials/robot-lab/pages-site

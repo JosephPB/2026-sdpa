@@ -1,0 +1,11 @@
+<style>
+@page{size:A4;margin:15mm 18mm 17mm}
+body{font:10.5pt/1.28 Arial,sans-serif;color:#242424;margin:0}
+h1{color:#a71930;font-size:22pt;line-height:1.12;margin:0 0 10pt}
+h2{color:#a71930;font-size:15pt;line-height:1.2;margin:14pt 0 8pt;break-after:avoid}
+h3{font-size:11.5pt;line-height:1.2;margin:10pt 0 5pt;break-after:avoid}
+p{margin:0 0 6pt;orphans:3;widows:3}ul{padding-left:16pt;margin:0}li{margin-bottom:9pt;break-inside:avoid}a{color:#8e1930;text-decoration:none}
+@media screen{body{max-width:850px;margin:45px auto;padding:0 24px;font-size:17px;line-height:1.5}}
+@media print{#further-reading-ai-assisted-programming,#further-reading-security-packages-and-real-incidents{break-before:page;margin-top:0}}
+</style>
+<script>document.addEventListener('DOMContentLoaded',()=>{document.querySelectorAll('h2').forEach(h=>h.textContent=h.textContent.replace(/^##\s*/,''));const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);while(w.nextNode()){const n=w.currentNode;if(n.textContent.endsWith(' **'))n.textContent=n.textContent.slice(0,-3);}});</script>
